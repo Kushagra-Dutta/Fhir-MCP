@@ -1,4 +1,3 @@
-
 # FHIR Careplan - Universal FHIR Server and Tools
 
 A comprehensive FHIR (Fast Healthcare Interoperability Resources) server and toolkit designed for healthcare data integration, patient care planning, and clinical decision support. This project provides a universal interface to multiple FHIR servers with advanced AI-powered clinical analysis capabilities.
@@ -43,31 +42,153 @@ The FHIR Careplan project consists of two main components:
 - OpenAI API key (for AI features)
 - Access to FHIR servers (local or remote)
 
-### Quick Setup
+### Setting Up MCP Server
 
-1. **Clone the repository**
-```bash
-git clone <repository-url>
-cd FHIR-Careplan
-```
+1. **Clone the Repository**
+   ```bash
+   git clone <repository-url>
+   cd FHIR-MCP
+   ```
 
-2. **Install dependencies(uv recommended)**
-```bash
-pip install -r requirements.txt
-# or using uv
-uv sync
-```
+2. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   # or using uv
+   uv sync
+   ```
 
-3. **Set up environment variables**
-```bash
-# Create .env file
-echo "OPENAI_API_KEY=your_openai_api_key_here" > .env
-```
+3. **Configure Environment Variables**
+   ```bash
+   # Create .env file
+   echo "OPENAI_API_KEY=your_openai_api_key" > .env
+   ```
 
-4. **Run the FHIR server**
-```bash
-python fhir_server.py
-```
+4. **Run the FHIR MCP Server**
+   ```bash
+   python fhir_server.py
+   ```
+
+### Setting Up Firely Test Database Locally
+
+1. **Obtain a Firely Server License Key**
+   - Visit [Firely Server Trial Page](https://fire.ly/firely-server-trial/)
+   - Fill out the form to receive a license key via email
+   - You'll receive the license key and download files (license valid for 7 days)
+   - Save the license file as `firelyserver-license.json`
+
+2. **Set Up Using Docker**
+   ```bash
+   # Pull the Firely server image
+   docker pull firely/server
+
+   # Run the container
+   # For Windows CMD:
+   docker run -d -p 9090:4080 --name firely.server -v %CD%/firelyserver-license.json:/app/firelyserver-license.json firely/server
+
+   # For PowerShell or macOS/Linux:
+   docker run -d -p 9090:4080 --name firely.server -v ${PWD}/firelyserver-license.json:/app/firelyserver-license.json firely/server
+
+   # Verify container is running
+   docker ps
+   ```
+
+3. **Load Test Data**
+   - Use Postman to load test data bundles
+   - Create a new PUT request in Postman
+   - Set request type to raw JSON
+   - Copy content from test data bundles
+   - Send requests to base URL (http://localhost:9090)
+   - Repeat for each data bundle
+
+After completing these steps, you'll have a working test database accessible at http://localhost:9090.
+
+### Setting Up MCP Chatbot Client
+
+You can set up the MCP chatbot client either by forking the repository or using Docker. The chatbot will serve as the frontend interface for interacting with the FHIR server.
+
+1. **Get the Chatbot setup**
+   ```bash
+   # Clone the repository
+   git clone https://github.com/cgoinglove/mcp-client-chatbot.git
+   cd mcp-client-chatbot
+   ```
+
+2. **Install PNPM (if not installed)**
+   ```bash
+   npm install -g pnpm
+   ```
+
+3. **Choose Setup Method:**
+
+   #### Docker Compose Setup 🐳
+   ```bash
+   # Install dependencies
+   pnpm i
+
+   # Configure environment variables
+   # Edit .env file with your API keys (created automatically after pnpm i)
+
+   # Start all services including PostgreSQL
+   pnpm docker-compose:up
+   ```
+
+   #### Local Setup 🚀
+   ```bash
+   # Install dependencies
+   pnpm i
+
+   # Setup environment variables
+   pnpm initial:env
+
+   # Start PostgreSQL (skip if already running)
+   pnpm docker:pg
+
+   # Run database migrations
+   pnpm db:migrate
+
+   # Start development server
+   pnpm dev
+
+   # Optional: Build & start for production-like testing
+   pnpm build:local && pnpm start
+   ```
+
+4. **Configure Environment Variables**
+   Create/edit `.env` file with required API keys:
+   ```env
+   # LLM Provider API Keys (add the ones you plan to use)
+   OPENAI_API_KEY=****
+   GOOGLE_GENERATIVE_AI_API_KEY=****
+   ANTHROPIC_API_KEY=****
+   XAI_API_KEY=****
+   OPENROUTER_API_KEY=****
+   OLLAMA_BASE_URL=http://localhost:11434/api
+
+   # Auth Configuration
+   BETTER_AUTH_SECRET=**** # Generate with: npx @better-auth/cli@latest secret
+   BETTER_AUTH_URL= # Optional: URL you access the app from
+
+   # Database Configuration
+   POSTGRES_URL=postgres://your_username:your_password@localhost:5432/your_database_name
+
+   # MCP Configuration
+   FILE_BASED_MCP_CONFIG=false
+
+   # Optional OAuth Settings (for Google/GitHub login)
+   GOOGLE_CLIENT_ID=
+   GOOGLE_CLIENT_SECRET=
+   GITHUB_CLIENT_ID=
+   GITHUB_CLIENT_SECRET=
+   ```
+
+5. **Connect MCP Server to Chatbot**
+   - Access the chatbot at http://localhost:3000
+   - Create an account and login
+   - Go to MCP configuration
+   - Click "Add Server"
+   - Copy-paste your `.chatbot-config.json` configuration
+
+After completing these steps, your chatbot will be connected to the MCP server and ready to interact with the FHIR database.
 
 ## 🏗 Architecture
 
@@ -419,7 +540,7 @@ The FHIR Timeline Agent (`fhir_timeline_agent.py`) is a specialized agent design
 ### Usage
 
 ```bash
-# Run in interactive mode
+# Run in interactive mode with chat interface
 python fhir_timeline_agent.py
 
 # Run in demo mode with example queries
@@ -504,5 +625,4 @@ Each error is displayed with helpful suggestions for resolution.
 
 *Built with ❤️ for healthcare interoperability and patient care improvement* 
 =======
-# Fhir-MCP
 

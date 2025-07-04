@@ -1,0 +1,1371 @@
+{
+  "resourceType": "Bundle",
+  "id": "7eb42b1b-964e-46c4-bfe9-d14c9eae3be1",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+        "name": [
+          {
+            "use": "official",
+            "family": "Garcia",
+            "given": [
+              "Sakura"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-08-22",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "789 Elm Street"
+            ],
+            "city": "Miami",
+            "state": "FL",
+            "postalCode": "33101",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(305) 555-1234",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "sakura.garcia@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Hispanic"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "e556ba2a-f677-46d7-a533-e4ac00365814",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1b2f5f52-8262-4600-88bb-4f23f33abffc",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "433144002",
+              "display": "end-stage renal disease on hemodialysis"
+            }
+          ],
+          "text": "end-stage renal disease on hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "onsetDateTime": "2010-05-15",
+        "recordedDate": "2010-06-01"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "1f758431-c72d-46aa-b717-6975df4be7e7",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for end-stage renal disease on hemodialysis",
+        "description": "Comprehensive treatment plan including AV Fistula Surgery, Hemodialysis Sessions",
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "period": {
+          "start": "2010-06-15"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/1f758431-c72d-46aa-b717-6975df4be7e7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "e94766f4-6006-4883-b87e-ee1c862c8c19",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "AV fistula creation"
+              }
+            ],
+            "text": "AV fistula creation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-06-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/e94766f4-6006-4883-b87e-ee1c862c8c19"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "51ae828b-9a88-417b-a74b-635425e607fd",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "AV fistula creation"
+            }
+          ],
+          "text": "AV fistula creation"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/e94766f4-6006-4883-b87e-ee1c862c8c19"
+        },
+        "performedDateTime": "2010-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/51ae828b-9a88-417b-a74b-635425e607fd"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "bf7380a1-71d6-447c-bc9b-149b59f70de8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anesthesia"
+            }
+          ],
+          "text": "Anesthesia"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/e94766f4-6006-4883-b87e-ee1c862c8c19"
+        },
+        "effectiveDateTime": "2010-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/bf7380a1-71d6-447c-bc9b-149b59f70de8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "115db370-e029-49bf-a32c-08222e6046ed",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Hemodialysis session"
+              }
+            ],
+            "text": "Hemodialysis session"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-06-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/115db370-e029-49bf-a32c-08222e6046ed"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "95bd5175-55a4-482a-b049-9f2c5b618244",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/115db370-e029-49bf-a32c-08222e6046ed"
+        },
+        "performedDateTime": "2010-06-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/95bd5175-55a4-482a-b049-9f2c5b618244"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "a842b9aa-55a7-4cba-b761-558d10dde9db",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Erythropoietin"
+            }
+          ],
+          "text": "Erythropoietin"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/115db370-e029-49bf-a32c-08222e6046ed"
+        },
+        "effectiveDateTime": "2010-06-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/a842b9aa-55a7-4cba-b761-558d10dde9db"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "ce48ba43-c396-4461-ace7-026f7fbb57d0",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Hemodialysis session"
+              }
+            ],
+            "text": "Hemodialysis session"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/ce48ba43-c396-4461-ace7-026f7fbb57d0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a64e032b-77f4-41a5-8615-d7e2d93122d0",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/ce48ba43-c396-4461-ace7-026f7fbb57d0"
+        },
+        "performedDateTime": "2010-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a64e032b-77f4-41a5-8615-d7e2d93122d0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "61b21f84-0c82-4240-8456-9abd63d0ab0a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Iron supplement"
+            }
+          ],
+          "text": "Iron supplement"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/ce48ba43-c396-4461-ace7-026f7fbb57d0"
+        },
+        "effectiveDateTime": "2010-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/61b21f84-0c82-4240-8456-9abd63d0ab0a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "36dda63c-5ede-4673-8048-0df9fb317dbb",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Hemodialysis session"
+              }
+            ],
+            "text": "Hemodialysis session"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/36dda63c-5ede-4673-8048-0df9fb317dbb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "ecc5dbf2-1b9a-4d43-b341-6dc621138e67",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/36dda63c-5ede-4673-8048-0df9fb317dbb"
+        },
+        "performedDateTime": "2010-07-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/ecc5dbf2-1b9a-4d43-b341-6dc621138e67"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "3455f422-0fc4-41a2-bfcf-6da9beb43268",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Calcium supplement"
+            }
+          ],
+          "text": "Calcium supplement"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/36dda63c-5ede-4673-8048-0df9fb317dbb"
+        },
+        "effectiveDateTime": "2010-07-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/3455f422-0fc4-41a2-bfcf-6da9beb43268"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "c3f77544-2230-4786-b0b9-e567e5e29593",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Hemodialysis session"
+              }
+            ],
+            "text": "Hemodialysis session"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-08-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/c3f77544-2230-4786-b0b9-e567e5e29593"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a54138a8-a061-464b-9e52-c09c52d2c222",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/c3f77544-2230-4786-b0b9-e567e5e29593"
+        },
+        "performedDateTime": "2010-08-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a54138a8-a061-464b-9e52-c09c52d2c222"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9b3ac728-a46c-4895-aa77-a903b3303cde",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Vitamin D supplement"
+            }
+          ],
+          "text": "Vitamin D supplement"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/c3f77544-2230-4786-b0b9-e567e5e29593"
+        },
+        "effectiveDateTime": "2010-08-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9b3ac728-a46c-4895-aa77-a903b3303cde"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "a24da75e-68d8-45e0-acf2-b16961c119d1",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Hemodialysis session"
+              }
+            ],
+            "text": "Hemodialysis session"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-08-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/a24da75e-68d8-45e0-acf2-b16961c119d1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "fb02c9e9-c176-4f2e-86c5-5f9a86f5736c",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/a24da75e-68d8-45e0-acf2-b16961c119d1"
+        },
+        "performedDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/fb02c9e9-c176-4f2e-86c5-5f9a86f5736c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9373701a-1b41-4708-b4e1-b24fe5e34570",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Phosphate binder"
+            }
+          ],
+          "text": "Phosphate binder"
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/a24da75e-68d8-45e0-acf2-b16961c119d1"
+        },
+        "effectiveDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9373701a-1b41-4708-b4e1-b24fe5e34570"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "918c8c00-3ac6-4f6d-b0ee-941e09c203fb",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up evaluation"
+              }
+            ],
+            "text": "Follow-up evaluation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-09-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/918c8c00-3ac6-4f6d-b0ee-941e09c203fb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "dd4cbfee-9e26-4315-8654-3ad594d2036a",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up evaluation"
+              }
+            ],
+            "text": "Follow-up evaluation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-09-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/dd4cbfee-9e26-4315-8654-3ad594d2036a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "b7ca9e47-6178-4801-b80c-583b0f17d436",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up evaluation"
+              }
+            ],
+            "text": "Follow-up evaluation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-10-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d09f75b2-b1f9-43f9-8d80-ab6bec65efc5",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1b2f5f52-8262-4600-88bb-4f23f33abffc",
+            "display": "end-stage renal disease on hemodialysis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/b7ca9e47-6178-4801-b80c-583b0f17d436"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "effectiveDateTime": "2010-09-05",
+        "performer": [
+          {
+            "reference": "Practitioner/e556ba2a-f677-46d7-a533-e4ac00365814",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows stable status for end-stage renal disease on hemodialysis. Sakura Garcia, a Hispanic female with severe end-stage renal disease, underwent AV fistula surgery followed by multiple hemodialysis sessions. She is currently stable with regular follow-up evaluations."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/5f2144f6-96be-4c5a-8e9b-21acad128b8d",
+          "display": "Sakura Garcia"
+        },
+        "valueString": "stable",
+        "effectiveDateTime": "2010-09-05"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

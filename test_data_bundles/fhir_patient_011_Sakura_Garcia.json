@@ -1,0 +1,1222 @@
+{
+  "resourceType": "Bundle",
+  "id": "806967a4-fe68-4ff4-9c49-fa15494b6f69",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "67bc5097-f141-4ed1-b322-dde7c203ab9c",
+        "name": [
+          {
+            "use": "official",
+            "family": "Garcia",
+            "given": [
+              "Sakura"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-09-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "123 Main Street"
+            ],
+            "city": "Miami",
+            "state": "FL",
+            "postalCode": "33101",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(305) 555-1234",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "sakura.garcia@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Hispanic"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "45466ede-7ed0-4ab9-9812-06f066671995",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "b78c04a8-963e-4666-a181-243230f90486",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/b78c04a8-963e-4666-a181-243230f90486"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "bd4db866-38e3-44e8-945d-e4ec728d8304",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "24700007",
+              "display": "multiple sclerosis"
+            }
+          ],
+          "text": "multiple sclerosis"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "onsetDateTime": "2010-07-15",
+        "recordedDate": "2010-08-02"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "02c459b1-c3c8-475b-b811-185e16e9590a",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for multiple sclerosis",
+        "description": "Comprehensive treatment plan including Disease Modifying Therapy, Rehabilitation Therapy",
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "period": {
+          "start": "2010-08-20"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/02c459b1-c3c8-475b-b811-185e16e9590a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d2bd2148-5a98-4a08-82bf-686717a4b7ed",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Start disease modifying therapy"
+              }
+            ],
+            "text": "Start disease modifying therapy"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-08-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/b78c04a8-963e-4666-a181-243230f90486",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d2bd2148-5a98-4a08-82bf-686717a4b7ed"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a0f9cd73-2a39-42db-ab99-a8ccdfba5139",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "MRI Brain"
+            }
+          ],
+          "text": "MRI Brain"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/d2bd2148-5a98-4a08-82bf-686717a4b7ed"
+        },
+        "performedDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a0f9cd73-2a39-42db-ab99-a8ccdfba5139"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "dc33486f-6574-41d0-9631-61da5bc18305",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Interferon beta-1a"
+            }
+          ],
+          "text": "Interferon beta-1a"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/d2bd2148-5a98-4a08-82bf-686717a4b7ed"
+        },
+        "effectiveDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/dc33486f-6574-41d0-9631-61da5bc18305"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "1b3a1c95-ac1a-4d70-a02c-fbab3ae9435d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Glatiramer acetate"
+            }
+          ],
+          "text": "Glatiramer acetate"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/d2bd2148-5a98-4a08-82bf-686717a4b7ed"
+        },
+        "effectiveDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/1b3a1c95-ac1a-4d70-a02c-fbab3ae9435d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "6f422fe2-d670-42bd-8bca-0a4cad056b58",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Monitoring and dose adjustment"
+              }
+            ],
+            "text": "Monitoring and dose adjustment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-12-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/b78c04a8-963e-4666-a181-243230f90486",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/6f422fe2-d670-42bd-8bca-0a4cad056b58"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "68cc7899-6794-4616-8b83-b565ef0732a3",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/6f422fe2-d670-42bd-8bca-0a4cad056b58"
+        },
+        "performedDateTime": "2010-12-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/68cc7899-6794-4616-8b83-b565ef0732a3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "a4562bcb-2bb8-4818-b21b-d8aa0b5c197f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Interferon beta-1a"
+            }
+          ],
+          "text": "Interferon beta-1a"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/6f422fe2-d670-42bd-8bca-0a4cad056b58"
+        },
+        "effectiveDateTime": "2010-12-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/a4562bcb-2bb8-4818-b21b-d8aa0b5c197f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "3bb0306b-f2dc-4a72-a9a1-29bdbbe7ee4c",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Continuation of therapy"
+              }
+            ],
+            "text": "Continuation of therapy"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2011-02-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/b78c04a8-963e-4666-a181-243230f90486",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/3bb0306b-f2dc-4a72-a9a1-29bdbbe7ee4c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "1e34ed4b-737a-41ea-aac2-75489564258e",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Clinical assessment"
+            }
+          ],
+          "text": "Clinical assessment"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/3bb0306b-f2dc-4a72-a9a1-29bdbbe7ee4c"
+        },
+        "performedDateTime": "2011-02-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/1e34ed4b-737a-41ea-aac2-75489564258e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "8c9070e0-6935-4bb6-9399-77d9a0d7a547",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Glatiramer acetate"
+            }
+          ],
+          "text": "Glatiramer acetate"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/3bb0306b-f2dc-4a72-a9a1-29bdbbe7ee4c"
+        },
+        "effectiveDateTime": "2011-02-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/8c9070e0-6935-4bb6-9399-77d9a0d7a547"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "243a21fe-52a5-4af8-af68-0e65d9c7acf3",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Physical therapy evaluation"
+              }
+            ],
+            "text": "Physical therapy evaluation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2011-03-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/b78c04a8-963e-4666-a181-243230f90486",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/243a21fe-52a5-4af8-af68-0e65d9c7acf3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "118f2364-5720-4818-bd5a-ba8d95560440",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Physical therapy assessment"
+            }
+          ],
+          "text": "Physical therapy assessment"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/243a21fe-52a5-4af8-af68-0e65d9c7acf3"
+        },
+        "performedDateTime": "2011-03-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/118f2364-5720-4818-bd5a-ba8d95560440"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "8434362b-5ad3-4cf6-ad5c-c3fc989686d0",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Muscle relaxants"
+            }
+          ],
+          "text": "Muscle relaxants"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/243a21fe-52a5-4af8-af68-0e65d9c7acf3"
+        },
+        "effectiveDateTime": "2011-03-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/8434362b-5ad3-4cf6-ad5c-c3fc989686d0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "27f64e7c-5792-487f-8191-60fdf78372ba",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Physical therapy sessions"
+              }
+            ],
+            "text": "Physical therapy sessions"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2011-03-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/b78c04a8-963e-4666-a181-243230f90486",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/27f64e7c-5792-487f-8191-60fdf78372ba"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "92d879d4-b036-4039-b882-02b913ebb4ee",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Physical therapy"
+            }
+          ],
+          "text": "Physical therapy"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/27f64e7c-5792-487f-8191-60fdf78372ba"
+        },
+        "performedDateTime": "2011-03-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/92d879d4-b036-4039-b882-02b913ebb4ee"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "0d2c2479-ce12-49b9-a10d-53a09a330bad",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain relief medication"
+            }
+          ],
+          "text": "Pain relief medication"
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/27f64e7c-5792-487f-8191-60fdf78372ba"
+        },
+        "effectiveDateTime": "2011-03-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/0d2c2479-ce12-49b9-a10d-53a09a330bad"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "00046f3e-f2cb-44e9-9d91-2074c19ffee0",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Routine follow-up"
+              }
+            ],
+            "text": "Routine follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2011-08-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/b78c04a8-963e-4666-a181-243230f90486",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/00046f3e-f2cb-44e9-9d91-2074c19ffee0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "6c74fc7b-9844-4a4d-bd3d-b976495bc8e9",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Assessment of progress"
+              }
+            ],
+            "text": "Assessment of progress"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2012-02-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/b78c04a8-963e-4666-a181-243230f90486",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/bd4db866-38e3-44e8-945d-e4ec728d8304",
+            "display": "multiple sclerosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/6c74fc7b-9844-4a4d-bd3d-b976495bc8e9"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "effectiveDateTime": "2011-08-15",
+        "performer": [
+          {
+            "reference": "Practitioner/45466ede-7ed0-4ab9-9812-06f066671995",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows stable status for multiple sclerosis. Patient responded well to disease modifying therapy and rehabilitation. Continues regular follow-up for monitoring and management."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/67bc5097-f141-4ed1-b322-dde7c203ab9c",
+          "display": "Sakura Garcia"
+        },
+        "valueString": "stable",
+        "effectiveDateTime": "2011-08-15"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

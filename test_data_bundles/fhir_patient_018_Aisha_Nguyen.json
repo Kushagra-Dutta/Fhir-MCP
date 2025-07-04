@@ -1,0 +1,1514 @@
+{
+  "resourceType": "Bundle",
+  "id": "6ba1a95f-257f-4433-a2aa-4f96b57ebe61",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Aisha"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-09-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "789 Elm Street"
+            ],
+            "city": "Seattle",
+            "state": "WA",
+            "postalCode": "98101",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(206) 555-7890",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "aisha.nguyen@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "fcc57b67-f707-4428-b575-cde00d07aad1",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "9e368b60-342f-49c8-9a54-e1d919a8a17f",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "3898f094-0dba-49c3-bae6-3467380e17a8",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "254637007",
+              "display": "non-small cell lung cancer"
+            }
+          ],
+          "text": "non-small cell lung cancer"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "onsetDateTime": "2021-03-15",
+        "recordedDate": "2021-04-02",
+        "stage": [
+          {
+            "summary": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "261663004",
+                  "display": "Stage III"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "cc094842-aa22-47eb-9698-e3b09ce68854",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for non-small cell lung cancer",
+        "description": "Comprehensive treatment plan including Surgery, Chemotherapy, Radiotherapy",
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "period": {
+          "start": "2021-04-15"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/cc094842-aa22-47eb-9698-e3b09ce68854"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d80ddf23-6ff7-4085-bb7d-0cfb32a87688",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Lobectomy"
+              }
+            ],
+            "text": "Lobectomy"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-04-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d80ddf23-6ff7-4085-bb7d-0cfb32a87688"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "3e69d833-2e42-460f-96d3-eb41f4895d99",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Lobectomy"
+            }
+          ],
+          "text": "Lobectomy"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/d80ddf23-6ff7-4085-bb7d-0cfb32a87688"
+        },
+        "performedDateTime": "2021-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/3e69d833-2e42-460f-96d3-eb41f4895d99"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "89aa22f8-f032-41d8-b161-308397102847",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Morphine"
+            }
+          ],
+          "text": "Morphine"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d80ddf23-6ff7-4085-bb7d-0cfb32a87688"
+        },
+        "effectiveDateTime": "2021-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/89aa22f8-f032-41d8-b161-308397102847"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "25b66795-3a9e-4deb-a895-ea42f55f025f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d80ddf23-6ff7-4085-bb7d-0cfb32a87688"
+        },
+        "effectiveDateTime": "2021-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/25b66795-3a9e-4deb-a895-ea42f55f025f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "ee7757d3-6f06-4601-9a17-7595296bf39b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-04-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/ee7757d3-6f06-4601-9a17-7595296bf39b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "2cd42877-4eb7-438f-aa64-7704b2d88bc3",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Incision check"
+            }
+          ],
+          "text": "Incision check"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/ee7757d3-6f06-4601-9a17-7595296bf39b"
+        },
+        "performedDateTime": "2021-04-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/2cd42877-4eb7-438f-aa64-7704b2d88bc3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d1f72e3e-e07f-48b9-9e99-0467465b620d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain relievers"
+            }
+          ],
+          "text": "Pain relievers"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/ee7757d3-6f06-4601-9a17-7595296bf39b"
+        },
+        "effectiveDateTime": "2021-04-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d1f72e3e-e07f-48b9-9e99-0467465b620d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "9ab33df1-5459-44dd-b4ad-09e62f483892",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 1"
+              }
+            ],
+            "text": "Chemotherapy Cycle 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-05-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/9ab33df1-5459-44dd-b4ad-09e62f483892"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5cc08e00-6e6f-4ff6-959e-94714caf6004",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/9ab33df1-5459-44dd-b4ad-09e62f483892"
+        },
+        "performedDateTime": "2021-05-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/5cc08e00-6e6f-4ff6-959e-94714caf6004"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "f921c030-28e7-4ca0-ad51-71c31ee4c56b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Cisplatin"
+            }
+          ],
+          "text": "Cisplatin"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/9ab33df1-5459-44dd-b4ad-09e62f483892"
+        },
+        "effectiveDateTime": "2021-05-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/f921c030-28e7-4ca0-ad51-71c31ee4c56b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "67f30b1d-5e8b-4745-9adf-8a933a0dee4b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/9ab33df1-5459-44dd-b4ad-09e62f483892"
+        },
+        "effectiveDateTime": "2021-05-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/67f30b1d-5e8b-4745-9adf-8a933a0dee4b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "07186d9b-3d9e-4378-9960-3f795627c778",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 6"
+              }
+            ],
+            "text": "Chemotherapy Cycle 6"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/07186d9b-3d9e-4378-9960-3f795627c778"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e44b0d8b-5531-4997-a4b9-ff0e325d6727",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/07186d9b-3d9e-4378-9960-3f795627c778"
+        },
+        "performedDateTime": "2021-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e44b0d8b-5531-4997-a4b9-ff0e325d6727"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "3c675486-3bea-4a94-b2a5-2e51f8af9766",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Carboplatin"
+            }
+          ],
+          "text": "Carboplatin"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/07186d9b-3d9e-4378-9960-3f795627c778"
+        },
+        "effectiveDateTime": "2021-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/3c675486-3bea-4a94-b2a5-2e51f8af9766"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "edede39e-0a62-4344-aff5-01394f6950d0",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Gemcitabine"
+            }
+          ],
+          "text": "Gemcitabine"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/07186d9b-3d9e-4378-9960-3f795627c778"
+        },
+        "effectiveDateTime": "2021-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/edede39e-0a62-4344-aff5-01394f6950d0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "ba8ba633-4023-48f9-a906-8977859c072f",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 1"
+              }
+            ],
+            "text": "Radiation Session 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/ba8ba633-4023-48f9-a906-8977859c072f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "9e79d36f-b497-466a-bbf3-d3615e2afba7",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/ba8ba633-4023-48f9-a906-8977859c072f"
+        },
+        "performedDateTime": "2021-10-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/9e79d36f-b497-466a-bbf3-d3615e2afba7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "cb267525-824b-481a-9c0d-855855dd03e0",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea medication"
+            }
+          ],
+          "text": "Anti-nausea medication"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/ba8ba633-4023-48f9-a906-8977859c072f"
+        },
+        "effectiveDateTime": "2021-10-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/cb267525-824b-481a-9c0d-855855dd03e0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "4c22bb93-b9d5-480c-ad16-a50051bf44f8",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 15"
+              }
+            ],
+            "text": "Radiation Session 15"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-11-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/4c22bb93-b9d5-480c-ad16-a50051bf44f8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5cf84ee2-24f3-4dcd-baf6-07f928300d5a",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/4c22bb93-b9d5-480c-ad16-a50051bf44f8"
+        },
+        "performedDateTime": "2021-11-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/5cf84ee2-24f3-4dcd-baf6-07f928300d5a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "7804c960-4cb7-485d-9d9e-1b2c0220ce06",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Skin soothing cream"
+            }
+          ],
+          "text": "Skin soothing cream"
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4c22bb93-b9d5-480c-ad16-a50051bf44f8"
+        },
+        "effectiveDateTime": "2021-11-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/7804c960-4cb7-485d-9d9e-1b2c0220ce06"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "3c04f23d-eb7f-4a4c-972f-c6d3498d752b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "3-Month Follow-up"
+              }
+            ],
+            "text": "3-Month Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-01-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/3c04f23d-eb7f-4a4c-972f-c6d3498d752b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "a09f4cfe-dec4-4ec9-9912-e8c5e50805b1",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "6-Month Follow-up"
+              }
+            ],
+            "text": "6-Month Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-04-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/9e368b60-342f-49c8-9a54-e1d919a8a17f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/3898f094-0dba-49c3-bae6-3467380e17a8",
+            "display": "non-small cell lung cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/a09f4cfe-dec4-4ec9-9912-e8c5e50805b1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "effectiveDateTime": "2022-01-05",
+        "performer": [
+          {
+            "reference": "Practitioner/fcc57b67-f707-4428-b575-cde00d07aad1",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows improving status for non-small cell lung cancer. Aisha Nguyen, a 56-year-old Asian female, was diagnosed with Stage III non-small cell lung cancer in April 2021. She underwent lobectomy followed by 6 cycles of chemotherapy and 15 radiation sessions. Currently, she is improving with regular follow-up visits."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/ba22e564-4ea9-4a02-aaa4-dba8de16eae8",
+          "display": "Aisha Nguyen"
+        },
+        "valueString": "improving",
+        "effectiveDateTime": "2022-01-05"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

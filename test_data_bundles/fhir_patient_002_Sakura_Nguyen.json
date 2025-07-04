@@ -1,0 +1,2774 @@
+{
+  "resourceType": "Bundle",
+  "id": "429dd11e-8e6f-479c-8858-be23a4c80c13",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Sakura"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1975-08-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "123 Cherry Blossom Ave"
+            ],
+            "city": "San Francisco",
+            "state": "CA",
+            "postalCode": "94102",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(415) 555-1234",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "s.nguyen@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "431857002",
+              "display": "chronic kidney disease stage 4"
+            }
+          ],
+          "text": "chronic kidney disease stage 4"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "onsetDateTime": "2010-03-20",
+        "recordedDate": "2010-04-02"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "45537215-908c-4347-adf4-62dfc7784fa6",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for chronic kidney disease stage 4",
+        "description": "Comprehensive treatment plan including AV Fistula Surgery, Hemodialysis Sessions, Medication Management",
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "period": {
+          "start": "2010-04-15"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/45537215-908c-4347-adf4-62dfc7784fa6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "1bf9e2b9-2d42-4da1-b901-acd6be97c32a",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "AV Fistula Surgery"
+              }
+            ],
+            "text": "AV Fistula Surgery"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-04-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/1bf9e2b9-2d42-4da1-b901-acd6be97c32a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "8fb4f454-8a5f-475e-bebb-98a31a7c1b11",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "AV Fistula Creation"
+            }
+          ],
+          "text": "AV Fistula Creation"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/1bf9e2b9-2d42-4da1-b901-acd6be97c32a"
+        },
+        "performedDateTime": "2010-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/8fb4f454-8a5f-475e-bebb-98a31a7c1b11"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "884a2f8a-0821-44a1-bf87-d72e2ec5ee85",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Heparin"
+            }
+          ],
+          "text": "Heparin"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/1bf9e2b9-2d42-4da1-b901-acd6be97c32a"
+        },
+        "effectiveDateTime": "2010-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/884a2f8a-0821-44a1-bf87-d72e2ec5ee85"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "94d12ec1-4c9f-4b63-aa7a-175b4652b2df",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Epoetin Alfa"
+            }
+          ],
+          "text": "Epoetin Alfa"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/1bf9e2b9-2d42-4da1-b901-acd6be97c32a"
+        },
+        "effectiveDateTime": "2010-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/94d12ec1-4c9f-4b63-aa7a-175b4652b2df"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "303d42bd-6536-4728-806b-4c679a032a58",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 1"
+              }
+            ],
+            "text": "Dialysis Session 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-04-18"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/303d42bd-6536-4728-806b-4c679a032a58"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "93e85bcc-ed54-4547-821d-9105ecd11734",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/303d42bd-6536-4728-806b-4c679a032a58"
+        },
+        "performedDateTime": "2010-04-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/93e85bcc-ed54-4547-821d-9105ecd11734"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "f3adda0e-7a34-4525-a0e2-f9cd157b9bc1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Calcitriol"
+            }
+          ],
+          "text": "Calcitriol"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/303d42bd-6536-4728-806b-4c679a032a58"
+        },
+        "effectiveDateTime": "2010-04-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/f3adda0e-7a34-4525-a0e2-f9cd157b9bc1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "327e3dfd-9311-433a-80d5-0721d3ce4e34",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Calcium Carbonate"
+            }
+          ],
+          "text": "Calcium Carbonate"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/303d42bd-6536-4728-806b-4c679a032a58"
+        },
+        "effectiveDateTime": "2010-04-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/327e3dfd-9311-433a-80d5-0721d3ce4e34"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "1beae444-6a7f-4618-8092-0d8a418f75e9",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 2"
+              }
+            ],
+            "text": "Dialysis Session 2"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-04-22"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/1beae444-6a7f-4618-8092-0d8a418f75e9"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "3442baef-2cb6-41b1-92b5-0cec888d6ac3",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/1beae444-6a7f-4618-8092-0d8a418f75e9"
+        },
+        "performedDateTime": "2010-04-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/3442baef-2cb6-41b1-92b5-0cec888d6ac3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "5f248dd2-e839-46b9-8f28-ef1373853e89",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Vitamin D"
+            }
+          ],
+          "text": "Vitamin D"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/1beae444-6a7f-4618-8092-0d8a418f75e9"
+        },
+        "effectiveDateTime": "2010-04-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/5f248dd2-e839-46b9-8f28-ef1373853e89"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d6c94c6f-1760-4ee4-98dd-8c0fca7f66cc",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Furosemide"
+            }
+          ],
+          "text": "Furosemide"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/1beae444-6a7f-4618-8092-0d8a418f75e9"
+        },
+        "effectiveDateTime": "2010-04-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d6c94c6f-1760-4ee4-98dd-8c0fca7f66cc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "21e0e94b-d610-4899-92b4-f0c3960eec48",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 3"
+              }
+            ],
+            "text": "Dialysis Session 3"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-04-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/21e0e94b-d610-4899-92b4-f0c3960eec48"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e05ebe96-86d1-4421-96d7-d3f31219e42c",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/21e0e94b-d610-4899-92b4-f0c3960eec48"
+        },
+        "performedDateTime": "2010-04-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e05ebe96-86d1-4421-96d7-d3f31219e42c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "454f75df-7700-45c2-910c-b16dd9fce05b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Phosphate Binders"
+            }
+          ],
+          "text": "Phosphate Binders"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/21e0e94b-d610-4899-92b4-f0c3960eec48"
+        },
+        "effectiveDateTime": "2010-04-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/454f75df-7700-45c2-910c-b16dd9fce05b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "224aea82-0125-4eb4-a259-869cda0e894b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Sodium Bicarbonate"
+            }
+          ],
+          "text": "Sodium Bicarbonate"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/21e0e94b-d610-4899-92b4-f0c3960eec48"
+        },
+        "effectiveDateTime": "2010-04-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/224aea82-0125-4eb4-a259-869cda0e894b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "e7930f50-6245-4c4a-b5f7-147385927ea8",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 4"
+              }
+            ],
+            "text": "Dialysis Session 4"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-04-29"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/e7930f50-6245-4c4a-b5f7-147385927ea8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "54e1cf0e-7be8-4a1e-8646-435559e6898d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/e7930f50-6245-4c4a-b5f7-147385927ea8"
+        },
+        "performedDateTime": "2010-04-29",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/54e1cf0e-7be8-4a1e-8646-435559e6898d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9e4538a8-3f28-4d92-b202-1c914a57be4b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Iron Supplements"
+            }
+          ],
+          "text": "Iron Supplements"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/e7930f50-6245-4c4a-b5f7-147385927ea8"
+        },
+        "effectiveDateTime": "2010-04-29",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9e4538a8-3f28-4d92-b202-1c914a57be4b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "0afade53-1928-4cf6-aa42-4ee107fbe7d4",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Potassium Binders"
+            }
+          ],
+          "text": "Potassium Binders"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/e7930f50-6245-4c4a-b5f7-147385927ea8"
+        },
+        "effectiveDateTime": "2010-04-29",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/0afade53-1928-4cf6-aa42-4ee107fbe7d4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d6e47daf-4035-4fa4-ba71-037a6ba1c450",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 5"
+              }
+            ],
+            "text": "Dialysis Session 5"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-05-03"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d6e47daf-4035-4fa4-ba71-037a6ba1c450"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "0ee6201f-d34b-45c5-a6bb-1c89646ea118",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/d6e47daf-4035-4fa4-ba71-037a6ba1c450"
+        },
+        "performedDateTime": "2010-05-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/0ee6201f-d34b-45c5-a6bb-1c89646ea118"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d396b5da-14b2-4c22-b351-9a3459f71179",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Erythropoiesis Stimulating Agents"
+            }
+          ],
+          "text": "Erythropoiesis Stimulating Agents"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d6e47daf-4035-4fa4-ba71-037a6ba1c450"
+        },
+        "effectiveDateTime": "2010-05-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d396b5da-14b2-4c22-b351-9a3459f71179"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "a323a560-74d2-478a-bb2e-fe97af5c55be",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Vitamin B Complex"
+            }
+          ],
+          "text": "Vitamin B Complex"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d6e47daf-4035-4fa4-ba71-037a6ba1c450"
+        },
+        "effectiveDateTime": "2010-05-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/a323a560-74d2-478a-bb2e-fe97af5c55be"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "620af610-3002-46fa-a2eb-173aa2fa5b67",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 6"
+              }
+            ],
+            "text": "Dialysis Session 6"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-05-16"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/620af610-3002-46fa-a2eb-173aa2fa5b67"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "de05123c-c997-400d-9c50-9c94ef5a790a",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/620af610-3002-46fa-a2eb-173aa2fa5b67"
+        },
+        "performedDateTime": "2010-05-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/de05123c-c997-400d-9c50-9c94ef5a790a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "58c0ff6d-d6b2-4135-9737-b245708a5410",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Calcitriol"
+            }
+          ],
+          "text": "Calcitriol"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/620af610-3002-46fa-a2eb-173aa2fa5b67"
+        },
+        "effectiveDateTime": "2010-05-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/58c0ff6d-d6b2-4135-9737-b245708a5410"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "217be1f3-de98-4c4a-84d3-d8f57d30e255",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Calcium Carbonate"
+            }
+          ],
+          "text": "Calcium Carbonate"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/620af610-3002-46fa-a2eb-173aa2fa5b67"
+        },
+        "effectiveDateTime": "2010-05-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/217be1f3-de98-4c4a-84d3-d8f57d30e255"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "145010f0-f337-4d03-baa7-bbdd182b2d0b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 7"
+              }
+            ],
+            "text": "Dialysis Session 7"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-05-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/145010f0-f337-4d03-baa7-bbdd182b2d0b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "db06556d-6e11-4e2e-a4e4-c32eaf660686",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/145010f0-f337-4d03-baa7-bbdd182b2d0b"
+        },
+        "performedDateTime": "2010-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/db06556d-6e11-4e2e-a4e4-c32eaf660686"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "95f393ec-176b-435a-ae02-8a3722d3db89",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Vitamin D"
+            }
+          ],
+          "text": "Vitamin D"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/145010f0-f337-4d03-baa7-bbdd182b2d0b"
+        },
+        "effectiveDateTime": "2010-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/95f393ec-176b-435a-ae02-8a3722d3db89"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9899c77c-107d-4589-bf54-bdf9cc3abeaa",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Furosemide"
+            }
+          ],
+          "text": "Furosemide"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/145010f0-f337-4d03-baa7-bbdd182b2d0b"
+        },
+        "effectiveDateTime": "2010-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9899c77c-107d-4589-bf54-bdf9cc3abeaa"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "29b7d6b0-8bad-41b9-b418-3f42d56233b7",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 8"
+              }
+            ],
+            "text": "Dialysis Session 8"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-05-24"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/29b7d6b0-8bad-41b9-b418-3f42d56233b7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c6aeae69-def6-4d71-a730-07325d69e56d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/29b7d6b0-8bad-41b9-b418-3f42d56233b7"
+        },
+        "performedDateTime": "2010-05-24",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c6aeae69-def6-4d71-a730-07325d69e56d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "82d13d1f-0060-4324-8b4d-491df14c9e5d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Phosphate Binders"
+            }
+          ],
+          "text": "Phosphate Binders"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/29b7d6b0-8bad-41b9-b418-3f42d56233b7"
+        },
+        "effectiveDateTime": "2010-05-24",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/82d13d1f-0060-4324-8b4d-491df14c9e5d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6462b2d1-94e4-449e-85a7-cef77874eedc",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Sodium Bicarbonate"
+            }
+          ],
+          "text": "Sodium Bicarbonate"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/29b7d6b0-8bad-41b9-b418-3f42d56233b7"
+        },
+        "effectiveDateTime": "2010-05-24",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6462b2d1-94e4-449e-85a7-cef77874eedc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "a62a6939-5395-4459-9fb2-ebeb8f981e2f",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 9"
+              }
+            ],
+            "text": "Dialysis Session 9"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-05-28"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/a62a6939-5395-4459-9fb2-ebeb8f981e2f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e2f0679b-cbf1-4fad-a1e7-3350c77a11ff",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/a62a6939-5395-4459-9fb2-ebeb8f981e2f"
+        },
+        "performedDateTime": "2010-05-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e2f0679b-cbf1-4fad-a1e7-3350c77a11ff"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "05a30853-d84e-43c8-a933-78f95a2d0d7a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Iron Supplements"
+            }
+          ],
+          "text": "Iron Supplements"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/a62a6939-5395-4459-9fb2-ebeb8f981e2f"
+        },
+        "effectiveDateTime": "2010-05-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/05a30853-d84e-43c8-a933-78f95a2d0d7a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "004191dd-2f60-44f0-bcc7-4061ba5ce511",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Potassium Binders"
+            }
+          ],
+          "text": "Potassium Binders"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/a62a6939-5395-4459-9fb2-ebeb8f981e2f"
+        },
+        "effectiveDateTime": "2010-05-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/004191dd-2f60-44f0-bcc7-4061ba5ce511"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d959eb88-0771-4bee-b6a0-055ce0d2db3f",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Session 10"
+              }
+            ],
+            "text": "Dialysis Session 10"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-06-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d959eb88-0771-4bee-b6a0-055ce0d2db3f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "dac923bd-7257-4765-ad1e-43e61751074b",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Hemodialysis"
+            }
+          ],
+          "text": "Hemodialysis"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/d959eb88-0771-4bee-b6a0-055ce0d2db3f"
+        },
+        "performedDateTime": "2010-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/dac923bd-7257-4765-ad1e-43e61751074b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d6fad96a-1f2b-4b25-8733-ffe380e247bb",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Erythropoiesis Stimulating Agents"
+            }
+          ],
+          "text": "Erythropoiesis Stimulating Agents"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d959eb88-0771-4bee-b6a0-055ce0d2db3f"
+        },
+        "effectiveDateTime": "2010-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d6fad96a-1f2b-4b25-8733-ffe380e247bb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "930d9332-c025-47d0-aac3-094aca1f9a7c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Vitamin B Complex"
+            }
+          ],
+          "text": "Vitamin B Complex"
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d959eb88-0771-4bee-b6a0-055ce0d2db3f"
+        },
+        "effectiveDateTime": "2010-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/930d9332-c025-47d0-aac3-094aca1f9a7c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "0bbc69f4-f249-4557-819b-808fe8fca251",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Follow-up"
+              }
+            ],
+            "text": "Dialysis Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/0bbc69f4-f249-4557-819b-808fe8fca251"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "3e4ec117-0777-4ce7-b696-ec6eaaa225a6",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Dialysis Follow-up"
+              }
+            ],
+            "text": "Dialysis Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-30"
+        },
+        "serviceProvider": {
+          "reference": "Organization/4a1f2d8a-049a-421b-b8c0-3def109dfaec",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/d5d629e9-c18a-4ddf-b1f9-a793263e2a13",
+            "display": "chronic kidney disease stage 4"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/3e4ec117-0777-4ce7-b696-ec6eaaa225a6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "effectiveDateTime": "2010-07-15",
+        "performer": [
+          {
+            "reference": "Practitioner/f1132243-89aa-40b8-9fc6-c3b0506c5d58",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows stable status for chronic kidney disease stage 4. Sakura Nguyen, a 35-year-old Asian female diagnosed with severe chronic kidney disease stage 4, initiated hemodialysis treatment on 2010-04-15. The treatment included AV fistula surgery followed by multiple dialysis sessions with medication management. The patient's current status is stable with regular follow-up visits for medication adjustments and lab tests."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a21c8c82-d5ae-4e14-94f0-3aa822f0b9db",
+          "display": "Sakura Nguyen"
+        },
+        "valueString": "stable",
+        "effectiveDateTime": "2010-07-15"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

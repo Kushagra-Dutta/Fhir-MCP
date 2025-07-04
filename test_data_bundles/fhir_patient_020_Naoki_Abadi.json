@@ -1,0 +1,6063 @@
+{
+  "resourceType": "Bundle",
+  "id": "0b6364a0-8e9c-4b44-b0df-19ee04321677",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "a2375398-8ea2-465e-a292-0bd579bbb0fb",
+        "name": [
+          {
+            "use": "official",
+            "family": "Abadi",
+            "given": [
+              "Naoki"
+            ]
+          }
+        ],
+        "gender": "male",
+        "birthDate": "1965-09-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "789 Maple Avenue"
+            ],
+            "city": "Los Angeles",
+            "state": "CA",
+            "postalCode": "90001",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(213) 555-7890",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "naoki.abadi@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "7d2422d3-647a-430b-8100-b32e0d741222",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "4012ad93-f0f7-486b-809d-c20cd0cae325",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372142002",
+              "display": "pancreatic adenocarcinoma"
+            }
+          ],
+          "text": "pancreatic adenocarcinoma"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "onsetDateTime": "2019-05-20",
+        "recordedDate": "2019-06-02",
+        "stage": [
+          {
+            "summary": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "261663004",
+                  "display": "Stage IV"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "2fc27e67-268e-4acb-bcb3-f88baffab021",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for pancreatic adenocarcinoma",
+        "description": "Comprehensive treatment plan including Surgery, Chemotherapy, Radiotherapy",
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "period": {
+          "start": "2019-06-15"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/2fc27e67-268e-4acb-bcb3-f88baffab021"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "5619f2cd-030c-42c1-b7e3-8276859ac706",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Pancreatic tumor resection"
+              }
+            ],
+            "text": "Pancreatic tumor resection"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-06-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/5619f2cd-030c-42c1-b7e3-8276859ac706"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "045aea10-2451-4aaf-97de-db53ed2c67d0",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Pancreatectomy"
+            }
+          ],
+          "text": "Pancreatectomy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/5619f2cd-030c-42c1-b7e3-8276859ac706"
+        },
+        "performedDateTime": "2019-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/045aea10-2451-4aaf-97de-db53ed2c67d0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "58140f22-9229-4500-bbc5-c79e1724394f",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Lymph node dissection"
+            }
+          ],
+          "text": "Lymph node dissection"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/5619f2cd-030c-42c1-b7e3-8276859ac706"
+        },
+        "performedDateTime": "2019-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/58140f22-9229-4500-bbc5-c79e1724394f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "27322994-24dc-45d9-a3a6-637010fa52c6",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Morphine"
+            }
+          ],
+          "text": "Morphine"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/5619f2cd-030c-42c1-b7e3-8276859ac706"
+        },
+        "effectiveDateTime": "2019-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/27322994-24dc-45d9-a3a6-637010fa52c6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "29e0780a-67ea-40e1-824c-77768c273d58",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/5619f2cd-030c-42c1-b7e3-8276859ac706"
+        },
+        "effectiveDateTime": "2019-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/29e0780a-67ea-40e1-824c-77768c273d58"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "601f9f80-c774-480e-8735-769cb22263f1",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Post-surgery monitoring"
+              }
+            ],
+            "text": "Post-surgery monitoring"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-06-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/601f9f80-c774-480e-8735-769cb22263f1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "70eee0c5-0ad1-46a4-9333-fb7972e49639",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Wound care"
+            }
+          ],
+          "text": "Wound care"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/601f9f80-c774-480e-8735-769cb22263f1"
+        },
+        "performedDateTime": "2019-06-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/70eee0c5-0ad1-46a4-9333-fb7972e49639"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c8e30a2f-cbad-493a-8c01-62bfa71a8425",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Fluid management"
+            }
+          ],
+          "text": "Fluid management"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/601f9f80-c774-480e-8735-769cb22263f1"
+        },
+        "performedDateTime": "2019-06-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c8e30a2f-cbad-493a-8c01-62bfa71a8425"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "636c487e-ce9a-4ac0-aa22-0eef2a995b4f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain relievers"
+            }
+          ],
+          "text": "Pain relievers"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/601f9f80-c774-480e-8735-769cb22263f1"
+        },
+        "effectiveDateTime": "2019-06-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/636c487e-ce9a-4ac0-aa22-0eef2a995b4f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "5f7e4e4e-307d-4ef5-9d01-6a1615aeb159",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anticoagulants"
+            }
+          ],
+          "text": "Anticoagulants"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/601f9f80-c774-480e-8735-769cb22263f1"
+        },
+        "effectiveDateTime": "2019-06-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/5f7e4e4e-307d-4ef5-9d01-6a1615aeb159"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "b3e6a85c-0027-4dca-87c3-927822d36277",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up post-surgery"
+              }
+            ],
+            "text": "Follow-up post-surgery"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-06-23"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/b3e6a85c-0027-4dca-87c3-927822d36277"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "8f5b46d2-78fc-4a6c-ac19-a9cbb2bfaaac",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Wound check-up"
+            }
+          ],
+          "text": "Wound check-up"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/b3e6a85c-0027-4dca-87c3-927822d36277"
+        },
+        "performedDateTime": "2019-06-23",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/8f5b46d2-78fc-4a6c-ac19-a9cbb2bfaaac"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "08b81c4d-878e-42b5-ad4c-bfe37da21d2e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/b3e6a85c-0027-4dca-87c3-927822d36277"
+        },
+        "effectiveDateTime": "2019-06-23",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/08b81c4d-878e-42b5-ad4c-bfe37da21d2e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "04c16e27-35bc-4d26-8f2a-7044bf15906b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 1"
+              }
+            ],
+            "text": "Chemotherapy Cycle 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-07-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/04c16e27-35bc-4d26-8f2a-7044bf15906b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e224cd41-f626-45af-ae43-ac2637449570",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/04c16e27-35bc-4d26-8f2a-7044bf15906b"
+        },
+        "performedDateTime": "2019-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e224cd41-f626-45af-ae43-ac2637449570"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "29f18d15-ae76-4692-a601-b7c4eac09bbd",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/04c16e27-35bc-4d26-8f2a-7044bf15906b"
+        },
+        "performedDateTime": "2019-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/29f18d15-ae76-4692-a601-b7c4eac09bbd"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "7b6bc9f5-78df-4c98-a797-108f5c0666c1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Gemcitabine"
+            }
+          ],
+          "text": "Gemcitabine"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/04c16e27-35bc-4d26-8f2a-7044bf15906b"
+        },
+        "effectiveDateTime": "2019-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/7b6bc9f5-78df-4c98-a797-108f5c0666c1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d5c97696-7e61-47b9-8f30-7fdb7a818c81",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Ondansetron"
+            }
+          ],
+          "text": "Ondansetron"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/04c16e27-35bc-4d26-8f2a-7044bf15906b"
+        },
+        "effectiveDateTime": "2019-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d5c97696-7e61-47b9-8f30-7fdb7a818c81"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "394229af-f8aa-4380-83d5-7fa177d59f3e",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 2"
+              }
+            ],
+            "text": "Chemotherapy Cycle 2"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-07-26"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/394229af-f8aa-4380-83d5-7fa177d59f3e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "6db54dd2-5d03-491d-b4fd-4f02a829f8b3",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/394229af-f8aa-4380-83d5-7fa177d59f3e"
+        },
+        "performedDateTime": "2019-07-26",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/6db54dd2-5d03-491d-b4fd-4f02a829f8b3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "9fbcc2bc-4324-4a68-b4ab-8a8c27993b07",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/394229af-f8aa-4380-83d5-7fa177d59f3e"
+        },
+        "performedDateTime": "2019-07-26",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/9fbcc2bc-4324-4a68-b4ab-8a8c27993b07"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "0b3d5d73-73f1-4773-8347-6e87386c563d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Cisplatin"
+            }
+          ],
+          "text": "Cisplatin"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/394229af-f8aa-4380-83d5-7fa177d59f3e"
+        },
+        "effectiveDateTime": "2019-07-26",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/0b3d5d73-73f1-4773-8347-6e87386c563d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "0f8c3bbb-65d2-4d14-9e25-ce5f692c9a71",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Dexamethasone"
+            }
+          ],
+          "text": "Dexamethasone"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/394229af-f8aa-4380-83d5-7fa177d59f3e"
+        },
+        "effectiveDateTime": "2019-07-26",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/0f8c3bbb-65d2-4d14-9e25-ce5f692c9a71"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "57f4fd50-c478-427d-b4cf-fbccec9d8df8",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 3"
+              }
+            ],
+            "text": "Chemotherapy Cycle 3"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-08-16"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/57f4fd50-c478-427d-b4cf-fbccec9d8df8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "bfbefa4e-b426-471b-b530-2f7c8504f642",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/57f4fd50-c478-427d-b4cf-fbccec9d8df8"
+        },
+        "performedDateTime": "2019-08-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/bfbefa4e-b426-471b-b530-2f7c8504f642"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "cd20dbac-528b-4d8c-b2a5-0bd9c2517325",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/57f4fd50-c478-427d-b4cf-fbccec9d8df8"
+        },
+        "performedDateTime": "2019-08-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/cd20dbac-528b-4d8c-b2a5-0bd9c2517325"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "a4a69f4e-165b-49ba-bc7a-99bb94c303cc",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/57f4fd50-c478-427d-b4cf-fbccec9d8df8"
+        },
+        "effectiveDateTime": "2019-08-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/a4a69f4e-165b-49ba-bc7a-99bb94c303cc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "1356e986-e784-48ab-8838-068467a75370",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Folinic acid"
+            }
+          ],
+          "text": "Folinic acid"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/57f4fd50-c478-427d-b4cf-fbccec9d8df8"
+        },
+        "effectiveDateTime": "2019-08-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/1356e986-e784-48ab-8838-068467a75370"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "97d406b6-c19d-4c79-8813-d9d53fc28c1e",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 4"
+              }
+            ],
+            "text": "Chemotherapy Cycle 4"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-09-06"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/97d406b6-c19d-4c79-8813-d9d53fc28c1e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "065f4382-2a72-4377-8959-6cd746987760",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/97d406b6-c19d-4c79-8813-d9d53fc28c1e"
+        },
+        "performedDateTime": "2019-09-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/065f4382-2a72-4377-8959-6cd746987760"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "94a22651-0075-4f64-b231-a318d8468e51",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/97d406b6-c19d-4c79-8813-d9d53fc28c1e"
+        },
+        "performedDateTime": "2019-09-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/94a22651-0075-4f64-b231-a318d8468e51"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "33370397-f314-436d-9a56-cf454b76f66a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Oxaliplatin"
+            }
+          ],
+          "text": "Oxaliplatin"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/97d406b6-c19d-4c79-8813-d9d53fc28c1e"
+        },
+        "effectiveDateTime": "2019-09-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/33370397-f314-436d-9a56-cf454b76f66a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "072ec44a-e70d-446f-9500-3695355d5ee3",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Leucovorin"
+            }
+          ],
+          "text": "Leucovorin"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/97d406b6-c19d-4c79-8813-d9d53fc28c1e"
+        },
+        "effectiveDateTime": "2019-09-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/072ec44a-e70d-446f-9500-3695355d5ee3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "0ab45321-dc1d-47e5-8a53-ed9bc16039f6",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 5"
+              }
+            ],
+            "text": "Chemotherapy Cycle 5"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-09-27"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/0ab45321-dc1d-47e5-8a53-ed9bc16039f6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f5e3e3e3-141a-4a71-be18-5d4397663cb3",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/0ab45321-dc1d-47e5-8a53-ed9bc16039f6"
+        },
+        "performedDateTime": "2019-09-27",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f5e3e3e3-141a-4a71-be18-5d4397663cb3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "35447db4-9e70-4912-a76f-aaeca2de622d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/0ab45321-dc1d-47e5-8a53-ed9bc16039f6"
+        },
+        "performedDateTime": "2019-09-27",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/35447db4-9e70-4912-a76f-aaeca2de622d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "ca3b1597-4c03-4f57-b59c-b092f75bc66b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Erlotinib"
+            }
+          ],
+          "text": "Erlotinib"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/0ab45321-dc1d-47e5-8a53-ed9bc16039f6"
+        },
+        "effectiveDateTime": "2019-09-27",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/ca3b1597-4c03-4f57-b59c-b092f75bc66b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "81d044fd-eabb-40b4-9b2d-3af55dbda7c3",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Irinotecan"
+            }
+          ],
+          "text": "Irinotecan"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/0ab45321-dc1d-47e5-8a53-ed9bc16039f6"
+        },
+        "effectiveDateTime": "2019-09-27",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/81d044fd-eabb-40b4-9b2d-3af55dbda7c3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "464aafb0-688e-4ca3-88c1-b6212cf36bc1",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 6"
+              }
+            ],
+            "text": "Chemotherapy Cycle 6"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-10-18"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/464aafb0-688e-4ca3-88c1-b6212cf36bc1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "1fd7365d-f8e1-4536-ac75-51dae72a5c91",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/464aafb0-688e-4ca3-88c1-b6212cf36bc1"
+        },
+        "performedDateTime": "2019-10-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/1fd7365d-f8e1-4536-ac75-51dae72a5c91"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "942a227f-f470-45be-b4b4-6fc555e2ca70",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/464aafb0-688e-4ca3-88c1-b6212cf36bc1"
+        },
+        "performedDateTime": "2019-10-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/942a227f-f470-45be-b4b4-6fc555e2ca70"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "50d0dae3-f998-4665-bc22-40e081e2686d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "5-Fluorouracil"
+            }
+          ],
+          "text": "5-Fluorouracil"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/464aafb0-688e-4ca3-88c1-b6212cf36bc1"
+        },
+        "effectiveDateTime": "2019-10-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/50d0dae3-f998-4665-bc22-40e081e2686d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "24c1e936-3733-4bbc-8f70-1db3cd62c696",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Cetuximab"
+            }
+          ],
+          "text": "Cetuximab"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/464aafb0-688e-4ca3-88c1-b6212cf36bc1"
+        },
+        "effectiveDateTime": "2019-10-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/24c1e936-3733-4bbc-8f70-1db3cd62c696"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "3090a79e-2653-4dd7-9ba7-dfd0d8934dd5",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 1"
+              }
+            ],
+            "text": "Radiotherapy session 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/3090a79e-2653-4dd7-9ba7-dfd0d8934dd5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "d0918078-343b-4a78-a424-815257336e83",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/3090a79e-2653-4dd7-9ba7-dfd0d8934dd5"
+        },
+        "performedDateTime": "2019-11-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/d0918078-343b-4a78-a424-815257336e83"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "0cdeb4ca-eb24-44b5-a488-6f6c07f6bcd7",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea medication"
+            }
+          ],
+          "text": "Anti-nausea medication"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/3090a79e-2653-4dd7-9ba7-dfd0d8934dd5"
+        },
+        "effectiveDateTime": "2019-11-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/0cdeb4ca-eb24-44b5-a488-6f6c07f6bcd7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "c2248848-c3b4-4824-b5bd-990067ad1dfe",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Skin care cream"
+            }
+          ],
+          "text": "Skin care cream"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/3090a79e-2653-4dd7-9ba7-dfd0d8934dd5"
+        },
+        "effectiveDateTime": "2019-11-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/c2248848-c3b4-4824-b5bd-990067ad1dfe"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "65f314c8-d6f0-4243-a90e-a41dfeb0be2f",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 2"
+              }
+            ],
+            "text": "Radiotherapy session 2"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-08"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/65f314c8-d6f0-4243-a90e-a41dfeb0be2f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "6f31830f-e0fb-40c1-9d59-c9d10c0e070a",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/65f314c8-d6f0-4243-a90e-a41dfeb0be2f"
+        },
+        "performedDateTime": "2019-11-08",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/6f31830f-e0fb-40c1-9d59-c9d10c0e070a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "51c17e94-74c3-455c-bddc-a3cee2116f85",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain relievers"
+            }
+          ],
+          "text": "Pain relievers"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/65f314c8-d6f0-4243-a90e-a41dfeb0be2f"
+        },
+        "effectiveDateTime": "2019-11-08",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/51c17e94-74c3-455c-bddc-a3cee2116f85"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "046e49fd-3f01-412d-a067-05d97dd7fa56",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Steroids"
+            }
+          ],
+          "text": "Steroids"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/65f314c8-d6f0-4243-a90e-a41dfeb0be2f"
+        },
+        "effectiveDateTime": "2019-11-08",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/046e49fd-3f01-412d-a067-05d97dd7fa56"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "6ad457b8-97b3-4e6d-8278-c1800fe0856e",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 3"
+              }
+            ],
+            "text": "Radiotherapy session 3"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-12"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/6ad457b8-97b3-4e6d-8278-c1800fe0856e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "2b65090b-a48f-4891-b381-4897a41f18ec",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/6ad457b8-97b3-4e6d-8278-c1800fe0856e"
+        },
+        "performedDateTime": "2019-11-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/2b65090b-a48f-4891-b381-4897a41f18ec"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9c875fcb-828b-43ab-80bc-764c2220a5e2",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antihistamines"
+            }
+          ],
+          "text": "Antihistamines"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/6ad457b8-97b3-4e6d-8278-c1800fe0856e"
+        },
+        "effectiveDateTime": "2019-11-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9c875fcb-828b-43ab-80bc-764c2220a5e2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "cef8c5d3-da49-4d90-a2a4-99f8f96afe16",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Emollient cream"
+            }
+          ],
+          "text": "Emollient cream"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/6ad457b8-97b3-4e6d-8278-c1800fe0856e"
+        },
+        "effectiveDateTime": "2019-11-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/cef8c5d3-da49-4d90-a2a4-99f8f96afe16"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "138ee298-c2b4-48a6-91e8-8fccf5d015d2",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 4"
+              }
+            ],
+            "text": "Radiotherapy session 4"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/138ee298-c2b4-48a6-91e8-8fccf5d015d2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "64622f7d-1f00-45f1-a792-de455a0185b3",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/138ee298-c2b4-48a6-91e8-8fccf5d015d2"
+        },
+        "performedDateTime": "2019-11-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/64622f7d-1f00-45f1-a792-de455a0185b3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9f86631e-8109-4576-b0f9-a78bec705a5e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-inflammatory drugs"
+            }
+          ],
+          "text": "Anti-inflammatory drugs"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/138ee298-c2b4-48a6-91e8-8fccf5d015d2"
+        },
+        "effectiveDateTime": "2019-11-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9f86631e-8109-4576-b0f9-a78bec705a5e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9a9c032e-315a-4b30-a57c-603b594d2b5e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Moisturizing lotion"
+            }
+          ],
+          "text": "Moisturizing lotion"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/138ee298-c2b4-48a6-91e8-8fccf5d015d2"
+        },
+        "effectiveDateTime": "2019-11-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9a9c032e-315a-4b30-a57c-603b594d2b5e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "cdef256e-1316-43db-afd1-84ec12577780",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 5"
+              }
+            ],
+            "text": "Radiotherapy session 5"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-19"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/cdef256e-1316-43db-afd1-84ec12577780"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "dcf38d4b-5404-4489-9b91-ccd969188daf",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/cdef256e-1316-43db-afd1-84ec12577780"
+        },
+        "performedDateTime": "2019-11-19",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/dcf38d4b-5404-4489-9b91-ccd969188daf"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6e15445c-0449-4a3a-a9e5-461f61403705",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anxiolytics"
+            }
+          ],
+          "text": "Anxiolytics"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/cdef256e-1316-43db-afd1-84ec12577780"
+        },
+        "effectiveDateTime": "2019-11-19",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6e15445c-0449-4a3a-a9e5-461f61403705"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "c996c9e0-22ad-4ad6-8cab-99e61e73bb37",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Soothing gel"
+            }
+          ],
+          "text": "Soothing gel"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/cdef256e-1316-43db-afd1-84ec12577780"
+        },
+        "effectiveDateTime": "2019-11-19",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/c996c9e0-22ad-4ad6-8cab-99e61e73bb37"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "c5be9d35-4cea-4093-a8f0-4815fd6e1b1e",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 6"
+              }
+            ],
+            "text": "Radiotherapy session 6"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-22"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/c5be9d35-4cea-4093-a8f0-4815fd6e1b1e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f6fecaac-c2fd-49e0-88fc-00c804f37af5",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/c5be9d35-4cea-4093-a8f0-4815fd6e1b1e"
+        },
+        "performedDateTime": "2019-11-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f6fecaac-c2fd-49e0-88fc-00c804f37af5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "fd4dd641-7f97-4331-a645-765f7689bfb4",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antidepressants"
+            }
+          ],
+          "text": "Antidepressants"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/c5be9d35-4cea-4093-a8f0-4815fd6e1b1e"
+        },
+        "effectiveDateTime": "2019-11-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/fd4dd641-7f97-4331-a645-765f7689bfb4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "99d6ada4-d73d-4990-88d3-29c20c782244",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Cooling spray"
+            }
+          ],
+          "text": "Cooling spray"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/c5be9d35-4cea-4093-a8f0-4815fd6e1b1e"
+        },
+        "effectiveDateTime": "2019-11-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/99d6ada4-d73d-4990-88d3-29c20c782244"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "f367237a-2f49-464f-8b56-198bb32e7753",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 7"
+              }
+            ],
+            "text": "Radiotherapy session 7"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-26"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/f367237a-2f49-464f-8b56-198bb32e7753"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c30cd7f5-f078-49fd-ba56-02de28364c3a",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/f367237a-2f49-464f-8b56-198bb32e7753"
+        },
+        "performedDateTime": "2019-11-26",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c30cd7f5-f078-49fd-ba56-02de28364c3a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "75af5eaf-f2f8-458c-8a4c-5c457a8adf42",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-anxiety medication"
+            }
+          ],
+          "text": "Anti-anxiety medication"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/f367237a-2f49-464f-8b56-198bb32e7753"
+        },
+        "effectiveDateTime": "2019-11-26",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/75af5eaf-f2f8-458c-8a4c-5c457a8adf42"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "62dc24c1-93a2-4266-8e03-9a3a66f66fee",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Barrier cream"
+            }
+          ],
+          "text": "Barrier cream"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/f367237a-2f49-464f-8b56-198bb32e7753"
+        },
+        "effectiveDateTime": "2019-11-26",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/62dc24c1-93a2-4266-8e03-9a3a66f66fee"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d78aa4bf-0703-47ed-85dd-2a2709751c19",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 8"
+              }
+            ],
+            "text": "Radiotherapy session 8"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-11-29"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d78aa4bf-0703-47ed-85dd-2a2709751c19"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a8e90547-fc15-4748-867b-39367dd86b6a",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/d78aa4bf-0703-47ed-85dd-2a2709751c19"
+        },
+        "performedDateTime": "2019-11-29",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a8e90547-fc15-4748-867b-39367dd86b6a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "cbb21bcf-803f-4e6d-bde6-f5af4de28059",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antiemetic drugs"
+            }
+          ],
+          "text": "Antiemetic drugs"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/d78aa4bf-0703-47ed-85dd-2a2709751c19"
+        },
+        "effectiveDateTime": "2019-11-29",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/cbb21bcf-803f-4e6d-bde6-f5af4de28059"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "4afb4879-a7ff-4b36-a572-0caf034e5d44",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Protective dressing"
+            }
+          ],
+          "text": "Protective dressing"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/d78aa4bf-0703-47ed-85dd-2a2709751c19"
+        },
+        "effectiveDateTime": "2019-11-29",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/4afb4879-a7ff-4b36-a572-0caf034e5d44"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d17fc6df-29a8-456c-9576-94a26f0dbe38",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 9"
+              }
+            ],
+            "text": "Radiotherapy session 9"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-12-03"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d17fc6df-29a8-456c-9576-94a26f0dbe38"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "8b9614a8-6844-41ba-b079-34196a3e8fc6",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/d17fc6df-29a8-456c-9576-94a26f0dbe38"
+        },
+        "performedDateTime": "2019-12-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/8b9614a8-6844-41ba-b079-34196a3e8fc6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "864824cd-7121-4da5-991d-65dc9d776883",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anesthetics"
+            }
+          ],
+          "text": "Anesthetics"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/d17fc6df-29a8-456c-9576-94a26f0dbe38"
+        },
+        "effectiveDateTime": "2019-12-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/864824cd-7121-4da5-991d-65dc9d776883"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "f273a4c5-49eb-4469-88a7-b0ccdb5f960c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Wound care ointment"
+            }
+          ],
+          "text": "Wound care ointment"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/d17fc6df-29a8-456c-9576-94a26f0dbe38"
+        },
+        "effectiveDateTime": "2019-12-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/f273a4c5-49eb-4469-88a7-b0ccdb5f960c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "b45e58f6-cf60-4f15-bb5a-2790483abcac",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 10"
+              }
+            ],
+            "text": "Radiotherapy session 10"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-12-06"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/b45e58f6-cf60-4f15-bb5a-2790483abcac"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "50e38fab-c86d-4201-995e-ff82763119b2",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/b45e58f6-cf60-4f15-bb5a-2790483abcac"
+        },
+        "performedDateTime": "2019-12-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/50e38fab-c86d-4201-995e-ff82763119b2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "3a544a81-9208-42bd-a3f8-603ef597c0e3",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Analgesics"
+            }
+          ],
+          "text": "Analgesics"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/b45e58f6-cf60-4f15-bb5a-2790483abcac"
+        },
+        "effectiveDateTime": "2019-12-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/3a544a81-9208-42bd-a3f8-603ef597c0e3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "56c7f5db-58c8-4dd4-918e-4f7483760125",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Bandages"
+            }
+          ],
+          "text": "Bandages"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/b45e58f6-cf60-4f15-bb5a-2790483abcac"
+        },
+        "effectiveDateTime": "2019-12-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/56c7f5db-58c8-4dd4-918e-4f7483760125"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "274ffd9a-93ac-4653-9cd8-4f0291656828",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 11"
+              }
+            ],
+            "text": "Radiotherapy session 11"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-12-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/274ffd9a-93ac-4653-9cd8-4f0291656828"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f1e129ee-73fc-400e-897a-ebcf61604e93",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/274ffd9a-93ac-4653-9cd8-4f0291656828"
+        },
+        "performedDateTime": "2019-12-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f1e129ee-73fc-400e-897a-ebcf61604e93"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "670d94f5-6278-4b7e-b5ac-367a8feb81e5",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antipyretics"
+            }
+          ],
+          "text": "Antipyretics"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/274ffd9a-93ac-4653-9cd8-4f0291656828"
+        },
+        "effectiveDateTime": "2019-12-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/670d94f5-6278-4b7e-b5ac-367a8feb81e5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "927bbd13-26db-4602-a76b-143b14774a70",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Calming cream"
+            }
+          ],
+          "text": "Calming cream"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/274ffd9a-93ac-4653-9cd8-4f0291656828"
+        },
+        "effectiveDateTime": "2019-12-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/927bbd13-26db-4602-a76b-143b14774a70"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "9be6c40e-e225-4310-b188-f85749342086",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 12"
+              }
+            ],
+            "text": "Radiotherapy session 12"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-12-13"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/9be6c40e-e225-4310-b188-f85749342086"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "99e616e0-bd50-4010-b08e-ab25972f6a20",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/9be6c40e-e225-4310-b188-f85749342086"
+        },
+        "performedDateTime": "2019-12-13",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/99e616e0-bd50-4010-b08e-ab25972f6a20"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "e5512582-0e79-49d2-b8bb-07895fabdc46",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antivirals"
+            }
+          ],
+          "text": "Antivirals"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/9be6c40e-e225-4310-b188-f85749342086"
+        },
+        "effectiveDateTime": "2019-12-13",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/e5512582-0e79-49d2-b8bb-07895fabdc46"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "1b758d75-2dbc-45ce-a2a0-fe625b4a91a8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Cleansing gel"
+            }
+          ],
+          "text": "Cleansing gel"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/9be6c40e-e225-4310-b188-f85749342086"
+        },
+        "effectiveDateTime": "2019-12-13",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/1b758d75-2dbc-45ce-a2a0-fe625b4a91a8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "ce61b999-7773-46e4-b4eb-cdc2b6a82735",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 13"
+              }
+            ],
+            "text": "Radiotherapy session 13"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-12-17"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/ce61b999-7773-46e4-b4eb-cdc2b6a82735"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e5d2b4f0-a8fa-4c8c-89e8-225c0d57ca24",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/ce61b999-7773-46e4-b4eb-cdc2b6a82735"
+        },
+        "performedDateTime": "2019-12-17",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e5d2b4f0-a8fa-4c8c-89e8-225c0d57ca24"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "04afdd7c-899c-4558-ba75-a32d41be4f51",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-inflammatory cream"
+            }
+          ],
+          "text": "Anti-inflammatory cream"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/ce61b999-7773-46e4-b4eb-cdc2b6a82735"
+        },
+        "effectiveDateTime": "2019-12-17",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/04afdd7c-899c-4558-ba75-a32d41be4f51"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "550e0b26-035b-4576-9cd2-7fc5ea502bf4",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Dressing pack"
+            }
+          ],
+          "text": "Dressing pack"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/ce61b999-7773-46e4-b4eb-cdc2b6a82735"
+        },
+        "effectiveDateTime": "2019-12-17",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/550e0b26-035b-4576-9cd2-7fc5ea502bf4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "5d186fbe-c83c-40b3-ae7d-3296f1be794b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 14"
+              }
+            ],
+            "text": "Radiotherapy session 14"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-12-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/5d186fbe-c83c-40b3-ae7d-3296f1be794b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5cdc19d7-eb55-46ee-b805-9d17dd4bf7f2",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/5d186fbe-c83c-40b3-ae7d-3296f1be794b"
+        },
+        "performedDateTime": "2019-12-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/5cdc19d7-eb55-46ee-b805-9d17dd4bf7f2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d93e7bd7-7550-49dc-b5f3-caf11dd68b3e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antifungals"
+            }
+          ],
+          "text": "Antifungals"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/5d186fbe-c83c-40b3-ae7d-3296f1be794b"
+        },
+        "effectiveDateTime": "2019-12-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d93e7bd7-7550-49dc-b5f3-caf11dd68b3e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "dc0a2b74-fc6d-4b10-9430-e8793e216228",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Hydrating lotion"
+            }
+          ],
+          "text": "Hydrating lotion"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/5d186fbe-c83c-40b3-ae7d-3296f1be794b"
+        },
+        "effectiveDateTime": "2019-12-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/dc0a2b74-fc6d-4b10-9430-e8793e216228"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "2755b8c2-b0d7-4222-9843-28a5668242ba",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy session 15"
+              }
+            ],
+            "text": "Radiotherapy session 15"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2019-12-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/2755b8c2-b0d7-4222-9843-28a5668242ba"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "03c8fccd-823d-4615-ad12-5b8d6e1230ed",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "encounter": {
+          "reference": "Encounter/2755b8c2-b0d7-4222-9843-28a5668242ba"
+        },
+        "performedDateTime": "2019-12-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/03c8fccd-823d-4615-ad12-5b8d6e1230ed"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "c615914b-cc56-4eb3-9f77-1a7b6c08ffd8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-hemorrhagic agents"
+            }
+          ],
+          "text": "Anti-hemorrhagic agents"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/2755b8c2-b0d7-4222-9843-28a5668242ba"
+        },
+        "effectiveDateTime": "2019-12-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/c615914b-cc56-4eb3-9f77-1a7b6c08ffd8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "250ac3b6-89f9-492b-bc9d-1d0784dbead7",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Sunscreen"
+            }
+          ],
+          "text": "Sunscreen"
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "context": {
+          "reference": "Encounter/2755b8c2-b0d7-4222-9843-28a5668242ba"
+        },
+        "effectiveDateTime": "2019-12-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/250ac3b6-89f9-492b-bc9d-1d0784dbead7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "edcd63d5-89ee-4aa0-8c82-45fcac19c8e9",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up after treatment completion"
+              }
+            ],
+            "text": "Follow-up after treatment completion"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-01-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/edcd63d5-89ee-4aa0-8c82-45fcac19c8e9"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "5c51315a-0ea3-4eae-a6aa-41538ae8746f",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Routine follow-up"
+              }
+            ],
+            "text": "Routine follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-02-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/5c51315a-0ea3-4eae-a6aa-41538ae8746f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "db5340f8-90f7-4855-b712-3f16d3fbad23",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Monitoring visit"
+              }
+            ],
+            "text": "Monitoring visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-03-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/db5340f8-90f7-4855-b712-3f16d3fbad23"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d93e4c3d-6bc0-4d8f-b01a-7e51914f6831",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Final follow-up"
+              }
+            ],
+            "text": "Final follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-04-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d93e4c3d-6bc0-4d8f-b01a-7e51914f6831"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "38850c7e-c37a-43aa-b065-e7a824362caf",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Post-treatment assessment"
+              }
+            ],
+            "text": "Post-treatment assessment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-05-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/a9d20051-1ec1-4e85-ba13-49bc52b9c75d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/4012ad93-f0f7-486b-809d-c20cd0cae325",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/38850c7e-c37a-43aa-b065-e7a824362caf"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "effectiveDateTime": "2020-01-05",
+        "performer": [
+          {
+            "reference": "Practitioner/7d2422d3-647a-430b-8100-b32e0d741222",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows improving status for pancreatic adenocarcinoma. Naoki Abadi, a 54-year-old Asian male diagnosed with Stage IV pancreatic adenocarcinoma, underwent pancreatectomy followed by six cycles of chemotherapy and 15 radiation therapy sessions. He is currently in the follow-up phase post-treatment with improving clinical status. Comorbidities include hypertension and diabetes mellitus. Allergies to penicillin and codeine. Former smoker, no alcohol consumption, retired teacher with Medicare insurance."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/a2375398-8ea2-465e-a292-0bd579bbb0fb",
+          "display": "Naoki Abadi"
+        },
+        "valueString": "improving",
+        "effectiveDateTime": "2020-01-05"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

@@ -1,0 +1,2946 @@
+{
+  "resourceType": "Bundle",
+  "id": "033e1f21-de36-4a38-9dcd-c3f96f9747ac",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "7916f48b-bb30-40f0-b538-70e99f2d3214",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Aisha"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-07-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "432 Cherry Blossom Lane"
+            ],
+            "city": "San Francisco",
+            "state": "CA",
+            "postalCode": "94107",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(415) 555-6789",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "aisha.nguyen@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "active",
+              "display": "Active"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "63634009",
+              "display": "glioblastoma multiforme"
+            }
+          ],
+          "text": "glioblastoma multiforme"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "onsetDateTime": "2022-01-05",
+        "recordedDate": "2022-01-15",
+        "stage": [
+          {
+            "summary": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "261663004",
+                  "display": "IV"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "6ca8d965-5d74-4057-a67b-148e2ca14a72",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for glioblastoma multiforme",
+        "description": "Comprehensive treatment plan including Surgery, Chemotherapy, Radiotherapy",
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "period": {
+          "start": "2022-02-01"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/6ca8d965-5d74-4057-a67b-148e2ca14a72"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "321add57-19bc-4e0f-a5cc-20bd400d71b7",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Surgical resection of tumor"
+              }
+            ],
+            "text": "Surgical resection of tumor"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-02-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/321add57-19bc-4e0f-a5cc-20bd400d71b7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e287791e-b404-4f79-89ef-54a1ca808a59",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Tumor resection surgery"
+            }
+          ],
+          "text": "Tumor resection surgery"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/321add57-19bc-4e0f-a5cc-20bd400d71b7"
+        },
+        "performedDateTime": "2022-02-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e287791e-b404-4f79-89ef-54a1ca808a59"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f50e6971-c461-46f0-bfd1-33041a9ba697",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Brain mapping"
+            }
+          ],
+          "text": "Brain mapping"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/321add57-19bc-4e0f-a5cc-20bd400d71b7"
+        },
+        "performedDateTime": "2022-02-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f50e6971-c461-46f0-bfd1-33041a9ba697"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "492833bc-23ad-4340-8df1-975ead8199e8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anesthesia"
+            }
+          ],
+          "text": "Anesthesia"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/321add57-19bc-4e0f-a5cc-20bd400d71b7"
+        },
+        "effectiveDateTime": "2022-02-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/492833bc-23ad-4340-8df1-975ead8199e8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "1c26ed6a-9c26-40c2-bc7a-a0fa413e2bd6",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/321add57-19bc-4e0f-a5cc-20bd400d71b7"
+        },
+        "effectiveDateTime": "2022-02-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/1c26ed6a-9c26-40c2-bc7a-a0fa413e2bd6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d8340b14-674f-4831-b094-d17e3bf1df0a",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Post-operative care"
+              }
+            ],
+            "text": "Post-operative care"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-02-06"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d8340b14-674f-4831-b094-d17e3bf1df0a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a4b6bd78-9737-4c0e-9f06-905bf47d65ab",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Wound care"
+            }
+          ],
+          "text": "Wound care"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/d8340b14-674f-4831-b094-d17e3bf1df0a"
+        },
+        "performedDateTime": "2022-02-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a4b6bd78-9737-4c0e-9f06-905bf47d65ab"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a89b54ef-1ee4-4d55-ba44-e76157dd884f",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Neurological assessment"
+            }
+          ],
+          "text": "Neurological assessment"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/d8340b14-674f-4831-b094-d17e3bf1df0a"
+        },
+        "performedDateTime": "2022-02-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a89b54ef-1ee4-4d55-ba44-e76157dd884f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "598d0559-3604-4a90-899d-fd1320233b4a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain management"
+            }
+          ],
+          "text": "Pain management"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d8340b14-674f-4831-b094-d17e3bf1df0a"
+        },
+        "effectiveDateTime": "2022-02-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/598d0559-3604-4a90-899d-fd1320233b4a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "1b2e96d0-f295-4826-89b3-65344f0c4998",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anticoagulants"
+            }
+          ],
+          "text": "Anticoagulants"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d8340b14-674f-4831-b094-d17e3bf1df0a"
+        },
+        "effectiveDateTime": "2022-02-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/1b2e96d0-f295-4826-89b3-65344f0c4998"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "8c08f815-8ea3-43e4-a50e-571f0eb858c7",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up post-surgery"
+              }
+            ],
+            "text": "Follow-up post-surgery"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-02-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/8c08f815-8ea3-43e4-a50e-571f0eb858c7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5e7e01bd-413f-43b8-8a5b-196d63b714e1",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Incision check"
+            }
+          ],
+          "text": "Incision check"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/8c08f815-8ea3-43e4-a50e-571f0eb858c7"
+        },
+        "performedDateTime": "2022-02-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/5e7e01bd-413f-43b8-8a5b-196d63b714e1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "6bb204e2-3c5c-4fb0-9ff3-d33dad21cca4",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Vital signs monitoring"
+            }
+          ],
+          "text": "Vital signs monitoring"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/8c08f815-8ea3-43e4-a50e-571f0eb858c7"
+        },
+        "performedDateTime": "2022-02-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/6bb204e2-3c5c-4fb0-9ff3-d33dad21cca4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "e4399c3b-4783-492c-89c0-30fed052870e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain relief"
+            }
+          ],
+          "text": "Pain relief"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/8c08f815-8ea3-43e4-a50e-571f0eb858c7"
+        },
+        "effectiveDateTime": "2022-02-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/e4399c3b-4783-492c-89c0-30fed052870e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "e5e4ffa4-665e-4b61-948e-7a13be0e7126",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/8c08f815-8ea3-43e4-a50e-571f0eb858c7"
+        },
+        "effectiveDateTime": "2022-02-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/e5e4ffa4-665e-4b61-948e-7a13be0e7126"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "b8daffce-93f3-477a-ae31-2fd50b53c1af",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy infusion"
+              }
+            ],
+            "text": "Chemotherapy infusion"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-02-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/b8daffce-93f3-477a-ae31-2fd50b53c1af"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "2ee4dfd4-e966-49bf-9a62-2a0318d4e623",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/b8daffce-93f3-477a-ae31-2fd50b53c1af"
+        },
+        "performedDateTime": "2022-02-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/2ee4dfd4-e966-49bf-9a62-2a0318d4e623"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e747702c-4654-4495-a082-dd19868a9313",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/b8daffce-93f3-477a-ae31-2fd50b53c1af"
+        },
+        "performedDateTime": "2022-02-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e747702c-4654-4495-a082-dd19868a9313"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "52f87937-8798-40e0-a67b-78b93529008a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Temodar"
+            }
+          ],
+          "text": "Temodar"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/b8daffce-93f3-477a-ae31-2fd50b53c1af"
+        },
+        "effectiveDateTime": "2022-02-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/52f87937-8798-40e0-a67b-78b93529008a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "dbfb7423-add1-4cd5-8cae-b4bc9c5673c1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Ondansetron"
+            }
+          ],
+          "text": "Ondansetron"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/b8daffce-93f3-477a-ae31-2fd50b53c1af"
+        },
+        "effectiveDateTime": "2022-02-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/dbfb7423-add1-4cd5-8cae-b4bc9c5673c1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "a261769b-a69a-49a2-befb-f733d29cfc75",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy follow-up"
+              }
+            ],
+            "text": "Chemotherapy follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-03-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/a261769b-a69a-49a2-befb-f733d29cfc75"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f4cd2b02-3770-47f9-838d-74c6fce64a34",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Symptom assessment"
+            }
+          ],
+          "text": "Symptom assessment"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/a261769b-a69a-49a2-befb-f733d29cfc75"
+        },
+        "performedDateTime": "2022-03-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f4cd2b02-3770-47f9-838d-74c6fce64a34"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "d223d87d-51e2-4145-9811-bcdad1342fcb",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Lab review"
+            }
+          ],
+          "text": "Lab review"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/a261769b-a69a-49a2-befb-f733d29cfc75"
+        },
+        "performedDateTime": "2022-03-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/d223d87d-51e2-4145-9811-bcdad1342fcb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "86d95a9d-3507-40c6-8c5b-7b5320a5bcd2",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Steroids"
+            }
+          ],
+          "text": "Steroids"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/a261769b-a69a-49a2-befb-f733d29cfc75"
+        },
+        "effectiveDateTime": "2022-03-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/86d95a9d-3507-40c6-8c5b-7b5320a5bcd2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "c13079f4-8c50-4f0d-81ea-b3d568bdf865",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea"
+            }
+          ],
+          "text": "Anti-nausea"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/a261769b-a69a-49a2-befb-f733d29cfc75"
+        },
+        "effectiveDateTime": "2022-03-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/c13079f4-8c50-4f0d-81ea-b3d568bdf865"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "2076c2a4-0d01-4bda-baf9-44fd2677900e",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy cycle 2"
+              }
+            ],
+            "text": "Chemotherapy cycle 2"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-03-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/2076c2a4-0d01-4bda-baf9-44fd2677900e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "6b71896d-9dfa-4723-a597-d0b4be0b699c",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/2076c2a4-0d01-4bda-baf9-44fd2677900e"
+        },
+        "performedDateTime": "2022-03-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/6b71896d-9dfa-4723-a597-d0b4be0b699c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "caad517e-6601-4cf5-bddf-7cc93a492963",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/2076c2a4-0d01-4bda-baf9-44fd2677900e"
+        },
+        "performedDateTime": "2022-03-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/caad517e-6601-4cf5-bddf-7cc93a492963"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "824205b0-8bb1-4637-9f6f-ab4fa236dd1a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Temodar"
+            }
+          ],
+          "text": "Temodar"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/2076c2a4-0d01-4bda-baf9-44fd2677900e"
+        },
+        "effectiveDateTime": "2022-03-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/824205b0-8bb1-4637-9f6f-ab4fa236dd1a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "67ef857b-f76a-439c-aa22-1f06ea7e0fa4",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Ondansetron"
+            }
+          ],
+          "text": "Ondansetron"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/2076c2a4-0d01-4bda-baf9-44fd2677900e"
+        },
+        "effectiveDateTime": "2022-03-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/67ef857b-f76a-439c-aa22-1f06ea7e0fa4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "cfba7013-81c9-49c5-9d12-a4fb9187733a",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy follow-up"
+              }
+            ],
+            "text": "Chemotherapy follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-03-30"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/cfba7013-81c9-49c5-9d12-a4fb9187733a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "1ac6d599-c5b9-40ec-ad32-b666c4758a60",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Symptom assessment"
+            }
+          ],
+          "text": "Symptom assessment"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/cfba7013-81c9-49c5-9d12-a4fb9187733a"
+        },
+        "performedDateTime": "2022-03-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/1ac6d599-c5b9-40ec-ad32-b666c4758a60"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "720b5e71-5dce-4a32-a8a2-b063e66772ca",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Lab review"
+            }
+          ],
+          "text": "Lab review"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/cfba7013-81c9-49c5-9d12-a4fb9187733a"
+        },
+        "performedDateTime": "2022-03-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/720b5e71-5dce-4a32-a8a2-b063e66772ca"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "c568a9b9-ecf0-4134-86fd-9ff585bf9a27",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Steroids"
+            }
+          ],
+          "text": "Steroids"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/cfba7013-81c9-49c5-9d12-a4fb9187733a"
+        },
+        "effectiveDateTime": "2022-03-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/c568a9b9-ecf0-4134-86fd-9ff585bf9a27"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "4eaaaa93-849b-4427-b327-2bd2ac71e5c4",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea"
+            }
+          ],
+          "text": "Anti-nausea"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/cfba7013-81c9-49c5-9d12-a4fb9187733a"
+        },
+        "effectiveDateTime": "2022-03-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/4eaaaa93-849b-4427-b327-2bd2ac71e5c4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "bac1958a-a724-459e-9c00-bbf873fdc8a0",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation session 1"
+              }
+            ],
+            "text": "Radiation session 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-06-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/bac1958a-a724-459e-9c00-bbf873fdc8a0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "66333d6c-de53-420d-b07f-6d469915b97d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/bac1958a-a724-459e-9c00-bbf873fdc8a0"
+        },
+        "performedDateTime": "2022-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/66333d6c-de53-420d-b07f-6d469915b97d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "98dd7968-b1a2-45a7-9f2f-b411f48099db",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Positioning setup"
+            }
+          ],
+          "text": "Positioning setup"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/bac1958a-a724-459e-9c00-bbf873fdc8a0"
+        },
+        "performedDateTime": "2022-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/98dd7968-b1a2-45a7-9f2f-b411f48099db"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "bb692cc7-e620-48fd-936c-08e23ae0881a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain relief"
+            }
+          ],
+          "text": "Pain relief"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/bac1958a-a724-459e-9c00-bbf873fdc8a0"
+        },
+        "effectiveDateTime": "2022-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/bb692cc7-e620-48fd-936c-08e23ae0881a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "4eafd79c-8ac7-444d-b2ae-77e1cb8b6431",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Skin care"
+            }
+          ],
+          "text": "Skin care"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/bac1958a-a724-459e-9c00-bbf873fdc8a0"
+        },
+        "effectiveDateTime": "2022-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/4eafd79c-8ac7-444d-b2ae-77e1cb8b6431"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "c6c6907b-b5c1-4a36-822c-d3d6576b7121",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation session 5"
+              }
+            ],
+            "text": "Radiation session 5"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-06-21"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/c6c6907b-b5c1-4a36-822c-d3d6576b7121"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "4f90c169-abf4-4d66-8e10-67375b8d815a",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/c6c6907b-b5c1-4a36-822c-d3d6576b7121"
+        },
+        "performedDateTime": "2022-06-21",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/4f90c169-abf4-4d66-8e10-67375b8d815a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "98939664-27f5-4489-b421-b4e6cf45d480",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Vital signs monitoring"
+            }
+          ],
+          "text": "Vital signs monitoring"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/c6c6907b-b5c1-4a36-822c-d3d6576b7121"
+        },
+        "performedDateTime": "2022-06-21",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/98939664-27f5-4489-b421-b4e6cf45d480"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "0b57377d-2c26-439e-b562-e1906895c113",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antioxidants"
+            }
+          ],
+          "text": "Antioxidants"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/c6c6907b-b5c1-4a36-822c-d3d6576b7121"
+        },
+        "effectiveDateTime": "2022-06-21",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/0b57377d-2c26-439e-b562-e1906895c113"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "8754910d-3f30-4ae2-a216-6764a70ee548",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Hydration"
+            }
+          ],
+          "text": "Hydration"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/c6c6907b-b5c1-4a36-822c-d3d6576b7121"
+        },
+        "effectiveDateTime": "2022-06-21",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/8754910d-3f30-4ae2-a216-6764a70ee548"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "91ec4f16-fa71-483b-94f9-a868284b6d07",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation session 10"
+              }
+            ],
+            "text": "Radiation session 10"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-06-28"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/91ec4f16-fa71-483b-94f9-a868284b6d07"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c7f8e07b-7bda-4970-ac29-e98014a99932",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/91ec4f16-fa71-483b-94f9-a868284b6d07"
+        },
+        "performedDateTime": "2022-06-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c7f8e07b-7bda-4970-ac29-e98014a99932"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "cb59c00e-dfba-461d-9ba6-0556ef2c5f67",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Pain assessment"
+            }
+          ],
+          "text": "Pain assessment"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/91ec4f16-fa71-483b-94f9-a868284b6d07"
+        },
+        "performedDateTime": "2022-06-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/cb59c00e-dfba-461d-9ba6-0556ef2c5f67"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "391e5692-c1bf-4d65-8c67-25d824efe9ba",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-inflammatory"
+            }
+          ],
+          "text": "Anti-inflammatory"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/91ec4f16-fa71-483b-94f9-a868284b6d07"
+        },
+        "effectiveDateTime": "2022-06-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/391e5692-c1bf-4d65-8c67-25d824efe9ba"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "a9911153-28e2-4ec6-b8c1-b2a35b1a375e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anxiolytics"
+            }
+          ],
+          "text": "Anxiolytics"
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/91ec4f16-fa71-483b-94f9-a868284b6d07"
+        },
+        "effectiveDateTime": "2022-06-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/a9911153-28e2-4ec6-b8c1-b2a35b1a375e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "c3b70771-8504-4a7f-a55a-d5410868b294",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up post-treatment"
+              }
+            ],
+            "text": "Follow-up post-treatment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-07-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/7cc5a468-08f6-470c-82eb-a22a3c16f61d",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/2a2ba857-61d6-46db-8c59-322bd4f81bc1",
+            "display": "glioblastoma multiforme"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/c3b70771-8504-4a7f-a55a-d5410868b294"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "effectiveDateTime": "2022-07-20",
+        "performer": [
+          {
+            "reference": "Practitioner/eebba05d-f9eb-4c05-b96a-67c69931b9dd",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows stable status for glioblastoma multiforme. Aisha Nguyen, a 57-year-old Asian female diagnosed with severe glioblastoma multiforme, underwent surgical resection followed by chemotherapy and radiotherapy. Currently in stable condition with regular follow-ups."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/7916f48b-bb30-40f0-b538-70e99f2d3214",
+          "display": "Aisha Nguyen"
+        },
+        "valueString": "stable",
+        "effectiveDateTime": "2022-07-20"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

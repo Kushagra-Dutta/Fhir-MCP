@@ -1,0 +1,5825 @@
+{
+  "resourceType": "Bundle",
+  "id": "81ba649e-0ea4-4509-aa1d-4bfc9729674d",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Sarita"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-09-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "789 Elm Street"
+            ],
+            "city": "San Francisco",
+            "state": "CA",
+            "postalCode": "94107",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(415) 555-1234",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "sarita.nguyen@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "424767c3-6f5e-446c-9945-81f333e8b573",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "0f9d2416-778d-4768-a9e9-0125878c0d46",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "372142002",
+              "display": "pancreatic adenocarcinoma"
+            }
+          ],
+          "text": "pancreatic adenocarcinoma"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "onsetDateTime": "2021-03-05",
+        "recordedDate": "2021-04-02",
+        "stage": [
+          {
+            "summary": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "261663004",
+                  "display": "Stage IV"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "75edcbe7-d75e-4fa2-ab38-cac2568fe522",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for pancreatic adenocarcinoma",
+        "description": "Comprehensive treatment plan including Surgery, Chemotherapy, Radiotherapy",
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "period": {
+          "start": "2021-04-15"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/75edcbe7-d75e-4fa2-ab38-cac2568fe522"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "367c07f0-b256-4243-91d4-0c9132298d80",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Pancreatectomy"
+              }
+            ],
+            "text": "Pancreatectomy"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-04-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/367c07f0-b256-4243-91d4-0c9132298d80"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c5d18e42-58da-4d32-a062-e785ae2c468d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Pancreatectomy"
+            }
+          ],
+          "text": "Pancreatectomy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/367c07f0-b256-4243-91d4-0c9132298d80"
+        },
+        "performedDateTime": "2021-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c5d18e42-58da-4d32-a062-e785ae2c468d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "3bbe92b7-a584-4e90-88e0-2e520a974b05",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Morphine"
+            }
+          ],
+          "text": "Morphine"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/367c07f0-b256-4243-91d4-0c9132298d80"
+        },
+        "effectiveDateTime": "2021-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/3bbe92b7-a584-4e90-88e0-2e520a974b05"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "69fda36f-2df3-4ae6-a439-257f0037661b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/367c07f0-b256-4243-91d4-0c9132298d80"
+        },
+        "effectiveDateTime": "2021-04-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/69fda36f-2df3-4ae6-a439-257f0037661b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "1fb41f57-66c0-4dfb-b86f-2aa2927a1a26",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Post-operative care"
+              }
+            ],
+            "text": "Post-operative care"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-04-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/1fb41f57-66c0-4dfb-b86f-2aa2927a1a26"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "451a74d0-5d80-4da5-88a6-5d049f3d94f2",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Wound care"
+            }
+          ],
+          "text": "Wound care"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/1fb41f57-66c0-4dfb-b86f-2aa2927a1a26"
+        },
+        "performedDateTime": "2021-04-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/451a74d0-5d80-4da5-88a6-5d049f3d94f2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "5ef914b2-38d4-43c2-a4f8-7d821b0c44fe",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Analgesics"
+            }
+          ],
+          "text": "Analgesics"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/1fb41f57-66c0-4dfb-b86f-2aa2927a1a26"
+        },
+        "effectiveDateTime": "2021-04-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/5ef914b2-38d4-43c2-a4f8-7d821b0c44fe"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "960d624d-a550-4da0-8299-95690c5a4969",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anticoagulants"
+            }
+          ],
+          "text": "Anticoagulants"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/1fb41f57-66c0-4dfb-b86f-2aa2927a1a26"
+        },
+        "effectiveDateTime": "2021-04-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/960d624d-a550-4da0-8299-95690c5a4969"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "9aa89fd2-d6d7-4b6f-8235-894121babd89",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-04-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/9aa89fd2-d6d7-4b6f-8235-894121babd89"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "59b0b76c-bcd0-4a45-b516-7fba9e6b67ee",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Wound assessment"
+            }
+          ],
+          "text": "Wound assessment"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/9aa89fd2-d6d7-4b6f-8235-894121babd89"
+        },
+        "performedDateTime": "2021-04-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/59b0b76c-bcd0-4a45-b516-7fba9e6b67ee"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "bc76a434-f8c8-4d48-86c1-40df2f7d9f34",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/9aa89fd2-d6d7-4b6f-8235-894121babd89"
+        },
+        "effectiveDateTime": "2021-04-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/bc76a434-f8c8-4d48-86c1-40df2f7d9f34"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "4a4e9afc-5c18-466f-b217-fa9ee54857e1",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 1"
+              }
+            ],
+            "text": "Chemotherapy Cycle 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-05-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/4a4e9afc-5c18-466f-b217-fa9ee54857e1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "39892d0c-2ef8-4936-b326-9f20cb44dcfd",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/4a4e9afc-5c18-466f-b217-fa9ee54857e1"
+        },
+        "performedDateTime": "2021-05-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/39892d0c-2ef8-4936-b326-9f20cb44dcfd"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d5fcd50f-fec9-4ec3-ac31-a6593b1f0cf6",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4a4e9afc-5c18-466f-b217-fa9ee54857e1"
+        },
+        "effectiveDateTime": "2021-05-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d5fcd50f-fec9-4ec3-ac31-a6593b1f0cf6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9f49a424-0e7d-4e5b-a951-e4ef18c69374",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Gemcitabine"
+            }
+          ],
+          "text": "Gemcitabine"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4a4e9afc-5c18-466f-b217-fa9ee54857e1"
+        },
+        "effectiveDateTime": "2021-05-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9f49a424-0e7d-4e5b-a951-e4ef18c69374"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "4c96afd8-0aef-437d-ad68-d9cb4a4d460b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 2"
+              }
+            ],
+            "text": "Chemotherapy Cycle 2"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-05-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/4c96afd8-0aef-437d-ad68-d9cb4a4d460b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "73fc5609-2006-4ace-a89c-ef7ebb80661f",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/4c96afd8-0aef-437d-ad68-d9cb4a4d460b"
+        },
+        "performedDateTime": "2021-05-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/73fc5609-2006-4ace-a89c-ef7ebb80661f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "b6f48ca9-aac2-4ad2-a424-f35d6e68509c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Ondansetron"
+            }
+          ],
+          "text": "Ondansetron"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4c96afd8-0aef-437d-ad68-d9cb4a4d460b"
+        },
+        "effectiveDateTime": "2021-05-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/b6f48ca9-aac2-4ad2-a424-f35d6e68509c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "1789ab28-0168-434e-a966-6feaf6f93e03",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Dexamethasone"
+            }
+          ],
+          "text": "Dexamethasone"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4c96afd8-0aef-437d-ad68-d9cb4a4d460b"
+        },
+        "effectiveDateTime": "2021-05-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/1789ab28-0168-434e-a966-6feaf6f93e03"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "738ce525-a94e-43f8-8d39-26806c8fe3ef",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 3"
+              }
+            ],
+            "text": "Chemotherapy Cycle 3"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-06-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/738ce525-a94e-43f8-8d39-26806c8fe3ef"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "90f89dff-68f3-4033-90d9-607e51e67344",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/738ce525-a94e-43f8-8d39-26806c8fe3ef"
+        },
+        "performedDateTime": "2021-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/90f89dff-68f3-4033-90d9-607e51e67344"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "95f139cd-b17a-451d-af52-9d524ce402c8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Filgrastim"
+            }
+          ],
+          "text": "Filgrastim"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/738ce525-a94e-43f8-8d39-26806c8fe3ef"
+        },
+        "effectiveDateTime": "2021-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/95f139cd-b17a-451d-af52-9d524ce402c8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "e6f560fc-d02f-4b55-83fb-bccb5621b785",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Loperamide"
+            }
+          ],
+          "text": "Loperamide"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/738ce525-a94e-43f8-8d39-26806c8fe3ef"
+        },
+        "effectiveDateTime": "2021-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/e6f560fc-d02f-4b55-83fb-bccb5621b785"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "3936110c-a93a-423a-9125-d778c3e90347",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 4"
+              }
+            ],
+            "text": "Chemotherapy Cycle 4"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-07-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/3936110c-a93a-423a-9125-d778c3e90347"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "020456b5-6f25-444e-aa7d-0246f56317c1",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/3936110c-a93a-423a-9125-d778c3e90347"
+        },
+        "performedDateTime": "2021-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/020456b5-6f25-444e-aa7d-0246f56317c1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "50470258-7ae7-4397-a64a-1d0d022f70bf",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Carboplatin"
+            }
+          ],
+          "text": "Carboplatin"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/3936110c-a93a-423a-9125-d778c3e90347"
+        },
+        "effectiveDateTime": "2021-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/50470258-7ae7-4397-a64a-1d0d022f70bf"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "84b18e7d-a8a0-4e22-ae97-38753ea31f25",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Cisplatin"
+            }
+          ],
+          "text": "Cisplatin"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/3936110c-a93a-423a-9125-d778c3e90347"
+        },
+        "effectiveDateTime": "2021-07-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/84b18e7d-a8a0-4e22-ae97-38753ea31f25"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "c75ba823-aa1f-46e3-8efe-3ab26ebe6085",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 5"
+              }
+            ],
+            "text": "Chemotherapy Cycle 5"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-07-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/c75ba823-aa1f-46e3-8efe-3ab26ebe6085"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "8dd38d11-9a24-408c-a26f-5e5ba5e01703",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/c75ba823-aa1f-46e3-8efe-3ab26ebe6085"
+        },
+        "performedDateTime": "2021-07-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/8dd38d11-9a24-408c-a26f-5e5ba5e01703"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "4bbab280-60f6-4083-b7ab-6de0ebe2a080",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "5-Fluorouracil"
+            }
+          ],
+          "text": "5-Fluorouracil"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/c75ba823-aa1f-46e3-8efe-3ab26ebe6085"
+        },
+        "effectiveDateTime": "2021-07-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/4bbab280-60f6-4083-b7ab-6de0ebe2a080"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "adbec7d4-64d6-46b6-9f98-4c72da004aa1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Irinotecan"
+            }
+          ],
+          "text": "Irinotecan"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/c75ba823-aa1f-46e3-8efe-3ab26ebe6085"
+        },
+        "effectiveDateTime": "2021-07-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/adbec7d4-64d6-46b6-9f98-4c72da004aa1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "064a6926-4103-4fbe-ac21-f1b294b5bb0d",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 6"
+              }
+            ],
+            "text": "Chemotherapy Cycle 6"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-08-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/064a6926-4103-4fbe-ac21-f1b294b5bb0d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "4a8054d6-10c1-4f1e-b37a-2b9949557d23",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/064a6926-4103-4fbe-ac21-f1b294b5bb0d"
+        },
+        "performedDateTime": "2021-08-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/4a8054d6-10c1-4f1e-b37a-2b9949557d23"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "a679ac8d-4306-4530-90e2-c5d569faef01",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Leucovorin"
+            }
+          ],
+          "text": "Leucovorin"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/064a6926-4103-4fbe-ac21-f1b294b5bb0d"
+        },
+        "effectiveDateTime": "2021-08-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/a679ac8d-4306-4530-90e2-c5d569faef01"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6e72fd10-e906-4007-8b4d-baa63f7540aa",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Oxaliplatin"
+            }
+          ],
+          "text": "Oxaliplatin"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/064a6926-4103-4fbe-ac21-f1b294b5bb0d"
+        },
+        "effectiveDateTime": "2021-08-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6e72fd10-e906-4007-8b4d-baa63f7540aa"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "46f7989e-f67d-4237-bc1b-e7cf2d7bc0d3",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 1"
+              }
+            ],
+            "text": "Radiation Session 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/46f7989e-f67d-4237-bc1b-e7cf2d7bc0d3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "8549e8a7-e7f8-4965-bc57-c287d589a1f3",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/46f7989e-f67d-4237-bc1b-e7cf2d7bc0d3"
+        },
+        "performedDateTime": "2021-09-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/8549e8a7-e7f8-4965-bc57-c287d589a1f3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "5299603f-2aeb-400a-bfe6-e1754a114727",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea medication"
+            }
+          ],
+          "text": "Anti-nausea medication"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/46f7989e-f67d-4237-bc1b-e7cf2d7bc0d3"
+        },
+        "effectiveDateTime": "2021-09-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/5299603f-2aeb-400a-bfe6-e1754a114727"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d3f2be1d-3bae-48a8-9b70-508dbd2538e8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Skin cream"
+            }
+          ],
+          "text": "Skin cream"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/46f7989e-f67d-4237-bc1b-e7cf2d7bc0d3"
+        },
+        "effectiveDateTime": "2021-09-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d3f2be1d-3bae-48a8-9b70-508dbd2538e8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "6c06bf84-af45-40d5-ad40-00a7f79b6e65",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 2"
+              }
+            ],
+            "text": "Radiation Session 2"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-08"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/6c06bf84-af45-40d5-ad40-00a7f79b6e65"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "2589cc0c-1aa8-4a53-b54f-8a0abca4b3cb",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/6c06bf84-af45-40d5-ad40-00a7f79b6e65"
+        },
+        "performedDateTime": "2021-09-08",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/2589cc0c-1aa8-4a53-b54f-8a0abca4b3cb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6df042b3-d654-4ce3-804f-4d77c40eab2a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Steroids"
+            }
+          ],
+          "text": "Steroids"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/6c06bf84-af45-40d5-ad40-00a7f79b6e65"
+        },
+        "effectiveDateTime": "2021-09-08",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6df042b3-d654-4ce3-804f-4d77c40eab2a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "86a97665-f32e-4a13-900e-e8fb1f6a1175",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain relievers"
+            }
+          ],
+          "text": "Pain relievers"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/6c06bf84-af45-40d5-ad40-00a7f79b6e65"
+        },
+        "effectiveDateTime": "2021-09-08",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/86a97665-f32e-4a13-900e-e8fb1f6a1175"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "8fd4bdcc-2986-413b-890a-1275117b8f4c",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 3"
+              }
+            ],
+            "text": "Radiation Session 3"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-12"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/8fd4bdcc-2986-413b-890a-1275117b8f4c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f0be7edc-7e24-4c28-a637-02894b30b73d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/8fd4bdcc-2986-413b-890a-1275117b8f4c"
+        },
+        "performedDateTime": "2021-09-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f0be7edc-7e24-4c28-a637-02894b30b73d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "cca09a7b-21fd-4ae2-8ba5-c380bc7172ff",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Aloe vera gel"
+            }
+          ],
+          "text": "Aloe vera gel"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/8fd4bdcc-2986-413b-890a-1275117b8f4c"
+        },
+        "effectiveDateTime": "2021-09-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/cca09a7b-21fd-4ae2-8ba5-c380bc7172ff"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "377f0cae-32ce-43cc-ae98-d85a6b2ab161",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Emollient cream"
+            }
+          ],
+          "text": "Emollient cream"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/8fd4bdcc-2986-413b-890a-1275117b8f4c"
+        },
+        "effectiveDateTime": "2021-09-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/377f0cae-32ce-43cc-ae98-d85a6b2ab161"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "0f65a3a9-6a5d-470e-b07c-2fb16a4913f0",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 4"
+              }
+            ],
+            "text": "Radiation Session 4"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/0f65a3a9-6a5d-470e-b07c-2fb16a4913f0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "80191306-4b19-4aa5-97c8-13e693a35564",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/0f65a3a9-6a5d-470e-b07c-2fb16a4913f0"
+        },
+        "performedDateTime": "2021-09-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/80191306-4b19-4aa5-97c8-13e693a35564"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "90176516-e5b8-4c22-ba70-64c816aeef7c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Corticosteroids"
+            }
+          ],
+          "text": "Corticosteroids"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/0f65a3a9-6a5d-470e-b07c-2fb16a4913f0"
+        },
+        "effectiveDateTime": "2021-09-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/90176516-e5b8-4c22-ba70-64c816aeef7c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d993e8cc-0f47-43f0-bbc0-37b4323d8501",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antihistamines"
+            }
+          ],
+          "text": "Antihistamines"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/0f65a3a9-6a5d-470e-b07c-2fb16a4913f0"
+        },
+        "effectiveDateTime": "2021-09-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d993e8cc-0f47-43f0-bbc0-37b4323d8501"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "8c90b73b-9a20-4181-b568-2c78dacaafd2",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 5"
+              }
+            ],
+            "text": "Radiation Session 5"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-18"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/8c90b73b-9a20-4181-b568-2c78dacaafd2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "43ba2c82-bc56-41f0-a12a-cb5277efdb27",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/8c90b73b-9a20-4181-b568-2c78dacaafd2"
+        },
+        "performedDateTime": "2021-09-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/43ba2c82-bc56-41f0-a12a-cb5277efdb27"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "65712cee-aed8-4df5-b60a-947a80252fc1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Calamine lotion"
+            }
+          ],
+          "text": "Calamine lotion"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/8c90b73b-9a20-4181-b568-2c78dacaafd2"
+        },
+        "effectiveDateTime": "2021-09-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/65712cee-aed8-4df5-b60a-947a80252fc1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "bfc9e6ae-f667-47cd-8adb-ecc1570bb228",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Topical analgesics"
+            }
+          ],
+          "text": "Topical analgesics"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/8c90b73b-9a20-4181-b568-2c78dacaafd2"
+        },
+        "effectiveDateTime": "2021-09-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/bfc9e6ae-f667-47cd-8adb-ecc1570bb228"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "c79d93e6-3846-4646-a874-9bfa3c569763",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 6"
+              }
+            ],
+            "text": "Radiation Session 6"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-22"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/c79d93e6-3846-4646-a874-9bfa3c569763"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "0710ba01-cdea-422e-9913-bf19cbca7c0b",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/c79d93e6-3846-4646-a874-9bfa3c569763"
+        },
+        "performedDateTime": "2021-09-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/0710ba01-cdea-422e-9913-bf19cbca7c0b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "748c9457-2883-42ff-9faa-e0d414a090d8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-itch creams"
+            }
+          ],
+          "text": "Anti-itch creams"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/c79d93e6-3846-4646-a874-9bfa3c569763"
+        },
+        "effectiveDateTime": "2021-09-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/748c9457-2883-42ff-9faa-e0d414a090d8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "3bc34479-f1ba-4498-8038-e8cdc3fb40a8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Oral antihistamines"
+            }
+          ],
+          "text": "Oral antihistamines"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/c79d93e6-3846-4646-a874-9bfa3c569763"
+        },
+        "effectiveDateTime": "2021-09-22",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/3bc34479-f1ba-4498-8038-e8cdc3fb40a8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "a448bca2-c9df-4a3e-96df-8d7dedce2075",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 7"
+              }
+            ],
+            "text": "Radiation Session 7"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/a448bca2-c9df-4a3e-96df-8d7dedce2075"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c3e9930d-f04c-462e-8553-3600ba5ea3b2",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/a448bca2-c9df-4a3e-96df-8d7dedce2075"
+        },
+        "performedDateTime": "2021-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c3e9930d-f04c-462e-8553-3600ba5ea3b2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9dba585f-ee4a-440e-9076-7a36e0616bf3",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Moisturizing lotions"
+            }
+          ],
+          "text": "Moisturizing lotions"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/a448bca2-c9df-4a3e-96df-8d7dedce2075"
+        },
+        "effectiveDateTime": "2021-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9dba585f-ee4a-440e-9076-7a36e0616bf3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "9dc5e876-6b80-4b7e-beab-c5aaa56b2a72",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Cooling gels"
+            }
+          ],
+          "text": "Cooling gels"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/a448bca2-c9df-4a3e-96df-8d7dedce2075"
+        },
+        "effectiveDateTime": "2021-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/9dc5e876-6b80-4b7e-beab-c5aaa56b2a72"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "945474d0-3a90-435d-bf76-35b1c4f6fbd5",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 8"
+              }
+            ],
+            "text": "Radiation Session 8"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-28"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/945474d0-3a90-435d-bf76-35b1c4f6fbd5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a5de4709-600a-4430-9712-f42c564693ee",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/945474d0-3a90-435d-bf76-35b1c4f6fbd5"
+        },
+        "performedDateTime": "2021-09-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a5de4709-600a-4430-9712-f42c564693ee"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "a0d75f7c-3c7b-48ab-94cb-598ef02aa0eb",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-inflammatory drugs"
+            }
+          ],
+          "text": "Anti-inflammatory drugs"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/945474d0-3a90-435d-bf76-35b1c4f6fbd5"
+        },
+        "effectiveDateTime": "2021-09-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/a0d75f7c-3c7b-48ab-94cb-598ef02aa0eb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "796a1445-e980-4ca9-9be4-dd4549139522",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antioxidants"
+            }
+          ],
+          "text": "Antioxidants"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/945474d0-3a90-435d-bf76-35b1c4f6fbd5"
+        },
+        "effectiveDateTime": "2021-09-28",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/796a1445-e980-4ca9-9be4-dd4549139522"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "209b213b-bf6d-4993-84cb-2c6f0d3565a2",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 9"
+              }
+            ],
+            "text": "Radiation Session 9"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-30"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/209b213b-bf6d-4993-84cb-2c6f0d3565a2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "9f4a2741-bddd-40c2-a22b-b917c846b446",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/209b213b-bf6d-4993-84cb-2c6f0d3565a2"
+        },
+        "performedDateTime": "2021-09-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/9f4a2741-bddd-40c2-a22b-b917c846b446"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "966eef21-a9a8-4311-8700-88bc68803f14",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Analgesic creams"
+            }
+          ],
+          "text": "Analgesic creams"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/209b213b-bf6d-4993-84cb-2c6f0d3565a2"
+        },
+        "effectiveDateTime": "2021-09-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/966eef21-a9a8-4311-8700-88bc68803f14"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "7a73677b-60d5-4d5d-be68-ed93e43d216b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Hypoallergenic dressing"
+            }
+          ],
+          "text": "Hypoallergenic dressing"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/209b213b-bf6d-4993-84cb-2c6f0d3565a2"
+        },
+        "effectiveDateTime": "2021-09-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/7a73677b-60d5-4d5d-be68-ed93e43d216b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "43928acd-bebc-4239-bcc1-36b27e9eb237",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 10"
+              }
+            ],
+            "text": "Radiation Session 10"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-03"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/43928acd-bebc-4239-bcc1-36b27e9eb237"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e7d7491f-e60f-45f2-a15a-fb5639ae6936",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/43928acd-bebc-4239-bcc1-36b27e9eb237"
+        },
+        "performedDateTime": "2021-10-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e7d7491f-e60f-45f2-a15a-fb5639ae6936"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "31bd8707-d577-463d-aae7-7c96778d42fc",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antifungal creams"
+            }
+          ],
+          "text": "Antifungal creams"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/43928acd-bebc-4239-bcc1-36b27e9eb237"
+        },
+        "effectiveDateTime": "2021-10-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/31bd8707-d577-463d-aae7-7c96778d42fc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6651e08d-72a3-4a2c-acf4-758988e6bdfc",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Barrier creams"
+            }
+          ],
+          "text": "Barrier creams"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/43928acd-bebc-4239-bcc1-36b27e9eb237"
+        },
+        "effectiveDateTime": "2021-10-03",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6651e08d-72a3-4a2c-acf4-758988e6bdfc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "01d85f82-42ce-4fe6-8593-e6dd7afc365b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 11"
+              }
+            ],
+            "text": "Radiation Session 11"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-06"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/01d85f82-42ce-4fe6-8593-e6dd7afc365b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "8819265f-fe18-4908-a1c4-1fd36b95f219",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/01d85f82-42ce-4fe6-8593-e6dd7afc365b"
+        },
+        "performedDateTime": "2021-10-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/8819265f-fe18-4908-a1c4-1fd36b95f219"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "19b32080-27a2-453c-a91c-99bf27a5fe35",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antiseptic ointments"
+            }
+          ],
+          "text": "Antiseptic ointments"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/01d85f82-42ce-4fe6-8593-e6dd7afc365b"
+        },
+        "effectiveDateTime": "2021-10-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/19b32080-27a2-453c-a91c-99bf27a5fe35"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "440ab253-ffaa-4f61-9cc6-214042eee70c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibacterial creams"
+            }
+          ],
+          "text": "Antibacterial creams"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/01d85f82-42ce-4fe6-8593-e6dd7afc365b"
+        },
+        "effectiveDateTime": "2021-10-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/440ab253-ffaa-4f61-9cc6-214042eee70c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "306612a4-5736-461c-b4fb-d67a574f5835",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 12"
+              }
+            ],
+            "text": "Radiation Session 12"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-09"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/306612a4-5736-461c-b4fb-d67a574f5835"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c700ac3f-c58a-4588-84ac-ae5222e5b130",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/306612a4-5736-461c-b4fb-d67a574f5835"
+        },
+        "performedDateTime": "2021-10-09",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c700ac3f-c58a-4588-84ac-ae5222e5b130"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "75bfad68-6d52-4297-9a6f-1dc79d4a2749",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antiviral creams"
+            }
+          ],
+          "text": "Antiviral creams"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/306612a4-5736-461c-b4fb-d67a574f5835"
+        },
+        "effectiveDateTime": "2021-10-09",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/75bfad68-6d52-4297-9a6f-1dc79d4a2749"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "f15398f6-bc0c-4a23-8cae-dc43625ed04a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain-relieving gels"
+            }
+          ],
+          "text": "Pain-relieving gels"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/306612a4-5736-461c-b4fb-d67a574f5835"
+        },
+        "effectiveDateTime": "2021-10-09",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/f15398f6-bc0c-4a23-8cae-dc43625ed04a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "bfab848c-69c6-460e-9e47-1694a8d83418",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 13"
+              }
+            ],
+            "text": "Radiation Session 13"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-12"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/bfab848c-69c6-460e-9e47-1694a8d83418"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c1ba3c53-02f7-4d7a-9cb6-60ffff8c271f",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/bfab848c-69c6-460e-9e47-1694a8d83418"
+        },
+        "performedDateTime": "2021-10-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c1ba3c53-02f7-4d7a-9cb6-60ffff8c271f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6d037007-aa70-495a-9222-0030e58a842e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-inflammatory creams"
+            }
+          ],
+          "text": "Anti-inflammatory creams"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/bfab848c-69c6-460e-9e47-1694a8d83418"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6d037007-aa70-495a-9222-0030e58a842e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "fe64b0d2-62ad-4577-b0b8-a64b9a8a9a13",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Wound dressings"
+            }
+          ],
+          "text": "Wound dressings"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/bfab848c-69c6-460e-9e47-1694a8d83418"
+        },
+        "effectiveDateTime": "2021-10-12",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/fe64b0d2-62ad-4577-b0b8-a64b9a8a9a13"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "2bc6f9d7-e9e1-4824-a7cd-66b2c70b9364",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 14"
+              }
+            ],
+            "text": "Radiation Session 14"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/2bc6f9d7-e9e1-4824-a7cd-66b2c70b9364"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c9acb669-6d48-45dc-ac24-ae08944f0b22",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/2bc6f9d7-e9e1-4824-a7cd-66b2c70b9364"
+        },
+        "performedDateTime": "2021-10-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c9acb669-6d48-45dc-ac24-ae08944f0b22"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "18e4f1f5-baad-4c7e-b7ee-8b8e367c9cac",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotic ointments"
+            }
+          ],
+          "text": "Antibiotic ointments"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/2bc6f9d7-e9e1-4824-a7cd-66b2c70b9364"
+        },
+        "effectiveDateTime": "2021-10-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/18e4f1f5-baad-4c7e-b7ee-8b8e367c9cac"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "2da2ec22-132b-4d70-aa9c-2ddead40b9b9",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Protective films"
+            }
+          ],
+          "text": "Protective films"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/2bc6f9d7-e9e1-4824-a7cd-66b2c70b9364"
+        },
+        "effectiveDateTime": "2021-10-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/2da2ec22-132b-4d70-aa9c-2ddead40b9b9"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "eddb8855-ee8e-492e-b31f-acc2b9e6fbd7",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiation Session 15"
+              }
+            ],
+            "text": "Radiation Session 15"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-18"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/eddb8855-ee8e-492e-b31f-acc2b9e6fbd7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "cf007075-7c13-49b0-908a-0491c530b1bc",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation therapy"
+            }
+          ],
+          "text": "Radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/eddb8855-ee8e-492e-b31f-acc2b9e6fbd7"
+        },
+        "performedDateTime": "2021-10-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/cf007075-7c13-49b0-908a-0491c530b1bc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "ba6768ef-3c92-46ea-9d11-50220b039502",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Moist wound dressings"
+            }
+          ],
+          "text": "Moist wound dressings"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/eddb8855-ee8e-492e-b31f-acc2b9e6fbd7"
+        },
+        "effectiveDateTime": "2021-10-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/ba6768ef-3c92-46ea-9d11-50220b039502"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "ea95a42b-b9ef-41c8-b496-06675aeb6d23",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Hydrogel sheets"
+            }
+          ],
+          "text": "Hydrogel sheets"
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/eddb8855-ee8e-492e-b31f-acc2b9e6fbd7"
+        },
+        "effectiveDateTime": "2021-10-18",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/ea95a42b-b9ef-41c8-b496-06675aeb6d23"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "fe17fb74-a2d9-428f-8689-8edcbc72ac72",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-10-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/fe17fb74-a2d9-428f-8689-8edcbc72ac72"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "26e6cdd7-01ac-42d5-8bcc-dd8970023bd7",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-11-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/26e6cdd7-01ac-42d5-8bcc-dd8970023bd7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "486aded7-9832-4b05-b2ae-838f6d7a2428",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-12-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/486aded7-9832-4b05-b2ae-838f6d7a2428"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "76dc3ad6-5766-4899-a739-e188ac8274b8",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-12-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/76dc3ad6-5766-4899-a739-e188ac8274b8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "e3802c22-c1a6-4e93-a3a9-677059b4ab1e",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-01-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/e3802c22-c1a6-4e93-a3a9-677059b4ab1e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "e20eba72-e556-48e0-8003-3cdd437c96db",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-02-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/e20eba72-e556-48e0-8003-3cdd437c96db"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "7d5d4fc5-582e-468b-8664-e2b224a1e47a",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up"
+              }
+            ],
+            "text": "Follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2022-02-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/0f9d2416-778d-4768-a9e9-0125878c0d46",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/0dd6c3d1-4a88-45d2-8e9c-4acb872f34f0",
+            "display": "pancreatic adenocarcinoma"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/7d5d4fc5-582e-468b-8664-e2b224a1e47a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "effectiveDateTime": "2021-10-25",
+        "performer": [
+          {
+            "reference": "Practitioner/424767c3-6f5e-446c-9945-81f333e8b573",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows improving status for pancreatic adenocarcinoma. Sarita Nguyen, a 56-year-old Asian female diagnosed with Stage IV pancreatic adenocarcinoma, underwent pancreatectomy followed by six cycles of chemotherapy and 15 sessions of radiotherapy. She is currently in the follow-up phase undergoing regular assessments and treatments to manage her condition."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+          "display": "Sarita Nguyen"
+        },
+        "valueString": "improving",
+        "effectiveDateTime": "2021-10-25"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

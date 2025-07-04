@@ -1,0 +1,1222 @@
+{
+  "resourceType": "Bundle",
+  "id": "5e7c3022-e5cb-45c5-a98c-0eac69138a53",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Sakura"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1975-09-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "123 Cherry Blossom Lane"
+            ],
+            "city": "San Francisco",
+            "state": "CA",
+            "postalCode": "94105",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(415) 555-1234",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "sakura.nguyen@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "f262a0b1-1817-4e50-88eb-93d9571d08c4",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "e6b87990-1f85-46c8-bc13-02ea836564aa",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/e6b87990-1f85-46c8-bc13-02ea836564aa"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "f89ee907-13b8-48a3-a250-7e95e2199ecb",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "69896004",
+              "display": "rheumatoid arthritis"
+            }
+          ],
+          "text": "rheumatoid arthritis"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "onsetDateTime": "2010-03-15",
+        "recordedDate": "2010-04-02"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "72a9dd2f-914a-41bc-a8f3-6455f244073a",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for rheumatoid arthritis",
+        "description": "Comprehensive treatment plan including Immunosuppressive Therapy, Biological Therapy",
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "period": {
+          "start": "2010-04-10"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/72a9dd2f-914a-41bc-a8f3-6455f244073a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d1923e42-1308-4aad-bfa6-f1245444e194",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Medication Adjustment"
+              }
+            ],
+            "text": "Medication Adjustment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-04-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/e6b87990-1f85-46c8-bc13-02ea836564aa",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d1923e42-1308-4aad-bfa6-f1245444e194"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "baa47056-f9f9-40dd-8d3d-e877a1e7af59",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood Tests"
+            }
+          ],
+          "text": "Blood Tests"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/d1923e42-1308-4aad-bfa6-f1245444e194"
+        },
+        "performedDateTime": "2010-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/baa47056-f9f9-40dd-8d3d-e877a1e7af59"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "374d4a27-3e40-47b8-8b12-7932def21939",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Prednisone"
+            }
+          ],
+          "text": "Prednisone"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d1923e42-1308-4aad-bfa6-f1245444e194"
+        },
+        "effectiveDateTime": "2010-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/374d4a27-3e40-47b8-8b12-7932def21939"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "2f642e02-3f6e-4aac-a9bc-7926f4f1e2f8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Methotrexate"
+            }
+          ],
+          "text": "Methotrexate"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/d1923e42-1308-4aad-bfa6-f1245444e194"
+        },
+        "effectiveDateTime": "2010-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/2f642e02-3f6e-4aac-a9bc-7926f4f1e2f8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "15171ac5-9194-474d-a05a-c95af282f140",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up Appointment"
+              }
+            ],
+            "text": "Follow-up Appointment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-05-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/e6b87990-1f85-46c8-bc13-02ea836564aa",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/15171ac5-9194-474d-a05a-c95af282f140"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "ee22d156-622c-4be7-8f64-299db0867710",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Joint Examination"
+            }
+          ],
+          "text": "Joint Examination"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/15171ac5-9194-474d-a05a-c95af282f140"
+        },
+        "performedDateTime": "2010-05-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/ee22d156-622c-4be7-8f64-299db0867710"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "5ed422e1-aad4-43af-92f0-e27ec02b41b4",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Prednisone"
+            }
+          ],
+          "text": "Prednisone"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/15171ac5-9194-474d-a05a-c95af282f140"
+        },
+        "effectiveDateTime": "2010-05-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/5ed422e1-aad4-43af-92f0-e27ec02b41b4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "fd3620b1-c398-4694-8937-358cfa349223",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Therapy Response Check"
+              }
+            ],
+            "text": "Therapy Response Check"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-05-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/e6b87990-1f85-46c8-bc13-02ea836564aa",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/fd3620b1-c398-4694-8937-358cfa349223"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "136d2f92-bde9-4f16-97a5-3aee926cca72",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood Tests"
+            }
+          ],
+          "text": "Blood Tests"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/fd3620b1-c398-4694-8937-358cfa349223"
+        },
+        "performedDateTime": "2010-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/136d2f92-bde9-4f16-97a5-3aee926cca72"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "0d77552f-d29c-40d9-aba5-f52d16c2f443",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Methotrexate"
+            }
+          ],
+          "text": "Methotrexate"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/fd3620b1-c398-4694-8937-358cfa349223"
+        },
+        "effectiveDateTime": "2010-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/0d77552f-d29c-40d9-aba5-f52d16c2f443"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "1fd89390-cdb4-415f-92d3-497319954421",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Therapy Initiation"
+              }
+            ],
+            "text": "Therapy Initiation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-06-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/e6b87990-1f85-46c8-bc13-02ea836564aa",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/1fd89390-cdb4-415f-92d3-497319954421"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "cb72a099-aba3-4ee0-a7a9-417418f3c0c1",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Injection Administration"
+            }
+          ],
+          "text": "Injection Administration"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/1fd89390-cdb4-415f-92d3-497319954421"
+        },
+        "performedDateTime": "2010-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/cb72a099-aba3-4ee0-a7a9-417418f3c0c1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "21a6b5c6-965f-4eb2-81fb-7d714052ca3f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Adalimumab"
+            }
+          ],
+          "text": "Adalimumab"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/1fd89390-cdb4-415f-92d3-497319954421"
+        },
+        "effectiveDateTime": "2010-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/21a6b5c6-965f-4eb2-81fb-7d714052ca3f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "a9e644a5-3e70-4dd3-a697-c08495676e7b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up Appointment"
+              }
+            ],
+            "text": "Follow-up Appointment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/e6b87990-1f85-46c8-bc13-02ea836564aa",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/a9e644a5-3e70-4dd3-a697-c08495676e7b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "8801305a-8d74-4056-87f4-0284815af378",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Joint Examination"
+            }
+          ],
+          "text": "Joint Examination"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/a9e644a5-3e70-4dd3-a697-c08495676e7b"
+        },
+        "performedDateTime": "2010-07-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/8801305a-8d74-4056-87f4-0284815af378"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "364d1e6d-fd7b-4d38-b98a-e054ddfd8df9",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Adalimumab"
+            }
+          ],
+          "text": "Adalimumab"
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/a9e644a5-3e70-4dd3-a697-c08495676e7b"
+        },
+        "effectiveDateTime": "2010-07-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/364d1e6d-fd7b-4d38-b98a-e054ddfd8df9"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "939af908-7b97-4455-bd96-4cc5719e6858",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Treatment Evaluation"
+              }
+            ],
+            "text": "Treatment Evaluation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-30"
+        },
+        "serviceProvider": {
+          "reference": "Organization/e6b87990-1f85-46c8-bc13-02ea836564aa",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/939af908-7b97-4455-bd96-4cc5719e6858"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "a710e6fc-e6ee-4422-96f6-cfc688c7c54c",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Medication Adjustment"
+              }
+            ],
+            "text": "Medication Adjustment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-08-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/e6b87990-1f85-46c8-bc13-02ea836564aa",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/f89ee907-13b8-48a3-a250-7e95e2199ecb",
+            "display": "rheumatoid arthritis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/a710e6fc-e6ee-4422-96f6-cfc688c7c54c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "effectiveDateTime": "2010-07-30",
+        "performer": [
+          {
+            "reference": "Practitioner/f262a0b1-1817-4e50-88eb-93d9571d08c4",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows improving status for rheumatoid arthritis. Sakura Nguyen is a 45-year-old Asian female with severe rheumatoid arthritis. She responded well to Immunossuppressive Therapy and Biological Therapy with Adalimumab. Follow-up appointments show improvement in joint health and reduced inflammation."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/381a36f6-0be1-4a84-a3e6-9dc423eeabd3",
+          "display": "Sakura Nguyen"
+        },
+        "valueString": "improving",
+        "effectiveDateTime": "2010-07-30"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

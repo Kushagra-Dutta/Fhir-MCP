@@ -1,0 +1,10 @@
+{
+    "command": "uv",
+    "args": [
+      "--directory",
+      "C:\\Users\\aashr\\FHIR-Careplan",
+      "run",
+      "fhir_server.py"
+    ]
+  }
+  

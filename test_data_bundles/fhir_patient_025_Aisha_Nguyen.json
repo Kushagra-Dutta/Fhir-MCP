@@ -1,0 +1,3729 @@
+{
+  "resourceType": "Bundle",
+  "id": "2fdf81cd-d619-4814-be97-b5618953ff83",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Aisha"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-08-23",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "789 Elm Avenue"
+            ],
+            "city": "Los Angeles",
+            "state": "CA",
+            "postalCode": "90001",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(213) 555-7890",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "aisha.nguyen@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "72e4fb67-ea63-482f-8c37-9e49214e50d5",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "f195a229-a2ac-4a3c-ae26-65173cd08d52",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "28246609-614f-4fac-883f-508d9b3fa395",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "363443007",
+              "display": "ovarian cancer"
+            }
+          ],
+          "text": "ovarian cancer"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "onsetDateTime": "2018-02-15",
+        "recordedDate": "2018-03-03",
+        "stage": [
+          {
+            "summary": {
+              "coding": [
+                {
+                  "system": "http://snomed.info/sct",
+                  "code": "261663004",
+                  "display": "Stage III"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/28246609-614f-4fac-883f-508d9b3fa395"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "69dd6169-3951-481a-a137-fddb665a84ff",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for ovarian cancer",
+        "description": "Comprehensive treatment plan including Surgery, Chemotherapy, Radiotherapy",
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "period": {
+          "start": "2018-03-20"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/69dd6169-3951-481a-a137-fddb665a84ff"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "b2a908c7-774b-494b-8666-15ae9b810372",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Ovarian cancer debulking surgery"
+              }
+            ],
+            "text": "Ovarian cancer debulking surgery"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-03-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/b2a908c7-774b-494b-8666-15ae9b810372"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "981cd0f4-be12-4c22-b9aa-a6af91585f44",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Exploratory laparotomy"
+            }
+          ],
+          "text": "Exploratory laparotomy"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/b2a908c7-774b-494b-8666-15ae9b810372"
+        },
+        "performedDateTime": "2018-03-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/981cd0f4-be12-4c22-b9aa-a6af91585f44"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "174d7506-85e0-4536-92d4-2ce53e6dee78",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Oophorectomy"
+            }
+          ],
+          "text": "Oophorectomy"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/b2a908c7-774b-494b-8666-15ae9b810372"
+        },
+        "performedDateTime": "2018-03-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/174d7506-85e0-4536-92d4-2ce53e6dee78"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "f2b4335d-90d2-4b65-9697-f5cd5c86433a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Morphine"
+            }
+          ],
+          "text": "Morphine"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/b2a908c7-774b-494b-8666-15ae9b810372"
+        },
+        "effectiveDateTime": "2018-03-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/f2b4335d-90d2-4b65-9697-f5cd5c86433a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "8bd474ff-d018-4b84-9a0f-b07a5c2018c6",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/b2a908c7-774b-494b-8666-15ae9b810372"
+        },
+        "effectiveDateTime": "2018-03-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/8bd474ff-d018-4b84-9a0f-b07a5c2018c6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "74ad12f7-1ec5-4755-b3c4-90c6c2a238d5",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Post-operative care"
+              }
+            ],
+            "text": "Post-operative care"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-03-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/74ad12f7-1ec5-4755-b3c4-90c6c2a238d5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f2252958-26f6-432e-8d64-f20c277633c0",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Wound care"
+            }
+          ],
+          "text": "Wound care"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/74ad12f7-1ec5-4755-b3c4-90c6c2a238d5"
+        },
+        "performedDateTime": "2018-03-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f2252958-26f6-432e-8d64-f20c277633c0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a4760065-e5cf-4787-975f-c02b87e923fb",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Pain management"
+            }
+          ],
+          "text": "Pain management"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/74ad12f7-1ec5-4755-b3c4-90c6c2a238d5"
+        },
+        "performedDateTime": "2018-03-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a4760065-e5cf-4787-975f-c02b87e923fb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "7e4e661d-b6db-48cf-80e5-5dbe2e107690",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anticoagulants"
+            }
+          ],
+          "text": "Anticoagulants"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/74ad12f7-1ec5-4755-b3c4-90c6c2a238d5"
+        },
+        "effectiveDateTime": "2018-03-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/7e4e661d-b6db-48cf-80e5-5dbe2e107690"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "5596ac02-0f0e-4ab2-bc02-1d8c5e3b03e1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antiemetics"
+            }
+          ],
+          "text": "Antiemetics"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/74ad12f7-1ec5-4755-b3c4-90c6c2a238d5"
+        },
+        "effectiveDateTime": "2018-03-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/5596ac02-0f0e-4ab2-bc02-1d8c5e3b03e1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "cb9ccf12-1506-416b-b7fa-3e46ac3acb99",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 1"
+              }
+            ],
+            "text": "Chemotherapy Cycle 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-04-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/cb9ccf12-1506-416b-b7fa-3e46ac3acb99"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "666225c6-bb3e-4fff-8b97-20a75eab1448",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/cb9ccf12-1506-416b-b7fa-3e46ac3acb99"
+        },
+        "performedDateTime": "2018-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/666225c6-bb3e-4fff-8b97-20a75eab1448"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "d54c692e-98aa-45f9-9c82-08ee98886ab6",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/cb9ccf12-1506-416b-b7fa-3e46ac3acb99"
+        },
+        "performedDateTime": "2018-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/d54c692e-98aa-45f9-9c82-08ee98886ab6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "8dfa6c2f-a588-48ad-9f9c-11ac4d7fb285",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/cb9ccf12-1506-416b-b7fa-3e46ac3acb99"
+        },
+        "effectiveDateTime": "2018-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/8dfa6c2f-a588-48ad-9f9c-11ac4d7fb285"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "43e24cc7-0dbe-4be5-a0dc-44602da76411",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Carboplatin"
+            }
+          ],
+          "text": "Carboplatin"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/cb9ccf12-1506-416b-b7fa-3e46ac3acb99"
+        },
+        "effectiveDateTime": "2018-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/43e24cc7-0dbe-4be5-a0dc-44602da76411"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "6761dbbe-d3df-4124-a2ff-093517102b76",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 2"
+              }
+            ],
+            "text": "Chemotherapy Cycle 2"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-04-30"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/6761dbbe-d3df-4124-a2ff-093517102b76"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "55dcf54a-6b41-4e21-9bf9-9573963d90db",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/6761dbbe-d3df-4124-a2ff-093517102b76"
+        },
+        "performedDateTime": "2018-04-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/55dcf54a-6b41-4e21-9bf9-9573963d90db"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "6d5cb01a-b5e0-416e-bec1-9de6446a32bb",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/6761dbbe-d3df-4124-a2ff-093517102b76"
+        },
+        "performedDateTime": "2018-04-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/6d5cb01a-b5e0-416e-bec1-9de6446a32bb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "ede89e0b-c02b-443b-afd8-2d9e101bddb0",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/6761dbbe-d3df-4124-a2ff-093517102b76"
+        },
+        "effectiveDateTime": "2018-04-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/ede89e0b-c02b-443b-afd8-2d9e101bddb0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "8ef7e709-fc69-4f8b-896e-bd05ed0f120d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Carboplatin"
+            }
+          ],
+          "text": "Carboplatin"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/6761dbbe-d3df-4124-a2ff-093517102b76"
+        },
+        "effectiveDateTime": "2018-04-30",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/8ef7e709-fc69-4f8b-896e-bd05ed0f120d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "01b1e28e-caef-40da-8eb7-7852b727f3e2",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 3"
+              }
+            ],
+            "text": "Chemotherapy Cycle 3"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-05-21"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/01b1e28e-caef-40da-8eb7-7852b727f3e2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "c45db009-e76f-4383-9786-24c6eb1d8b57",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/01b1e28e-caef-40da-8eb7-7852b727f3e2"
+        },
+        "performedDateTime": "2018-05-21",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/c45db009-e76f-4383-9786-24c6eb1d8b57"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a98e9350-1410-4bfe-af50-57abba520633",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/01b1e28e-caef-40da-8eb7-7852b727f3e2"
+        },
+        "performedDateTime": "2018-05-21",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a98e9350-1410-4bfe-af50-57abba520633"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "be6de1bc-6059-4e99-9343-618521f9737c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/01b1e28e-caef-40da-8eb7-7852b727f3e2"
+        },
+        "effectiveDateTime": "2018-05-21",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/be6de1bc-6059-4e99-9343-618521f9737c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "b37973c6-aa18-4570-96d5-6093d4c8bdba",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Carboplatin"
+            }
+          ],
+          "text": "Carboplatin"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/01b1e28e-caef-40da-8eb7-7852b727f3e2"
+        },
+        "effectiveDateTime": "2018-05-21",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/b37973c6-aa18-4570-96d5-6093d4c8bdba"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "61c27c83-15be-4172-a6ed-4afffeb90a72",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 4"
+              }
+            ],
+            "text": "Chemotherapy Cycle 4"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-06-11"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/61c27c83-15be-4172-a6ed-4afffeb90a72"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "9d1d3f45-24d2-4db3-a7c2-7bc90098aa03",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/61c27c83-15be-4172-a6ed-4afffeb90a72"
+        },
+        "performedDateTime": "2018-06-11",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/9d1d3f45-24d2-4db3-a7c2-7bc90098aa03"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "a189a50f-fa0b-455f-912d-93b486d16449",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/61c27c83-15be-4172-a6ed-4afffeb90a72"
+        },
+        "performedDateTime": "2018-06-11",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/a189a50f-fa0b-455f-912d-93b486d16449"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "7fcb5f26-f999-4d96-87e8-b3eb2d7c853f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/61c27c83-15be-4172-a6ed-4afffeb90a72"
+        },
+        "effectiveDateTime": "2018-06-11",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/7fcb5f26-f999-4d96-87e8-b3eb2d7c853f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "626612dc-25d6-4bdd-9092-372e30620c12",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Carboplatin"
+            }
+          ],
+          "text": "Carboplatin"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/61c27c83-15be-4172-a6ed-4afffeb90a72"
+        },
+        "effectiveDateTime": "2018-06-11",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/626612dc-25d6-4bdd-9092-372e30620c12"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "301ad1c1-9af4-477c-ba04-56ac83479c41",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 5"
+              }
+            ],
+            "text": "Chemotherapy Cycle 5"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-07-02"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/301ad1c1-9af4-477c-ba04-56ac83479c41"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "49d16c93-a739-4910-9cce-545dec55e9a4",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/301ad1c1-9af4-477c-ba04-56ac83479c41"
+        },
+        "performedDateTime": "2018-07-02",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/49d16c93-a739-4910-9cce-545dec55e9a4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "2279cbb7-ca2a-4efe-bc0d-dff5addcccc7",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/301ad1c1-9af4-477c-ba04-56ac83479c41"
+        },
+        "performedDateTime": "2018-07-02",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/2279cbb7-ca2a-4efe-bc0d-dff5addcccc7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "e56d9ef2-b884-43f6-b613-2ed24be923bb",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/301ad1c1-9af4-477c-ba04-56ac83479c41"
+        },
+        "effectiveDateTime": "2018-07-02",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/e56d9ef2-b884-43f6-b613-2ed24be923bb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "93125e01-7f5e-434a-b084-adc0e3a23366",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Carboplatin"
+            }
+          ],
+          "text": "Carboplatin"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/301ad1c1-9af4-477c-ba04-56ac83479c41"
+        },
+        "effectiveDateTime": "2018-07-02",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/93125e01-7f5e-434a-b084-adc0e3a23366"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "b914b694-b5ee-4771-b44a-d40c405339e2",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Chemotherapy Cycle 6"
+              }
+            ],
+            "text": "Chemotherapy Cycle 6"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-07-23"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/b914b694-b5ee-4771-b44a-d40c405339e2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "54a4f34c-f2eb-45e7-9968-878ad5241466",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chemotherapy infusion"
+            }
+          ],
+          "text": "Chemotherapy infusion"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/b914b694-b5ee-4771-b44a-d40c405339e2"
+        },
+        "performedDateTime": "2018-07-23",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/54a4f34c-f2eb-45e7-9968-878ad5241466"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "93e569b9-9fe7-418b-a96d-48886e4d33e3",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/b914b694-b5ee-4771-b44a-d40c405339e2"
+        },
+        "performedDateTime": "2018-07-23",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/93e569b9-9fe7-418b-a96d-48886e4d33e3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6875807b-ac14-4934-ab56-111c406d1d22",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Paclitaxel"
+            }
+          ],
+          "text": "Paclitaxel"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/b914b694-b5ee-4771-b44a-d40c405339e2"
+        },
+        "effectiveDateTime": "2018-07-23",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6875807b-ac14-4934-ab56-111c406d1d22"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "b18dc477-7859-463c-a346-367cb9acdbb4",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Carboplatin"
+            }
+          ],
+          "text": "Carboplatin"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/b914b694-b5ee-4771-b44a-d40c405339e2"
+        },
+        "effectiveDateTime": "2018-07-23",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/b18dc477-7859-463c-a346-367cb9acdbb4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "e396cc2b-b337-4ceb-a573-851a0a83800d",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy Session 1"
+              }
+            ],
+            "text": "Radiotherapy Session 1"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-09-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/e396cc2b-b337-4ceb-a573-851a0a83800d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f1d3f097-8f7f-4ca0-a432-a8d0ceca4c77",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "External beam radiation therapy"
+            }
+          ],
+          "text": "External beam radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/e396cc2b-b337-4ceb-a573-851a0a83800d"
+        },
+        "performedDateTime": "2018-09-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f1d3f097-8f7f-4ca0-a432-a8d0ceca4c77"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e4ab7cdd-50ee-4c46-bf51-6a3e554c1e80",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation simulation"
+            }
+          ],
+          "text": "Radiation simulation"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/e396cc2b-b337-4ceb-a573-851a0a83800d"
+        },
+        "performedDateTime": "2018-09-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e4ab7cdd-50ee-4c46-bf51-6a3e554c1e80"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "5301f4db-696d-4f5e-b094-d9191ab2ed03",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea medication"
+            }
+          ],
+          "text": "Anti-nausea medication"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/e396cc2b-b337-4ceb-a573-851a0a83800d"
+        },
+        "effectiveDateTime": "2018-09-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/5301f4db-696d-4f5e-b094-d9191ab2ed03"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "aa70b9a3-8679-40b6-b59e-579825a407ed",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Topical anesthetics"
+            }
+          ],
+          "text": "Topical anesthetics"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/e396cc2b-b337-4ceb-a573-851a0a83800d"
+        },
+        "effectiveDateTime": "2018-09-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/aa70b9a3-8679-40b6-b59e-579825a407ed"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "22b493be-c7b0-436b-ad21-3d6a883b3469",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy Session 2"
+              }
+            ],
+            "text": "Radiotherapy Session 2"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-09-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/22b493be-c7b0-436b-ad21-3d6a883b3469"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5b7353f9-92b6-45d9-aac3-65bde2c2f173",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "External beam radiation therapy"
+            }
+          ],
+          "text": "External beam radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/22b493be-c7b0-436b-ad21-3d6a883b3469"
+        },
+        "performedDateTime": "2018-09-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/5b7353f9-92b6-45d9-aac3-65bde2c2f173"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "338df4ba-28ee-4daa-84d8-374eeec4d367",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation simulation"
+            }
+          ],
+          "text": "Radiation simulation"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/22b493be-c7b0-436b-ad21-3d6a883b3469"
+        },
+        "performedDateTime": "2018-09-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/338df4ba-28ee-4daa-84d8-374eeec4d367"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "39b0f26e-ee23-4e76-8e22-db4e0e88aaa7",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea medication"
+            }
+          ],
+          "text": "Anti-nausea medication"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/22b493be-c7b0-436b-ad21-3d6a883b3469"
+        },
+        "effectiveDateTime": "2018-09-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/39b0f26e-ee23-4e76-8e22-db4e0e88aaa7"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "dc3d1df4-0ccc-4a9a-b428-fdc6357c49a1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Topical anesthetics"
+            }
+          ],
+          "text": "Topical anesthetics"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/22b493be-c7b0-436b-ad21-3d6a883b3469"
+        },
+        "effectiveDateTime": "2018-09-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/dc3d1df4-0ccc-4a9a-b428-fdc6357c49a1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "5477ac0e-9213-4008-96aa-6e0da0d85ab0",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy Session 3"
+              }
+            ],
+            "text": "Radiotherapy Session 3"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-09-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/5477ac0e-9213-4008-96aa-6e0da0d85ab0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "f124e274-0fc8-41ea-9729-d4952672b138",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "External beam radiation therapy"
+            }
+          ],
+          "text": "External beam radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/5477ac0e-9213-4008-96aa-6e0da0d85ab0"
+        },
+        "performedDateTime": "2018-09-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/f124e274-0fc8-41ea-9729-d4952672b138"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "930a3a3e-61e1-4b99-8a13-70f9f1ae4b96",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation simulation"
+            }
+          ],
+          "text": "Radiation simulation"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/5477ac0e-9213-4008-96aa-6e0da0d85ab0"
+        },
+        "performedDateTime": "2018-09-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/930a3a3e-61e1-4b99-8a13-70f9f1ae4b96"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "283a8b3f-935a-4e36-9aef-244fdd95647e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea medication"
+            }
+          ],
+          "text": "Anti-nausea medication"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/5477ac0e-9213-4008-96aa-6e0da0d85ab0"
+        },
+        "effectiveDateTime": "2018-09-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/283a8b3f-935a-4e36-9aef-244fdd95647e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "071bf997-64a7-4ed2-afb0-af3cb06dc265",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Topical anesthetics"
+            }
+          ],
+          "text": "Topical anesthetics"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/5477ac0e-9213-4008-96aa-6e0da0d85ab0"
+        },
+        "effectiveDateTime": "2018-09-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/071bf997-64a7-4ed2-afb0-af3cb06dc265"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "76901b3b-b1f0-4ff8-8a37-72ce1a8fe87f",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy Session 4"
+              }
+            ],
+            "text": "Radiotherapy Session 4"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-09-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/76901b3b-b1f0-4ff8-8a37-72ce1a8fe87f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "df458334-afee-4b12-a845-d44353f4a6d6",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "External beam radiation therapy"
+            }
+          ],
+          "text": "External beam radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/76901b3b-b1f0-4ff8-8a37-72ce1a8fe87f"
+        },
+        "performedDateTime": "2018-09-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/df458334-afee-4b12-a845-d44353f4a6d6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "9446fd9c-0878-4ff2-92fe-d57ffdea617d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation simulation"
+            }
+          ],
+          "text": "Radiation simulation"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/76901b3b-b1f0-4ff8-8a37-72ce1a8fe87f"
+        },
+        "performedDateTime": "2018-09-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/9446fd9c-0878-4ff2-92fe-d57ffdea617d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "aaa91873-c449-4488-bee9-24b0f756a2be",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea medication"
+            }
+          ],
+          "text": "Anti-nausea medication"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/76901b3b-b1f0-4ff8-8a37-72ce1a8fe87f"
+        },
+        "effectiveDateTime": "2018-09-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/aaa91873-c449-4488-bee9-24b0f756a2be"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "cd5dceb5-cf19-452c-9ae9-32805e8f3b6c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Topical anesthetics"
+            }
+          ],
+          "text": "Topical anesthetics"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/76901b3b-b1f0-4ff8-8a37-72ce1a8fe87f"
+        },
+        "effectiveDateTime": "2018-09-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/cd5dceb5-cf19-452c-9ae9-32805e8f3b6c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "bcc21214-8d9f-47c1-8375-9798c3049104",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Radiotherapy Session 5"
+              }
+            ],
+            "text": "Radiotherapy Session 5"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-09-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/bcc21214-8d9f-47c1-8375-9798c3049104"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "deefbee9-34d0-45e4-97fc-42db7e74016d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "External beam radiation therapy"
+            }
+          ],
+          "text": "External beam radiation therapy"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/bcc21214-8d9f-47c1-8375-9798c3049104"
+        },
+        "performedDateTime": "2018-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/deefbee9-34d0-45e4-97fc-42db7e74016d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "1d79bc62-c039-4372-b2ca-58a5d573212e",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Radiation simulation"
+            }
+          ],
+          "text": "Radiation simulation"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/bcc21214-8d9f-47c1-8375-9798c3049104"
+        },
+        "performedDateTime": "2018-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/1d79bc62-c039-4372-b2ca-58a5d573212e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "63fde689-01b4-45b9-a0ef-b28cbf3178da",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-nausea medication"
+            }
+          ],
+          "text": "Anti-nausea medication"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/bcc21214-8d9f-47c1-8375-9798c3049104"
+        },
+        "effectiveDateTime": "2018-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/63fde689-01b4-45b9-a0ef-b28cbf3178da"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "83ad5998-5127-4d8f-9299-99348aeca763",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Topical anesthetics"
+            }
+          ],
+          "text": "Topical anesthetics"
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/bcc21214-8d9f-47c1-8375-9798c3049104"
+        },
+        "effectiveDateTime": "2018-09-25",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/83ad5998-5127-4d8f-9299-99348aeca763"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "e0be426c-ea3e-4cca-8136-8601a6cca47d",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up after treatment completion"
+              }
+            ],
+            "text": "Follow-up after treatment completion"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2018-10-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/f195a229-a2ac-4a3c-ae26-65173cd08d52",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/28246609-614f-4fac-883f-508d9b3fa395",
+            "display": "ovarian cancer"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/e0be426c-ea3e-4cca-8136-8601a6cca47d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "effectiveDateTime": "2018-10-15",
+        "performer": [
+          {
+            "reference": "Practitioner/72e4fb67-ea63-482f-8c37-9e49214e50d5",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows improving status for ovarian cancer. Aisha Nguyen, a 53-year-old Asian female diagnosed with Stage III ovarian cancer, underwent debulking surgery followed by 6 cycles of chemotherapy and 5 sessions of radiotherapy. She is currently improving post-treatment with regular follow-up care."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/f37cf021-19f8-46cc-adc6-7288fa9f5d8d",
+          "display": "Aisha Nguyen"
+        },
+        "valueString": "improving",
+        "effectiveDateTime": "2018-10-15"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

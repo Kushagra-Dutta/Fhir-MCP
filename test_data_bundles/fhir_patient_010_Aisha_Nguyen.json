@@ -1,0 +1,1995 @@
+{
+  "resourceType": "Bundle",
+  "id": "eb48044a-230c-4ced-ab60-1e26b799a6e0",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "035b654d-ee4c-452f-95e5-4517b26709a2",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Aisha"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-08-22",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "123 Oak Street"
+            ],
+            "city": "San Francisco",
+            "state": "CA",
+            "postalCode": "94107",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(415) 555-1234",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "aisha.nguyen@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "60868f59-72f8-4796-993f-9b7a22b186a2",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "53b64bdd-ed20-4695-9ee3-874249c85b57",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "19943007",
+              "display": "liver cirrhosis"
+            }
+          ],
+          "text": "liver cirrhosis"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "onsetDateTime": "2020-05-10",
+        "recordedDate": "2020-05-15"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "2f1ac2ec-d4d0-4353-989d-44e617f86818",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for liver cirrhosis",
+        "description": "Comprehensive treatment plan including Liver transplant surgery, Post-operative care, Rehabilitation",
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "period": {
+          "start": "2020-05-20"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/2f1ac2ec-d4d0-4353-989d-44e617f86818"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "189fd5b2-ba77-4512-b00a-e3dd67fad19b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Initial consultation"
+              }
+            ],
+            "text": "Initial consultation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-05-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/189fd5b2-ba77-4512-b00a-e3dd67fad19b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "1a5d58f9-9c4a-42f3-ba3c-6eaf23232d2c",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Liver function tests"
+            }
+          ],
+          "text": "Liver function tests"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/189fd5b2-ba77-4512-b00a-e3dd67fad19b"
+        },
+        "performedDateTime": "2020-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/1a5d58f9-9c4a-42f3-ba3c-6eaf23232d2c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5b4691eb-89ff-4202-8705-7a2e2ac5e15e",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Ultrasound"
+            }
+          ],
+          "text": "Ultrasound"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/189fd5b2-ba77-4512-b00a-e3dd67fad19b"
+        },
+        "performedDateTime": "2020-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/5b4691eb-89ff-4202-8705-7a2e2ac5e15e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "36ae99be-0753-4c31-b8f3-e863755070f3",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Lactulose"
+            }
+          ],
+          "text": "Lactulose"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/189fd5b2-ba77-4512-b00a-e3dd67fad19b"
+        },
+        "effectiveDateTime": "2020-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/36ae99be-0753-4c31-b8f3-e863755070f3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6c31495d-041d-4c4e-b854-2a8ebcd8ee6f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Spironolactone"
+            }
+          ],
+          "text": "Spironolactone"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/189fd5b2-ba77-4512-b00a-e3dd67fad19b"
+        },
+        "effectiveDateTime": "2020-05-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6c31495d-041d-4c4e-b854-2a8ebcd8ee6f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "4af32d91-7e3e-4c6e-a71d-131c946dc3a0",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Imaging review"
+              }
+            ],
+            "text": "Imaging review"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-06-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/4af32d91-7e3e-4c6e-a71d-131c946dc3a0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "bec14f82-f65e-441a-a23b-5db9594a35e0",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "CT scan"
+            }
+          ],
+          "text": "CT scan"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/4af32d91-7e3e-4c6e-a71d-131c946dc3a0"
+        },
+        "performedDateTime": "2020-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/bec14f82-f65e-441a-a23b-5db9594a35e0"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "4a6dc7af-9b2a-4459-9f64-7920ccd8024f",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "MRI"
+            }
+          ],
+          "text": "MRI"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/4af32d91-7e3e-4c6e-a71d-131c946dc3a0"
+        },
+        "performedDateTime": "2020-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/4a6dc7af-9b2a-4459-9f64-7920ccd8024f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "62f5a4c2-2787-47f4-9999-182bc3396636",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Propranolol"
+            }
+          ],
+          "text": "Propranolol"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4af32d91-7e3e-4c6e-a71d-131c946dc3a0"
+        },
+        "effectiveDateTime": "2020-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/62f5a4c2-2787-47f4-9999-182bc3396636"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "f5d143dc-a569-4abe-9693-9036e8a8c90d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Furosemide"
+            }
+          ],
+          "text": "Furosemide"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4af32d91-7e3e-4c6e-a71d-131c946dc3a0"
+        },
+        "effectiveDateTime": "2020-06-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/f5d143dc-a569-4abe-9693-9036e8a8c90d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "92ad9004-185c-4de2-8cce-92a9532d558c",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Surgical consultation"
+              }
+            ],
+            "text": "Surgical consultation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-06-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/92ad9004-185c-4de2-8cce-92a9532d558c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "6ed59d64-9d73-4f7d-a2be-5f9703a3b318",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Liver biopsy"
+            }
+          ],
+          "text": "Liver biopsy"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/92ad9004-185c-4de2-8cce-92a9532d558c"
+        },
+        "performedDateTime": "2020-06-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/6ed59d64-9d73-4f7d-a2be-5f9703a3b318"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "390bf37d-e63b-4b9f-ad00-34c96fed8cfb",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Endoscopy"
+            }
+          ],
+          "text": "Endoscopy"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/92ad9004-185c-4de2-8cce-92a9532d558c"
+        },
+        "performedDateTime": "2020-06-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/390bf37d-e63b-4b9f-ad00-34c96fed8cfb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "29ca1f21-d94f-4a60-9330-a02804aaa2fd",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Rifaximin"
+            }
+          ],
+          "text": "Rifaximin"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/92ad9004-185c-4de2-8cce-92a9532d558c"
+        },
+        "effectiveDateTime": "2020-06-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/29ca1f21-d94f-4a60-9330-a02804aaa2fd"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "f1004c0f-5d15-4039-9cde-4d304e5a3940",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Vitamin K"
+            }
+          ],
+          "text": "Vitamin K"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/92ad9004-185c-4de2-8cce-92a9532d558c"
+        },
+        "effectiveDateTime": "2020-06-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/f1004c0f-5d15-4039-9cde-4d304e5a3940"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "4f6aae36-14d9-4a31-bb32-15dece5b9aeb",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Liver transplant surgery"
+              }
+            ],
+            "text": "Liver transplant surgery"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-06-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/4f6aae36-14d9-4a31-bb32-15dece5b9aeb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "3d469930-7370-4984-aac4-c30d6ed911c6",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Liver transplant"
+            }
+          ],
+          "text": "Liver transplant"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/4f6aae36-14d9-4a31-bb32-15dece5b9aeb"
+        },
+        "performedDateTime": "2020-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/3d469930-7370-4984-aac4-c30d6ed911c6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "26e4b22d-e6e7-40bb-a43b-6678dfffe250",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Anesthesia administration"
+            }
+          ],
+          "text": "Anesthesia administration"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/4f6aae36-14d9-4a31-bb32-15dece5b9aeb"
+        },
+        "performedDateTime": "2020-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/26e4b22d-e6e7-40bb-a43b-6678dfffe250"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "6f79d13a-2ddc-4e87-b291-eef9a4372dc5",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Immunosuppressants"
+            }
+          ],
+          "text": "Immunosuppressants"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4f6aae36-14d9-4a31-bb32-15dece5b9aeb"
+        },
+        "effectiveDateTime": "2020-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/6f79d13a-2ddc-4e87-b291-eef9a4372dc5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "665d155a-1b02-4aef-a672-3daa51b96219",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antibiotics"
+            }
+          ],
+          "text": "Antibiotics"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/4f6aae36-14d9-4a31-bb32-15dece5b9aeb"
+        },
+        "effectiveDateTime": "2020-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/665d155a-1b02-4aef-a672-3daa51b96219"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "7b4311d1-9f2f-49c9-9b03-69f63155b5b1",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Post-operative care"
+              }
+            ],
+            "text": "Post-operative care"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-06-16"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/7b4311d1-9f2f-49c9-9b03-69f63155b5b1"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "739c4876-0486-4de3-9bb7-e36c0fbdf386",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Wound care"
+            }
+          ],
+          "text": "Wound care"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/7b4311d1-9f2f-49c9-9b03-69f63155b5b1"
+        },
+        "performedDateTime": "2020-06-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/739c4876-0486-4de3-9bb7-e36c0fbdf386"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "759ec195-ebdd-4031-8eb3-0c2f9b9ab7b6",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Fluid monitoring"
+            }
+          ],
+          "text": "Fluid monitoring"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/7b4311d1-9f2f-49c9-9b03-69f63155b5b1"
+        },
+        "performedDateTime": "2020-06-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/759ec195-ebdd-4031-8eb3-0c2f9b9ab7b6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "f36c2490-2033-456b-b8b6-5ed28334f2bd",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Pain medications"
+            }
+          ],
+          "text": "Pain medications"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/7b4311d1-9f2f-49c9-9b03-69f63155b5b1"
+        },
+        "effectiveDateTime": "2020-06-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/f36c2490-2033-456b-b8b6-5ed28334f2bd"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "8999d243-41a2-4a6b-96ee-bba0938cf8c8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Anti-rejection drugs"
+            }
+          ],
+          "text": "Anti-rejection drugs"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/7b4311d1-9f2f-49c9-9b03-69f63155b5b1"
+        },
+        "effectiveDateTime": "2020-06-16",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/8999d243-41a2-4a6b-96ee-bba0938cf8c8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "adc41c65-faa3-4294-8714-090858701a39",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Rehabilitation"
+              }
+            ],
+            "text": "Rehabilitation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-07-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/adc41c65-faa3-4294-8714-090858701a39"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "46ac03c0-d0fc-4272-9709-e8de539328ea",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Physical therapy"
+            }
+          ],
+          "text": "Physical therapy"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/adc41c65-faa3-4294-8714-090858701a39"
+        },
+        "performedDateTime": "2020-07-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/46ac03c0-d0fc-4272-9709-e8de539328ea"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "23ee0811-c612-4c3e-8146-3e86c1466fd6",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Occupational therapy"
+            }
+          ],
+          "text": "Occupational therapy"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/adc41c65-faa3-4294-8714-090858701a39"
+        },
+        "performedDateTime": "2020-07-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/23ee0811-c612-4c3e-8146-3e86c1466fd6"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "b9e117b2-4fe1-4c89-ad79-06b69a99160a",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Blood thinners"
+            }
+          ],
+          "text": "Blood thinners"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/adc41c65-faa3-4294-8714-090858701a39"
+        },
+        "effectiveDateTime": "2020-07-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/b9e117b2-4fe1-4c89-ad79-06b69a99160a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "47f8296b-017a-433b-b1aa-9a07fa7b0f1f",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Muscle relaxants"
+            }
+          ],
+          "text": "Muscle relaxants"
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/adc41c65-faa3-4294-8714-090858701a39"
+        },
+        "effectiveDateTime": "2020-07-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/47f8296b-017a-433b-b1aa-9a07fa7b0f1f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d103a3c9-dfdd-4313-b135-2fda82fa3979",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Post-transplant follow-up"
+              }
+            ],
+            "text": "Post-transplant follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-07-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d103a3c9-dfdd-4313-b135-2fda82fa3979"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "d7ad8ea0-9c58-46e1-83a8-f23650ca890d",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Rehabilitation assessment"
+              }
+            ],
+            "text": "Rehabilitation assessment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-07-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/d7ad8ea0-9c58-46e1-83a8-f23650ca890d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "68c06401-11cc-4557-bfe2-d496377d7184",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Medication review"
+              }
+            ],
+            "text": "Medication review"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2020-08-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/93cb5f97-b453-4bb3-8e6d-a2dbf1dddec6",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/53b64bdd-ed20-4695-9ee3-874249c85b57",
+            "display": "liver cirrhosis"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/68c06401-11cc-4557-bfe2-d496377d7184"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "effectiveDateTime": "2020-07-10",
+        "performer": [
+          {
+            "reference": "Practitioner/60868f59-72f8-4796-993f-9b7a22b186a2",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows improving status for liver cirrhosis. Aisha Nguyen, a 55-year-old Asian female with severe liver cirrhosis underwent a successful liver transplant surgery on June 15, 2020. She is currently in the post-transplant rehabilitation phase and showing steady improvement in liver function."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/035b654d-ee4c-452f-95e5-4517b26709a2",
+          "display": "Aisha Nguyen"
+        },
+        "valueString": "improving",
+        "effectiveDateTime": "2020-07-10"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

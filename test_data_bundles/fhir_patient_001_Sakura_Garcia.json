@@ -1,0 +1,1942 @@
+{
+  "resourceType": "Bundle",
+  "id": "6e287131-3081-4678-b060-44413928101f",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "75b933d1-c018-4bea-bafa-bb47b6f790b5",
+        "name": [
+          {
+            "use": "official",
+            "family": "Garcia",
+            "given": [
+              "Sakura"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-09-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "123 Vine Street"
+            ],
+            "city": "Miami",
+            "state": "FL",
+            "postalCode": "33101",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(305) 555-6789",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "sakura.garcia@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Hispanic"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "0b6f5136-08d1-40e1-8860-f25255546c27",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "13645005",
+              "display": "chronic obstructive pulmonary disease"
+            }
+          ],
+          "text": "chronic obstructive pulmonary disease"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "onsetDateTime": "2010-05-20",
+        "recordedDate": "2010-06-02"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "4b8b432b-76f2-407a-85a5-43d5614018be",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for chronic obstructive pulmonary disease",
+        "description": "Comprehensive treatment plan including Bronchodilator Therapy, Pulmonary Rehabilitation",
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "period": {
+          "start": "2010-06-15"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/4b8b432b-76f2-407a-85a5-43d5614018be"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "9e39ee52-9c1a-486c-a42f-5f700220e0c4",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Initial consult for COPD treatment"
+              }
+            ],
+            "text": "Initial consult for COPD treatment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-06-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/9e39ee52-9c1a-486c-a42f-5f700220e0c4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5374f0a7-9b6f-4ca5-9931-daadfd0591f5",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Pulmonary Function Test"
+            }
+          ],
+          "text": "Pulmonary Function Test"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/9e39ee52-9c1a-486c-a42f-5f700220e0c4"
+        },
+        "performedDateTime": "2010-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/5374f0a7-9b6f-4ca5-9931-daadfd0591f5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "d2ada544-3421-4752-a865-7c5f42aabc1b",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Arterial Blood Gas Analysis"
+            }
+          ],
+          "text": "Arterial Blood Gas Analysis"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/9e39ee52-9c1a-486c-a42f-5f700220e0c4"
+        },
+        "performedDateTime": "2010-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/d2ada544-3421-4752-a865-7c5f42aabc1b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "b1792a0a-1339-48bb-8252-42153aa0820e",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Albuterol"
+            }
+          ],
+          "text": "Albuterol"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/9e39ee52-9c1a-486c-a42f-5f700220e0c4"
+        },
+        "effectiveDateTime": "2010-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/b1792a0a-1339-48bb-8252-42153aa0820e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "dbab1182-dbe6-48e2-9e71-92188357697d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Ipratropium"
+            }
+          ],
+          "text": "Ipratropium"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/9e39ee52-9c1a-486c-a42f-5f700220e0c4"
+        },
+        "effectiveDateTime": "2010-06-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/dbab1182-dbe6-48e2-9e71-92188357697d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "f72240aa-d20f-40b6-96f3-cf5454a4eb28",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Medication adjustment"
+              }
+            ],
+            "text": "Medication adjustment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-01"
+        },
+        "serviceProvider": {
+          "reference": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/f72240aa-d20f-40b6-96f3-cf5454a4eb28"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "e5a5001f-ec59-4867-b478-0a7384ede1fa",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Peak Flow Measurement"
+            }
+          ],
+          "text": "Peak Flow Measurement"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/f72240aa-d20f-40b6-96f3-cf5454a4eb28"
+        },
+        "performedDateTime": "2010-07-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/e5a5001f-ec59-4867-b478-0a7384ede1fa"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "9c62dca0-b33a-4f05-9216-cf1b8e805fab",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Chest X-ray"
+            }
+          ],
+          "text": "Chest X-ray"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/f72240aa-d20f-40b6-96f3-cf5454a4eb28"
+        },
+        "performedDateTime": "2010-07-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/9c62dca0-b33a-4f05-9216-cf1b8e805fab"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "028a0ee7-0d6e-4b5f-a7fc-97f32e896868",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Salmeterol"
+            }
+          ],
+          "text": "Salmeterol"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/f72240aa-d20f-40b6-96f3-cf5454a4eb28"
+        },
+        "effectiveDateTime": "2010-07-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/028a0ee7-0d6e-4b5f-a7fc-97f32e896868"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "09934463-0478-46ea-b2a1-77e452d08e52",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Fluticasone"
+            }
+          ],
+          "text": "Fluticasone"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/f72240aa-d20f-40b6-96f3-cf5454a4eb28"
+        },
+        "effectiveDateTime": "2010-07-01",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/09934463-0478-46ea-b2a1-77e452d08e52"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "00a71917-cf43-4082-bf38-5832269b1456",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up on treatment response"
+              }
+            ],
+            "text": "Follow-up on treatment response"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-15"
+        },
+        "serviceProvider": {
+          "reference": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/00a71917-cf43-4082-bf38-5832269b1456"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "fbad1914-65f6-481b-85e0-0800d4e6518d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Oxygen Saturation Monitoring"
+            }
+          ],
+          "text": "Oxygen Saturation Monitoring"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/00a71917-cf43-4082-bf38-5832269b1456"
+        },
+        "performedDateTime": "2010-07-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/fbad1914-65f6-481b-85e0-0800d4e6518d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "6f3f0d72-bc7d-416d-bdac-f18b4ffff125",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Physical Examination"
+            }
+          ],
+          "text": "Physical Examination"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/00a71917-cf43-4082-bf38-5832269b1456"
+        },
+        "performedDateTime": "2010-07-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/6f3f0d72-bc7d-416d-bdac-f18b4ffff125"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "be2c1f55-eb16-409a-b4e2-bfb59cf289aa",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Tiotropium"
+            }
+          ],
+          "text": "Tiotropium"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/00a71917-cf43-4082-bf38-5832269b1456"
+        },
+        "effectiveDateTime": "2010-07-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/be2c1f55-eb16-409a-b4e2-bfb59cf289aa"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "3b946c0e-b59e-4642-bebc-a36267958153",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Prednisone"
+            }
+          ],
+          "text": "Prednisone"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/00a71917-cf43-4082-bf38-5832269b1456"
+        },
+        "effectiveDateTime": "2010-07-15",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/3b946c0e-b59e-4642-bebc-a36267958153"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "93405d87-53cb-49a2-8c30-41909453278b",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Initial assessment for pulmonary rehab"
+              }
+            ],
+            "text": "Initial assessment for pulmonary rehab"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-07-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/93405d87-53cb-49a2-8c30-41909453278b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "bf9aa849-ceda-4242-8090-a532e65d3407",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Six-Minute Walk Test"
+            }
+          ],
+          "text": "Six-Minute Walk Test"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/93405d87-53cb-49a2-8c30-41909453278b"
+        },
+        "performedDateTime": "2010-07-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/bf9aa849-ceda-4242-8090-a532e65d3407"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "351bdb94-b6da-4af0-9e73-504845858a2c",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Nutritional Counseling"
+            }
+          ],
+          "text": "Nutritional Counseling"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/93405d87-53cb-49a2-8c30-41909453278b"
+        },
+        "performedDateTime": "2010-07-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/351bdb94-b6da-4af0-9e73-504845858a2c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "3b66e79a-7e04-4cfa-a976-ae9c4684a5cb",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Aspirin"
+            }
+          ],
+          "text": "Aspirin"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/93405d87-53cb-49a2-8c30-41909453278b"
+        },
+        "effectiveDateTime": "2010-07-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/3b66e79a-7e04-4cfa-a976-ae9c4684a5cb"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "df73f0f8-0308-4f9a-b428-d1e0db8de6e5",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Atorvastatin"
+            }
+          ],
+          "text": "Atorvastatin"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/93405d87-53cb-49a2-8c30-41909453278b"
+        },
+        "effectiveDateTime": "2010-07-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/df73f0f8-0308-4f9a-b428-d1e0db8de6e5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "bcd06f5a-db92-4c14-a952-27b07a1ed506",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Exercise training session"
+              }
+            ],
+            "text": "Exercise training session"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-08-05"
+        },
+        "serviceProvider": {
+          "reference": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/bcd06f5a-db92-4c14-a952-27b07a1ed506"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "0d579096-8eee-4297-997d-29853b28befc",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Pulmonary Rehabilitation Exercises"
+            }
+          ],
+          "text": "Pulmonary Rehabilitation Exercises"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/bcd06f5a-db92-4c14-a952-27b07a1ed506"
+        },
+        "performedDateTime": "2010-08-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/0d579096-8eee-4297-997d-29853b28befc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "d00b37a5-863f-4ac9-bd5e-fe9e7732ef5c",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Heart Rate Monitoring"
+            }
+          ],
+          "text": "Heart Rate Monitoring"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/bcd06f5a-db92-4c14-a952-27b07a1ed506"
+        },
+        "performedDateTime": "2010-08-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/d00b37a5-863f-4ac9-bd5e-fe9e7732ef5c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "e6e0d442-35f2-4c78-8b04-5dc268977421",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Montelukast"
+            }
+          ],
+          "text": "Montelukast"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/bcd06f5a-db92-4c14-a952-27b07a1ed506"
+        },
+        "effectiveDateTime": "2010-08-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/e6e0d442-35f2-4c78-8b04-5dc268977421"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "7e58b005-42df-461e-9aa5-ed4a2b367ce8",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Mucolytics"
+            }
+          ],
+          "text": "Mucolytics"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/bcd06f5a-db92-4c14-a952-27b07a1ed506"
+        },
+        "effectiveDateTime": "2010-08-05",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/7e58b005-42df-461e-9aa5-ed4a2b367ce8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "c9776c97-6370-4a0d-871b-4cd66bada847",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Progress evaluation"
+              }
+            ],
+            "text": "Progress evaluation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-08-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/c9776c97-6370-4a0d-871b-4cd66bada847"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "2d4e9a75-2964-4fe6-8d8e-aaf9e16f850d",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Spirometry"
+            }
+          ],
+          "text": "Spirometry"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/c9776c97-6370-4a0d-871b-4cd66bada847"
+        },
+        "performedDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/2d4e9a75-2964-4fe6-8d8e-aaf9e16f850d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "084fa463-98eb-420f-a870-bf4f47b05cb4",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Quality of Life Assessment"
+            }
+          ],
+          "text": "Quality of Life Assessment"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "encounter": {
+          "reference": "Encounter/c9776c97-6370-4a0d-871b-4cd66bada847"
+        },
+        "performedDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/084fa463-98eb-420f-a870-bf4f47b05cb4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "fb2ae19f-0c35-482c-bc9f-85dc3430944b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Theophylline"
+            }
+          ],
+          "text": "Theophylline"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/c9776c97-6370-4a0d-871b-4cd66bada847"
+        },
+        "effectiveDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/fb2ae19f-0c35-482c-bc9f-85dc3430944b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "c0344c9e-438d-486b-94f2-2ea7b9d9f16c",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Antidepressants"
+            }
+          ],
+          "text": "Antidepressants"
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "context": {
+          "reference": "Encounter/c9776c97-6370-4a0d-871b-4cd66bada847"
+        },
+        "effectiveDateTime": "2010-08-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/c0344c9e-438d-486b-94f2-2ea7b9d9f16c"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "8dcf6860-bd84-499d-be4d-384f6e2356f5",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Routine follow-up"
+              }
+            ],
+            "text": "Routine follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-08-25"
+        },
+        "serviceProvider": {
+          "reference": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/8dcf6860-bd84-499d-be4d-384f6e2356f5"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "f7026cb4-0ec5-4c8b-9bdb-3f2495f01599",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Medication review"
+              }
+            ],
+            "text": "Medication review"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2010-09-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/8eb7b16d-58d0-41ba-abbe-7fae5ba59d3f",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/1291fc42-931f-48a5-a5f1-a9fcbc605c0f",
+            "display": "chronic obstructive pulmonary disease"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/f7026cb4-0ec5-4c8b-9bdb-3f2495f01599"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "effectiveDateTime": "2010-08-25",
+        "performer": [
+          {
+            "reference": "Practitioner/0b6f5136-08d1-40e1-8860-f25255546c27",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows improving status for chronic obstructive pulmonary disease. Sakura Garcia, a Hispanic female with severe COPD, started treatment with Bronchodilator Therapy followed by Pulmonary Rehabilitation. She responded well to the treatment with improving symptoms and adherence to medications and therapy plans. Regular follow-ups are scheduled to monitor progress and adjust treatment as needed."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/75b933d1-c018-4bea-bafa-bb47b6f790b5",
+          "display": "Sakura Garcia"
+        },
+        "valueString": "improving",
+        "effectiveDateTime": "2010-08-25"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}

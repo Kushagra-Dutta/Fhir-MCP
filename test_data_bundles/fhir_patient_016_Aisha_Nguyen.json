@@ -1,0 +1,1118 @@
+{
+  "resourceType": "Bundle",
+  "id": "1e50dd79-e585-48b5-a581-b54f2703e5cd",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Patient",
+        "id": "b34d4ee0-d73f-44b3-a03d-05988975905e",
+        "name": [
+          {
+            "use": "official",
+            "family": "Nguyen",
+            "given": [
+              "Aisha"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1965-09-12",
+        "address": [
+          {
+            "use": "home",
+            "line": [
+              "789 Oak Street"
+            ],
+            "city": "San Francisco",
+            "state": "CA",
+            "postalCode": "94107",
+            "country": "USA"
+          }
+        ],
+        "telecom": [
+          {
+            "system": "phone",
+            "value": "(415) 555-1234",
+            "use": "home"
+          },
+          {
+            "system": "email",
+            "value": "aisha.nguyen@example.com",
+            "use": "home"
+          }
+        ],
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity",
+            "valueString": "Asian"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+        "name": [
+          {
+            "use": "official",
+            "family": "Johnson",
+            "given": [
+              "Dr. Sarah"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ],
+        "qualification": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0360",
+                  "code": "MD",
+                  "display": "Doctor of Medicine"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Organization",
+        "id": "d168cfe9-39cb-4011-8f78-e8badf9b0f48",
+        "name": "Comprehensive Cancer Center",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ]
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Organization/d168cfe9-39cb-4011-8f78-e8badf9b0f48"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Condition",
+        "id": "7bdf5a57-d885-42f0-9431-8593b14b227e",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+              "code": "resolved",
+              "display": "Resolved"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+              "code": "confirmed",
+              "display": "Confirmed"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "49436004",
+              "display": "atrial fibrillation"
+            }
+          ],
+          "text": "atrial fibrillation"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "onsetDateTime": "2021-03-15",
+        "recordedDate": "2021-04-02"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "CarePlan",
+        "id": "fac132bf-cbbf-4ff8-91e7-79b30ad9b3d8",
+        "status": "active",
+        "intent": "plan",
+        "title": "Treatment plan for atrial fibrillation",
+        "description": "Comprehensive treatment plan including Cardioversion, Medication adjustment, Monitoring",
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "period": {
+          "start": "2021-04-10"
+        },
+        "addresses": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ],
+        "author": [
+          {
+            "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+            "display": "Dr. Sarah Johnson"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "CarePlan/fac132bf-cbbf-4ff8-91e7-79b30ad9b3d8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "73463333-c68e-47de-8791-51947db33ab2",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "IMP",
+          "display": "Inpatient"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Cardioversion procedure"
+              }
+            ],
+            "text": "Cardioversion procedure"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-04-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d168cfe9-39cb-4011-8f78-e8badf9b0f48",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/73463333-c68e-47de-8791-51947db33ab2"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "5579eb38-ad03-4b99-8d2e-284b05bf11b9",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Cardioversion"
+            }
+          ],
+          "text": "Cardioversion"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/73463333-c68e-47de-8791-51947db33ab2"
+        },
+        "performedDateTime": "2021-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/5579eb38-ad03-4b99-8d2e-284b05bf11b9"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "2a9d4a71-3c5a-481e-b35e-3ef76d52d9a4",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Amiodarone"
+            }
+          ],
+          "text": "Amiodarone"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/73463333-c68e-47de-8791-51947db33ab2"
+        },
+        "effectiveDateTime": "2021-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/2a9d4a71-3c5a-481e-b35e-3ef76d52d9a4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "d0c7e1ef-f3b1-453c-9a84-c6ecb5becc5d",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Heparin"
+            }
+          ],
+          "text": "Heparin"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/73463333-c68e-47de-8791-51947db33ab2"
+        },
+        "effectiveDateTime": "2021-04-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/d0c7e1ef-f3b1-453c-9a84-c6ecb5becc5d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "bcf3298b-cbd1-45b7-a0ff-4adbb0315474",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Monitoring post-cardioversion"
+              }
+            ],
+            "text": "Monitoring post-cardioversion"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-04-20"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d168cfe9-39cb-4011-8f78-e8badf9b0f48",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/bcf3298b-cbd1-45b7-a0ff-4adbb0315474"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "9094943e-35a9-4ce4-b923-f11a1341071a",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "EKG"
+            }
+          ],
+          "text": "EKG"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/bcf3298b-cbd1-45b7-a0ff-4adbb0315474"
+        },
+        "performedDateTime": "2021-04-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/9094943e-35a9-4ce4-b923-f11a1341071a"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "ab0bed39-660e-4e02-a909-b4ce8a502c84",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Warfarin"
+            }
+          ],
+          "text": "Warfarin"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/bcf3298b-cbd1-45b7-a0ff-4adbb0315474"
+        },
+        "effectiveDateTime": "2021-04-20",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/ab0bed39-660e-4e02-a909-b4ce8a502c84"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "2092a6b7-4627-43fd-ae02-fd423ae6f4a3",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Medication adjustment"
+              }
+            ],
+            "text": "Medication adjustment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-05-06"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d168cfe9-39cb-4011-8f78-e8badf9b0f48",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/2092a6b7-4627-43fd-ae02-fd423ae6f4a3"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "af1df4de-3346-4dd7-9be2-08e58e01be65",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Blood tests"
+            }
+          ],
+          "text": "Blood tests"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/2092a6b7-4627-43fd-ae02-fd423ae6f4a3"
+        },
+        "performedDateTime": "2021-05-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/af1df4de-3346-4dd7-9be2-08e58e01be65"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "57dd2dcc-e826-406c-8546-6bb5104b3e4b",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Diltiazem"
+            }
+          ],
+          "text": "Diltiazem"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/2092a6b7-4627-43fd-ae02-fd423ae6f4a3"
+        },
+        "effectiveDateTime": "2021-05-06",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/57dd2dcc-e826-406c-8546-6bb5104b3e4b"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "0af47797-21c6-4aa5-9aa6-527dce38dcc4",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Follow-up visit"
+              }
+            ],
+            "text": "Follow-up visit"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-06-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d168cfe9-39cb-4011-8f78-e8badf9b0f48",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/0af47797-21c6-4aa5-9aa6-527dce38dcc4"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Procedure",
+        "id": "328ace49-8bd9-42a7-afc3-bb7d6dece6f8",
+        "status": "completed",
+        "code": {
+          "coding": [
+            {
+              "system": "http://snomed.info/sct",
+              "code": "387713003",
+              "display": "Echocardiogram"
+            }
+          ],
+          "text": "Echocardiogram"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "encounter": {
+          "reference": "Encounter/0af47797-21c6-4aa5-9aa6-527dce38dcc4"
+        },
+        "performedDateTime": "2021-06-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Procedure/328ace49-8bd9-42a7-afc3-bb7d6dece6f8"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "MedicationAdministration",
+        "id": "50ed6fe5-e519-4aa6-8e65-63f01894c192",
+        "status": "completed",
+        "medicationCodeableConcept": {
+          "coding": [
+            {
+              "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+              "code": "123456",
+              "display": "Aspirin"
+            }
+          ],
+          "text": "Aspirin"
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "context": {
+          "reference": "Encounter/0af47797-21c6-4aa5-9aa6-527dce38dcc4"
+        },
+        "effectiveDateTime": "2021-06-10",
+        "performer": [
+          {
+            "actor": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ],
+        "dosage": {
+          "text": "As prescribed per protocol",
+          "route": {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "47625008",
+                "display": "Intravenous route"
+              }
+            ]
+          },
+          "dose": {
+            "value": 1,
+            "unit": "dose",
+            "system": "http://unitsofmeasure.org",
+            "code": "1"
+          }
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationAdministration/50ed6fe5-e519-4aa6-8e65-63f01894c192"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "2ec3396d-dfd2-4c18-9f32-db9e9b1b28fd",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Routine follow-up"
+              }
+            ],
+            "text": "Routine follow-up"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-07-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d168cfe9-39cb-4011-8f78-e8badf9b0f48",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/2ec3396d-dfd2-4c18-9f32-db9e9b1b28fd"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "7ae046a9-e353-47ab-ac2d-035c87f8239f",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Holter monitor evaluation"
+              }
+            ],
+            "text": "Holter monitor evaluation"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-08-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d168cfe9-39cb-4011-8f78-e8badf9b0f48",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/7ae046a9-e353-47ab-ac2d-035c87f8239f"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Encounter",
+        "id": "95865ede-2ffd-45c9-94e3-ba745254037d",
+        "status": "finished",
+        "class": {
+          "system": "http://terminology.hl7.org/CodeSystem/v3-ActCode",
+          "code": "AMB",
+          "display": "Ambulatory"
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://snomed.info/sct",
+                "code": "308646001",
+                "display": "Final assessment"
+              }
+            ],
+            "text": "Final assessment"
+          }
+        ],
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "participant": [
+          {
+            "individual": {
+              "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+              "display": "Dr. Sarah Johnson"
+            }
+          }
+        ],
+        "period": {
+          "start": "2021-09-10"
+        },
+        "serviceProvider": {
+          "reference": "Organization/d168cfe9-39cb-4011-8f78-e8badf9b0f48",
+          "display": "Comprehensive Cancer Center"
+        },
+        "reasonReference": [
+          {
+            "reference": "Condition/7bdf5a57-d885-42f0-9431-8593b14b227e",
+            "display": "atrial fibrillation"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Encounter/95865ede-2ffd-45c9-94e3-ba745254037d"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0074",
+                "code": "RAD",
+                "display": "Radiology"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "18748-4",
+              "display": "Diagnostic imaging study"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "effectiveDateTime": "2021-06-10",
+        "performer": [
+          {
+            "reference": "Practitioner/d49b60f5-361a-42d2-93c0-a4893a29a3fc",
+            "display": "Dr. Sarah Johnson"
+          }
+        ],
+        "conclusion": "Patient shows improving status for atrial fibrillation. Aisha Nguyen, a 56-year-old Asian female, presented with moderate atrial fibrillation. She underwent cardioversion with subsequent medication adjustments. Follow-up monitoring showed improvement in her condition."
+      },
+      "request": {
+        "method": "POST",
+        "url": "DiagnosticReport"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Observation",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                "code": "clinical",
+                "display": "Clinical"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "11323-3",
+              "display": "Health status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/b34d4ee0-d73f-44b3-a03d-05988975905e",
+          "display": "Aisha Nguyen"
+        },
+        "valueString": "improving",
+        "effectiveDateTime": "2021-06-10"
+      },
+      "request": {
+        "method": "POST",
+        "url": "Observation"
+      }
+    }
+  ]
+}
