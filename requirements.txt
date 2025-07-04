@@ -1,0 +1,40 @@
+# Core FHIR Server Dependencies
+aiohttp>=3.8.0
+python-dotenv>=1.0.0
+fastmcp>=2.7.1
+mcp[cli]>=1.9.3
+mcp-use>=1.3.1
+
+# AI and Language Processing
+langchain-openai>=0.1.7,<0.2.0
+openai>=1.86.0
+
+# Utilities and Tools
+rich>=13.7.0,<14.0.0
+setuptools>=80.9.0
+tenacity>=8.0.0
+async>=0.6.2
+dataclasses-json>=0.5.0
+
+# Agent Workflow
+#crewai>=0.30.11
+#crewai-tools>=0.8.3
+
+# Async Support
+nest-asyncio>=1.5.6
+
+# Logging and Monitoring
+logging>=0.5.1.2
+python-json-logger>=2.0.0
+
+# Type Hints
+typing-extensions>=4.5.0
+
+# Date/Time Handling
+python-dateutil>=2.8.2
+
+# HTTP and Network
+requests>=2.31.0
+urllib3>=2.0.0
+
+# No additional external dependencies needed - all other imports are built-in Python modules 
