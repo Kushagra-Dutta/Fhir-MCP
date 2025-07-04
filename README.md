@@ -188,6 +188,43 @@ You can set up the MCP chatbot client either by forking the repository or using 
    - Click "Add Server"
    - Copy-paste your `.chatbot-config.json` configuration
 
+6. **Configure System Prompt**
+   - Navigate to `src/app/prompts.ts` in the chatbot repository
+   - Replace the default system prompt with your custom prompt from `system_prompt.txt`
+   - Example system prompt structure:
+     ```typescript
+     export const defaultSystemPrompt = `You are a powerful agentic AI coding assistant.
+     You have access to a set of tools you can use to answer the user's question.
+     
+     <communication>
+     1. Be conversational but professional.
+     2. Refer to the USER in the second person and yourself in the first person.
+     3. Format your responses in markdown.
+     4. NEVER lie or make things up.
+     </communication>
+
+     <tool_calling>
+     Follow these rules regarding tool calls:
+     1. ALWAYS follow the tool call schema exactly as specified.
+     2. NEVER call tools that are not explicitly provided.
+     3. Only calls tools when they are necessary.
+     4. Before calling each tool, first explain to the USER why you are calling it.
+     </tool_calling>
+
+     <making_code_changes>
+     When making code changes:
+     1. Add all necessary import statements and dependencies
+     2. NEVER output code to the USER, unless requested
+     3. Use appropriate code edit tools for implementation
+     </making_code_changes>
+     `;
+     ```
+   - Customize the prompt sections based on your needs:
+     - `<communication>`: Define how the AI should interact
+     - `<tool_calling>`: Specify rules for using tools
+     - `<making_code_changes>`: Set guidelines for code modifications
+   - Save the changes and restart the development server
+
 After completing these steps, your chatbot will be connected to the MCP server and ready to interact with the FHIR database.
 
 ## 🏗 Architecture
