@@ -1,0 +1,127 @@
+These are the tools available in my mcp server which takes the input the user query with age gender condition procedures(optional) and medication(optional) age gender and condition should be must if it is not given then output the not mentioned and ask for it Okay now Your flow will be take input from user as string, then connect to the server user mentioned using test server connectivity or list available servers tool then extract clinical keywords using the tool then find the condition codes from the database using map_to_fhir_codes_fast then using this we have to find similar patient ids using find similar patients simple tool For top 5 similar patients we have to extract the medical data using tool get_comprehensive_patient_info tool At the last we have all the procedures,encounters, medical info and careplan. The tools are designed in such a way that ones output is another tools input in the flow   Just wait for my query now
+
+Sample input for map_to_fhir_codes_fast is
+{
+  "age": 45,
+  "gender": "F",
+  "conditions": [
+    "pancreatic adenocarcinoma"
+  ],
+  "stage": null,
+  "procedures": [],
+  "medications": [],
+  "biomarkers": [],
+  "symptoms": [],
+  "timeline": [],
+  "raw_text": "My patient is 45 F and having pancreatic adenocarcinoma",
+  "extraction_method": "openai_gpt4"
+}
+
+
+Sample input for find similar patients simple tool is
+{
+  "age": 45,
+  "gender": "F",
+  "conditions": [
+    "pancreatic adenocarcinoma"
+  ],
+  "stage": null,
+  "procedures": [],
+  "medications": [],
+  "biomarkers": [],
+  "symptoms": [],
+  "timeline": [],
+  "raw_text": "My patient is 45 F and having pancreatic adenocarcinoma",
+  "extraction_method": "openai_gpt4",
+  "condition_codes": [
+    {
+      "term": "pancreatic adenocarcinoma",
+      "matches": [
+        {
+          "name": "pancreatic adenocarcinoma",
+          "code": "372142002",
+          "similarity": 1
+        }
+      ]
+    }
+  ],
+  "procedure_codes": [],
+  "medication_codes": [],
+  "mapping_method": "fhir_server_fuzzy_matching_fast",
+  "similarity_threshold": 0.6
+}
+
+
+Sample input for get comprehensive patient info is
+{
+  "search_criteria": {
+    "age": 45,
+    "gender": "f",
+    "age_tolerance": 10,
+    "condition_count": 1
+  },
+  "total_found": 3,
+  "returned": 3,
+  "patients": [
+    {
+      "patient_id": "8aa31ec6-76d3-494a-a865-82dd9be7c2a7",
+      "server": "firely_local",
+      "total_score": 0,
+      "score_breakdown": {
+        "age_score": 0,
+        "gender_score": 0,
+        "total_score": 0,
+        "patient_age": 59,
+        "patient_gender": "female"
+      },
+      "matched_condition": "pancreatic adenocarcinoma",
+      "matched_code": "372142002",
+      "patient_info": {
+        "name": "Aisha Nguyen",
+        "age": 59,
+        "gender": "female",
+        "birth_date": "1965-07-12"
+      }
+    },
+    {
+      "patient_id": "a2375398-8ea2-465e-a292-0bd579bbb0fb",
+      "server": "firely_local",
+      "total_score": 0,
+      "score_breakdown": {
+        "age_score": 0,
+        "gender_score": 0,
+        "total_score": 0,
+        "patient_age": 59,
+        "patient_gender": "male"
+      },
+      "matched_condition": "pancreatic adenocarcinoma",
+      "matched_code": "372142002",
+      "patient_info": {
+        "name": "Naoki Abadi",
+        "age": 59,
+        "gender": "male",
+        "birth_date": "1965-09-12"
+      }
+    },
+    {
+      "patient_id": "c8b08e73-d9b6-4504-b277-ecafb5a8a4da",
+      "server": "firely_local",
+      "total_score": 0,
+      "score_breakdown": {
+        "age_score": 0,
+        "gender_score": 0,
+        "total_score": 0,
+        "patient_age": 59,
+        "patient_gender": "female"
+      },
+      "matched_condition": "pancreatic adenocarcinoma",
+      "matched_code": "372142002",
+      "patient_info": {
+        "name": "Sarita Nguyen",
+        "age": 59,
+        "gender": "female",
+        "birth_date": "1965-09-12"
+      }
+    }
+  ]
+}
