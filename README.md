@@ -1,3 +1,4 @@
+
 # FHIR Careplan - Universal FHIR Server and Tools
 
 A comprehensive FHIR (Fast Healthcare Interoperability Resources) server and toolkit designed for healthcare data integration, patient care planning, and clinical decision support. This project provides a universal interface to multiple FHIR servers with advanced AI-powered clinical analysis capabilities.
@@ -502,3 +503,6 @@ Each error is displayed with helpful suggestions for resolution.
 ---
 
 *Built with ❤️ for healthcare interoperability and patient care improvement* 
+=======
+# Fhir-MCP
+
