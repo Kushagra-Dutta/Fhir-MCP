@@ -46,7 +46,7 @@ The FHIR Careplan project consists of two main components:
 
 1. **Clone the Repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Kushagra-Dutta/Fhir-MCP.git
    cd FHIR-MCP
    ```
 
