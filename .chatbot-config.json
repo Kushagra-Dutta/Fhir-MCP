@@ -2,9 +2,9 @@
     "command": "uv",
     "args": [
       "--directory",
-      "C:\\Users\\aashr\\FHIR-Careplan",
+      "D:\\Prodoc\\Fhir-MCP",
       "run",
       "fhir_server.py"
     ]
-  }
+}
   

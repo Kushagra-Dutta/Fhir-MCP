@@ -1,0 +1,18 @@
+{
+  "Fhir": {
+    "Rest": {
+      "Interaction": {
+        "Bundle": [ "transaction", "read", "search", "create" ,"update"],
+        "Encounter": [ "read", "create", "update" ],
+        "MedicationAdministration": [ "read", "create", "update" ],
+        "Procedure": [ "read", "create", "update" ],
+        "Patient": [ "read", "create","update" ],
+        "Practitioner": [ "read", "create","update" ],
+        "Condition": [ "read", "create","update" ],
+        "Organization": [ "read", "create","update" ],
+        "CarePlan": [ "read", "create","update" ],
+        "DiagnosticReport": [ "read", "create","update" ]
+      }
+    }
+  }
+}

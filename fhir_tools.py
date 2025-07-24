@@ -13,6 +13,7 @@ from datetime import datetime, timedelta
 from urllib.parse import urljoin, urlparse
 import base64
 from dotenv import load_dotenv
+import time
 
 # Set up logging to stderr only
 logging.basicConfig(
@@ -1773,6 +1774,7 @@ class UniversalFhirMcpServer:
             ) as response:
                 if response.status == 200:
                     result = await response.json()
+                    logger.info(f"Result : {result}")
                     extracted_data = json.loads(result['choices'][0]['message']['content'])
                     extracted_data['raw_text'] = text
                     extracted_data['extraction_method'] = 'openai_gpt4'
@@ -1835,135 +1837,135 @@ class UniversalFhirMcpServer:
         
         return min(final_similarity, 1.0)  # Cap at 1.0
 
-    async def map_to_fhir_codes(self, clinical_data: Dict[str, Any], 
-                               servers: List[str] = None,
-                               similarity_threshold: float = 0.6,
-                               max_matches: int = 3,
-                               clean_output: bool = True) -> Dict[str, Any]:
-        """Map extracted clinical terms to FHIR codes using actual server data with fuzzy matching"""
-        logger.info("Starting FHIR code mapping using actual server data")
-        logger.debug(f"Input clinical data: {json.dumps(clinical_data, indent=2)}")
+    # async def map_to_fhir_codes(self, clinical_data: Dict[str, Any], 
+    #                            servers: List[str] = None,
+    #                            similarity_threshold: float = 0.6,
+    #                            max_matches: int = 3,
+    #                            clean_output: bool = True) -> Dict[str, Any]:
+    #     """Map extracted clinical terms to FHIR codes using actual server data with fuzzy matching"""
+    #     logger.info("Starting FHIR code mapping using actual server data")
+    #     logger.debug(f"Input clinical data: {json.dumps(clinical_data, indent=2)}")
         
-        try:
-            conditions = clinical_data.get("conditions", [])
-            procedures = clinical_data.get("procedures", [])
-            medications = clinical_data.get("medications", [])
+    #     try:
+    #         conditions = clinical_data.get("conditions", [])
+    #         procedures = clinical_data.get("procedures", [])
+    #         medications = clinical_data.get("medications", [])
             
-            logger.debug(f"Found {len(conditions)} conditions, {len(procedures)} procedures, {len(medications)} medications to map")
+    #         logger.debug(f"Found {len(conditions)} conditions, {len(procedures)} procedures, {len(medications)} medications to map")
             
-            if not (conditions or procedures or medications):
-                logger.warning("No clinical terms found to map to FHIR codes.")
-                return clinical_data
+    #         if not (conditions or procedures or medications):
+    #             logger.warning("No clinical terms found to map to FHIR codes.")
+    #             return clinical_data
             
-            # Extract actual condition codes from FHIR servers
-            logger.info("Extracting condition codes from FHIR servers...")
-            server_condition_codes = await self.extract_condition_codes_from_fhir(servers)
+    #         # Extract actual condition codes from FHIR servers
+    #         logger.info("Extracting condition codes from FHIR servers...")
+    #         server_condition_codes = await self.extract_condition_codes_from_fhir(servers)
             
-            # Aggregate all conditions from all servers
-            all_fhir_conditions = []
-            for server_data in server_condition_codes.values():
-                if server_data["status"] == "success":
-                    all_fhir_conditions.extend(server_data["conditions"])
+    #         # Aggregate all conditions from all servers
+    #         all_fhir_conditions = []
+    #         for server_data in server_condition_codes.values():
+    #             if server_data["status"] == "success":
+    #                 all_fhir_conditions.extend(server_data["conditions"])
             
-            logger.info(f"Total FHIR conditions available for matching: {len(all_fhir_conditions)}")
+    #         logger.info(f"Total FHIR conditions available for matching: {len(all_fhir_conditions)}")
             
-            # Map conditions using fuzzy matching
-            condition_codes = []
-            for condition in conditions:
-                logger.debug(f"Mapping condition: {condition}")
+    #         # Map conditions using fuzzy matching
+    #         condition_codes = []
+    #         for condition in conditions:
+    #             logger.debug(f"Mapping condition: {condition}")
                 
-                best_matches = []
-                condition_lower = condition.lower().strip()
+    #             best_matches = []
+    #             condition_lower = condition.lower().strip()
                 
-                # Find all matches above threshold
-                for fhir_condition in all_fhir_conditions:
-                    similarity = self._calculate_text_similarity(condition_lower, fhir_condition["searchable_name"])
+    #             # Find all matches above threshold
+    #             for fhir_condition in all_fhir_conditions:
+    #                 similarity = self._calculate_text_similarity(condition_lower, fhir_condition["searchable_name"])
                     
-                    if similarity >= similarity_threshold:
-                        match = {
-                            "similarity": similarity,
-                            "name": fhir_condition["display"] or fhir_condition["text"],
-                            "code": fhir_condition["code"],
-                            "system": fhir_condition["system"]
-                        }
-                        best_matches.append(match)
+    #                 if similarity >= similarity_threshold:
+    #                     match = {
+    #                         "similarity": similarity,
+    #                         "name": fhir_condition["display"] or fhir_condition["text"],
+    #                         "code": fhir_condition["code"],
+    #                         "system": fhir_condition["system"]
+    #                     }
+    #                     best_matches.append(match)
                 
-                # Sort by similarity and take top matches
-                best_matches.sort(key=lambda x: x["similarity"], reverse=True)
-                top_matches = best_matches[:max_matches]
+    #             # Sort by similarity and take top matches
+    #             best_matches.sort(key=lambda x: x["similarity"], reverse=True)
+    #             top_matches = best_matches[:max_matches]
                 
-                if top_matches:
-                    if clean_output:
-                        # Clean output format - just essential info
-                        condition_mapping = {
-                            "term": condition,
-                            "matches": [
-                                {
-                                    "name": match["name"],
-                                    "code": match["code"],
-                                    "similarity": round(match["similarity"], 2)
-                                }
-                                for match in top_matches
-                            ]
-                        }
-                    else:
-                        # Full output format for compatibility
-                        codes = []
-                        for match in top_matches:
-                            if match["system"] and match["code"]:
-                                codes.append(f"{match['system']}|{match['code']}")
-                            elif match["code"]:
-                                codes.append(match["code"])
+    #             if top_matches:
+    #                 if clean_output:
+    #                     # Clean output format - just essential info
+    #                     condition_mapping = {
+    #                         "term": condition,
+    #                         "matches": [
+    #                             {
+    #                                 "name": match["name"],
+    #                                 "code": match["code"],
+    #                                 "similarity": round(match["similarity"], 2)
+    #                             }
+    #                             for match in top_matches
+    #                         ]
+    #                     }
+    #                 else:
+    #                     # Full output format for compatibility
+    #                     codes = []
+    #                     for match in top_matches:
+    #                         if match["system"] and match["code"]:
+    #                             codes.append(f"{match['system']}|{match['code']}")
+    #                         elif match["code"]:
+    #                             codes.append(match["code"])
                         
-                        condition_mapping = {
-                            "term": condition,
-                            "codes": codes,
-                            "matches": [
-                                {
-                                    "display": match["name"],
-                                    "similarity": round(match["similarity"], 3),
-                                    "code": match["code"],
-                                    "system": match["system"]
-                                }
-                                for match in top_matches
-                            ]
-                        }
+    #                     condition_mapping = {
+    #                         "term": condition,
+    #                         "codes": codes,
+    #                         "matches": [
+    #                             {
+    #                                 "display": match["name"],
+    #                                 "similarity": round(match["similarity"], 3),
+    #                                 "code": match["code"],
+    #                                 "system": match["system"]
+    #                             }
+    #                             for match in top_matches
+    #                         ]
+    #                     }
                     
-                    condition_codes.append(condition_mapping)
-                    logger.debug(f"Found {len(top_matches)} matches for '{condition}'")
-                else:
-                    logger.debug(f"No matches found for condition: {condition} (threshold: {similarity_threshold})")
+    #                 condition_codes.append(condition_mapping)
+    #                 logger.debug(f"Found {len(top_matches)} matches for '{condition}'")
+    #             else:
+    #                 logger.debug(f"No matches found for condition: {condition} (threshold: {similarity_threshold})")
             
-            # For now, we'll focus on conditions. Later we can extend to procedures and medications
-            # TODO: Add similar logic for procedures and medications
-            procedure_codes = []
-            medication_codes = []
+    #         # For now, we'll focus on conditions. Later we can extend to procedures and medications
+    #         # TODO: Add similar logic for procedures and medications
+    #         procedure_codes = []
+    #         medication_codes = []
             
-            # Add the mapped codes to clinical data
-            clinical_data['condition_codes'] = condition_codes
-            clinical_data['procedure_codes'] = procedure_codes  # Placeholder
-            clinical_data['medication_codes'] = medication_codes  # Placeholder
-            clinical_data['mapping_method'] = 'fhir_server_fuzzy_matching'
-            clinical_data['similarity_threshold'] = similarity_threshold
+    #         # Add the mapped codes to clinical data
+    #         clinical_data['condition_codes'] = condition_codes
+    #         clinical_data['procedure_codes'] = procedure_codes  # Placeholder
+    #         clinical_data['medication_codes'] = medication_codes  # Placeholder
+    #         clinical_data['mapping_method'] = 'fhir_server_fuzzy_matching'
+    #         clinical_data['similarity_threshold'] = similarity_threshold
             
-            # Only include server condition codes if not using clean output
-            if not clean_output:
-                clinical_data['server_condition_codes'] = server_condition_codes
+    #         # Only include server condition codes if not using clean output
+    #         if not clean_output:
+    #             clinical_data['server_condition_codes'] = server_condition_codes
             
-            logger.info(f"Successfully mapped {len(condition_codes)} conditions using FHIR server data")
+    #         logger.info(f"Successfully mapped {len(condition_codes)} conditions using FHIR server data")
             
-            # Log detailed mapping results
-            for condition_mapping in condition_codes:
-                logger.debug(f"Condition mapping: {condition_mapping['term']} -> {len(condition_mapping['matches'])} matches")
-                for match in condition_mapping['matches']:
-                    logger.debug(f"  - {match['name']} (similarity: {match.get('similarity', 'N/A')})")
+    #         # Log detailed mapping results
+    #         for condition_mapping in condition_codes:
+    #             logger.debug(f"Condition mapping: {condition_mapping['term']} -> {len(condition_mapping['matches'])} matches")
+    #             for match in condition_mapping['matches']:
+    #                 logger.debug(f"  - {match['name']} (similarity: {match.get('similarity', 'N/A')})")
                     
-            return clinical_data
+    #         return clinical_data
                     
-        except Exception as e:
-            logger.error(f"Error mapping to FHIR codes using server data: {str(e)}", exc_info=True)
-            # Fallback to original clinical data
-            return clinical_data
+    #     except Exception as e:
+    #         logger.error(f"Error mapping to FHIR codes using server data: {str(e)}", exc_info=True)
+    #         # Fallback to original clinical data
+    #         return clinical_data
 
     async def map_to_fhir_codes_fast(self, clinical_data: Dict[str, Any], 
                                     servers: List[str] = None,
@@ -1992,7 +1994,7 @@ class UniversalFhirMcpServer:
                 use_cache=True,
                 max_pages=2  # Reduced from 10
             )
-            
+            logger.info(f"server_conditions : {server_condition_codes}")
             # Aggregate all conditions from all servers
             all_fhir_conditions = []
             for server_data in server_condition_codes.values():
@@ -2008,7 +2010,7 @@ class UniversalFhirMcpServer:
                 
                 best_matches = []
                 condition_lower = condition.lower().strip()
-                
+                logger.info(f"all fhir condition : {all_fhir_conditions}")
                 # Find all matches above threshold
                 for fhir_condition in all_fhir_conditions:
                     similarity = self._calculate_text_similarity(condition_lower, fhir_condition["searchable_name"])
@@ -2059,147 +2061,148 @@ class UniversalFhirMcpServer:
             # Fallback to original clinical data
             return clinical_data
 
-    async def find_similar_patients(self, criteria: Dict[str, Any], 
-                                  servers: List[str] = None, 
-                                  max_results: int = 10) -> Dict[str, Any]:
-        """Find patients with similar clinical profiles"""
-        target_servers = servers or [self.current_server]
+    # async def find_similar_patients(self, criteria: Dict[str, Any], 
+    #                               servers: List[str] = None, 
+    #                               max_results: int = 10) -> Dict[str, Any]:
+    #     """Find patients with similar clinical profiles"""
+    #     target_servers = servers or [self.current_server]
         
-        # First, map clinical terms to codes if not already done
-        if 'condition_codes' not in criteria:
-            criteria = await self.map_to_fhir_codes(criteria)
+    #     # First, map clinical terms to codes if not already done
+    #     if 'condition_codes' not in criteria:
+    #         criteria = await self.map_to_fhir_codes(criteria)
         
-        all_matches = []
+    #     all_matches = []
         
-        for server_name in target_servers:
-            server_matches = []
+    #     for server_name in target_servers:
+    #         server_matches = []
             
-            # Search using condition codes
-            condition_codes = []
-            for condition_mapping in criteria.get("condition_codes", []):
-                condition_codes.extend(condition_mapping.get("codes", []))
+    #         # Search using condition codes
+    #         condition_codes = []
+    #         for condition_mapping in criteria.get("condition_codes", []):
+    #             condition_codes.extend(condition_mapping.get("codes", []))
             
-            # Also search by raw condition terms if no codes found
-            if not condition_codes and criteria.get("conditions"):
-                for condition in criteria["conditions"]:
-                    condition_codes.append(condition)
+
+    #         # Also search by raw condition terms if no codes found
+    #         if not condition_codes and criteria.get("conditions"):
+    #             for condition in criteria["conditions"]:
+    #                 condition_codes.append(condition)
             
-            # Search for matching conditions
-            for code in condition_codes:
-                try:
-                    # Try searching by code first
-                    condition_result = await self.universal_fhir_query(
-                        "Condition",
-                        server_name=server_name,
-                        code=code,
-                        _count="100"
-                    )
+    #         # Search for matching conditions
+    #         for code in condition_codes:
+    #             try:
+    #                 # Try searching by code first
+    #                 condition_result = await self.universal_fhir_query(
+    #                     "Condition",
+    #                     server_name=server_name,
+    #                     code=code,
+    #                     _count="100"
+    #                 )
                     
-                    # If no results with code, try text search
-                    if condition_result["status"] != "success" or not condition_result.get("resources"):
-                        condition_result = await self.universal_fhir_query(
-                            "Condition",
-                            server_name=server_name,
-                            _text=code,  # Text search
-                            _count="100"
-                        )
+    #                 # If no results with code, try text search
+    #                 if condition_result["status"] != "success" or not condition_result.get("resources"):
+    #                     condition_result = await self.universal_fhir_query(
+    #                         "Condition",
+    #                         server_name=server_name,
+    #                         _text=code,  # Text search
+    #                         _count="100"
+    #                     )
                     
-                    if condition_result["status"] == "success":
-                        # Extract unique patient IDs from conditions
-                        patient_ids = set()
-                        for resource in condition_result.get("resources", []):
-                            subject = resource.get("subject", {})
-                            if subject.get("reference"):
-                                patient_id = subject["reference"].split("/")[-1]
-                                patient_ids.add(patient_id)
+    #                 if condition_result["status"] == "success":
+    #                     # Extract unique patient IDs from conditions
+    #                     patient_ids = set()
+    #                     for resource in condition_result.get("resources", []):
+    #                         subject = resource.get("subject", {})
+    #                         if subject.get("reference"):
+    #                             patient_id = subject["reference"].split("/")[-1]
+    #                             patient_ids.add(patient_id)
                         
-                        # Score each patient
-                        for patient_id in patient_ids:
-                            match_score = await self._calculate_patient_match_score_advanced(
-                                patient_id, criteria, server_name
-                            )
+    #                     # Score each patient
+    #                     for patient_id in patient_ids:
+    #                         match_score = await self._calculate_patient_match_score_advanced(
+    #                             patient_id, criteria, server_name
+    #                         )
                             
-                            if match_score["total_score"] > 0:
-                                server_matches.append({
-                                    "patient_id": patient_id,
-                                    "server": server_name,
-                                    "match_details": match_score,
-                                    "score": match_score["total_score"]
-                                })
+    #                         if match_score["total_score"] > 0:
+    #                             server_matches.append({
+    #                                 "patient_id": patient_id,
+    #                                 "server": server_name,
+    #                                 "match_details": match_score,
+    #                                 "score": match_score["total_score"]
+    #                             })
                 
-                except Exception as e:
-                    logger.error(f"Error searching conditions on {server_name}: {str(e)}")
+    #             except Exception as e:
+    #                 logger.error(f"Error searching conditions on {server_name}: {str(e)}")
             
-            # Sort by match score
-            server_matches.sort(key=lambda x: x["score"], reverse=True)
-            all_matches.extend(server_matches[:max_results])
+    #         # Sort by match score
+    #         server_matches.sort(key=lambda x: x["score"], reverse=True)
+    #         all_matches.extend(server_matches[:max_results])
         
-        # Remove duplicates and sort
-        unique_matches = {}
-        for match in all_matches:
-            key = f"{match['server']}:{match['patient_id']}"
-            if key not in unique_matches or match['score'] > unique_matches[key]['score']:
-                unique_matches[key] = match
+    #     # Remove duplicates and sort
+    #     unique_matches = {}
+    #     for match in all_matches:
+    #         key = f"{match['server']}:{match['patient_id']}"
+    #         if key not in unique_matches or match['score'] > unique_matches[key]['score']:
+    #             unique_matches[key] = match
         
-        sorted_matches = sorted(unique_matches.values(), key=lambda x: x['score'], reverse=True)
+    #     sorted_matches = sorted(unique_matches.values(), key=lambda x: x['score'], reverse=True)
         
-        # Get detailed information for top matches
-        detailed_matches = []
-        for match in sorted_matches[:max_results]:
-            try:
-                # Get patient demographics
-                patient_data = await self.universal_fhir_query(
-                    "Patient",
-                    server_name=match["server"],
-                    _id=match["patient_id"]
-                )
+    #     # Get detailed information for top matches
+    #     detailed_matches = []
+    #     for match in sorted_matches[:max_results]:
+    #         try:
+    #             # Get patient demographics
+    #             patient_data = await self.universal_fhir_query(
+    #                 "Patient",
+    #                 server_name=match["server"],
+    #                 _id=match["patient_id"]
+    #             )
                 
-                if patient_data["status"] == "success" and patient_data.get("resources"):
-                    patient_resource = patient_data["resources"][0]
+    #             if patient_data["status"] == "success" and patient_data.get("resources"):
+    #                 patient_resource = patient_data["resources"][0]
                     
-                    # Get care plans
-                    care_plans = await self.get_patient_careplans(
-                        match["patient_id"],
-                        servers=[match["server"]]
-                    )
+    #                 # Get care plans
+    #                 care_plans = await self.get_patient_careplans(
+    #                     match["patient_id"],
+    #                     servers=[match["server"]]
+    #                 )
                     
-                    # Get recent procedures
-                    procedures = await self.get_patient_procedures(
-                        match["patient_id"],
-                        servers=[match["server"]],
-                        _count="10"
-                    )
+    #                 # Get recent procedures
+    #                 procedures = await self.get_patient_procedures(
+    #                     match["patient_id"],
+    #                     servers=[match["server"]],
+    #                     _count="10"
+    #                 )
                     
-                    # Get outcomes (observations)
-                    outcomes = await self.get_patient_observations(
-                        match["patient_id"],
-                        servers=[match["server"]],
-                        _count="20"
-                    )
+    #                 # Get outcomes (observations)
+    #                 outcomes = await self.get_patient_observations(
+    #                     match["patient_id"],
+    #                     servers=[match["server"]],
+    #                     _count="20"
+    #                 )
                     
-                    detailed_match = {
-                        "patient_id": match["patient_id"],
-                        "server": match["server"],
-                        "match_score": match["score"],
-                        "match_details": match["match_details"],
-                        "demographics": self._extract_patient_demographics(patient_resource),
-                        "care_plans": care_plans.get(match["server"], {}).get("resources", []),
-                        "recent_procedures": procedures.get(match["server"], {}).get("resources", []),
-                        "outcomes": self._extract_significant_outcomes(
-                            outcomes.get(match["server"], {}).get("resources", [])
-                        )
-                    }
+    #                 detailed_match = {
+    #                     "patient_id": match["patient_id"],
+    #                     "server": match["server"],
+    #                     "match_score": match["score"],
+    #                     "match_details": match["match_details"],
+    #                     "demographics": self._extract_patient_demographics(patient_resource),
+    #                     "care_plans": care_plans.get(match["server"], {}).get("resources", []),
+    #                     "recent_procedures": procedures.get(match["server"], {}).get("resources", []),
+    #                     "outcomes": self._extract_significant_outcomes(
+    #                         outcomes.get(match["server"], {}).get("resources", [])
+    #                     )
+    #                 }
                     
-                    detailed_matches.append(detailed_match)
+    #                 detailed_matches.append(detailed_match)
             
-            except Exception as e:
-                logger.error(f"Error getting details for patient {match['patient_id']}: {str(e)}")
+    #         except Exception as e:
+    #             logger.error(f"Error getting details for patient {match['patient_id']}: {str(e)}")
         
-        return {
-            "search_criteria": criteria,
-            "total_matches": len(unique_matches),
-            "matches": detailed_matches
-        }
+    #     return {
+    #         "search_criteria": criteria,
+    #         "total_matches": len(unique_matches),
+    #         "matches": detailed_matches
+    #     }
 
     async def _calculate_patient_match_score_advanced(self, patient_id: str, criteria: Dict[str, Any], 
                                                     server_name: str) -> Dict[str, Any]:
@@ -3283,6 +3286,118 @@ class UniversalFhirMcpServer:
             completed_sections += 1
         
         return (completed_sections / total_sections) * 100
+
+    async def extract_condition_codes_from_fhir(self, servers: List[str] = None, 
+                                              max_conditions: int = 5000,
+                                              use_cache: bool = True,
+                                              max_pages: int = 10) -> Dict[str, Any]:
+        """
+        Extract all available condition codes from FHIR servers with caching and pagination.
+        
+        Args:
+            servers: List of FHIR servers to query (defaults to current server)
+            max_conditions: Maximum number of conditions to extract per server
+            use_cache: Whether to use cached results (if available)
+            max_pages: Maximum number of pages to fetch per server
+            
+        Returns:
+            Dict containing condition codes per server with status and timing info
+        """
+        target_servers = servers or [self.current_server]
+        results = {}
+        
+        for server_name in target_servers:
+            try:
+                # Check cache first if enabled
+                if use_cache and server_name in self.condition_codes_cache:
+                    cache_expiry = self.cache_expiry.get(server_name, 0)
+                    if datetime.now().timestamp() < cache_expiry:
+                        logger.info(f"Using cached condition codes for {server_name}")
+                        results[server_name] = self.condition_codes_cache[server_name]
+                        continue
+                
+                logger.info(f"Extracting condition codes from {server_name}...")
+                start_time = time.time()
+                
+                conditions = []
+                total_pages = 0
+                next_url = None
+                
+                while total_pages < max_pages and len(conditions) < max_conditions:
+                    # Make the FHIR query
+                    query_result = await self.universal_fhir_query(
+                        "Condition",
+                        server_name=server_name,
+                        _count="100",  # Fetch 100 conditions per page
+                        _elements="code",  # Only fetch the code element for efficiency
+                        _sort="-_lastUpdated"  # Sort by last updated to get most recent first
+                    )
+                    
+                    if query_result["status"] != "success":
+                        logger.error(f"Failed to fetch conditions from {server_name}: {query_result.get('error')}")
+                        break
+                    
+                    # Process conditions from this page
+                    resources = query_result.get("resources", [])
+                    for resource in resources:
+                        if "code" in resource:
+                            code_obj = resource["code"]
+                            if code_obj.get("coding"):
+                                for coding in code_obj["coding"]:
+                                    condition = {
+                                        "code": coding.get("code", ""),
+                                        "system": coding.get("system", ""),
+                                        "display": coding.get("display", ""),
+                                        "text": code_obj.get("text", ""),
+                                        "searchable_name": (
+                                            coding.get("display", "").lower() or 
+                                            code_obj.get("text", "").lower()
+                                        ).strip()
+                                    }
+                                    if condition["code"] and condition["searchable_name"]:
+                                        conditions.append(condition)
+                                        
+                                        if len(conditions) >= max_conditions:
+                                            break
+                    
+                    total_pages += 1
+                    
+                    # Check if we have a next page
+                    next_url = query_result.get("next_page")
+                    if not next_url or len(conditions) >= max_conditions:
+                        break
+                
+                # Calculate statistics
+                end_time = time.time()
+                extraction_time = end_time - start_time
+                conditions_per_second = len(conditions) / extraction_time if extraction_time > 0 else 0
+                
+                result = {
+                    "status": "success",
+                    "total_conditions": len(conditions),
+                    "conditions": conditions,
+                    "extraction_time_seconds": round(extraction_time, 2),
+                    "conditions_per_second": round(conditions_per_second, 2),
+                    "pages_fetched": total_pages
+                }
+                
+                # Cache the results if caching is enabled
+                if use_cache:
+                    self.condition_codes_cache[server_name] = result
+                    self.cache_expiry[server_name] = datetime.now().timestamp() + self.cache_duration
+                    logger.info(f"Cached {len(conditions)} conditions for {server_name}")
+                
+                results[server_name] = result
+                
+            except Exception as e:
+                logger.error(f"Error extracting condition codes from {server_name}: {str(e)}", exc_info=True)
+                results[server_name] = {
+                    "status": "error",
+                    "error": str(e),
+                    "conditions": []
+                }
+        
+        return results
 
 
 # Alias for backward compatibility
